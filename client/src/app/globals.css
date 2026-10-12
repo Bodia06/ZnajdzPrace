@@ -14,6 +14,7 @@
 	--color-primary-soft: #ebebfd;
 	--color-ink: #0e0f1a;
 	--color-page: #f4f4f8;
+	--color-muted: #6b6d82;
 	--animate-float: float 6s ease-in-out infinite;
 
 	@keyframes float {

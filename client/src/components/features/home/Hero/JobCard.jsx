@@ -11,7 +11,7 @@ export default function JobCard({ item }) {
 					<p className='truncate text-[15px] leading-tight sm:text-[17px] 2xl:text-xl font-extrabold'>
 						{title}
 					</p>
-					<p className='mt-0.5 truncate text-xs sm:text-[13px] font-medium text-[#6b6d82] 2xl:text-sm'>
+					<p className='mt-0.5 truncate text-xs sm:text-[13px] font-medium text-muted 2xl:text-sm'>
 						{company} · {location}
 					</p>
 				</div>

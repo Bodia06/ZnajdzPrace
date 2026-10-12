@@ -1,0 +1,22 @@
+import ChatPanel from './ChatPanel'
+import FavoritesPanel from './FavoritesPanel'
+import HistoryPanel from './HistoryPanel'
+import ToolCard from './ToolCard'
+import ToolLink from './ToolLink'
+
+export default function CandidatePanelCard({ item, className }) {
+	const { badge, title, chat, history, favorites, button } = item
+
+	return (
+		<ToolCard tone='accent' badge={badge} title={title} className={className}>
+			<div className='mt-5 grid flex-1 grid-cols-1 gap-3 sm:grid-cols-3'>
+				<ChatPanel item={chat} />
+				<HistoryPanel item={history} />
+				<FavoritesPanel item={favorites} />
+			</div>
+			<ToolLink href={button.link} className='mt-5'>
+				{button.title}
+			</ToolLink>
+		</ToolCard>
+	)
+}

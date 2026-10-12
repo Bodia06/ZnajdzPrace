@@ -1,6 +1,7 @@
 import Hero from '@/components/features/home/Hero'
 import Category from '@/components/features/home/Category'
 import HowItWorks from '@/components/features/home/HowItWorks'
+import Tools from '@/components/features/home/Tools'
 
 export default function HomePage() {
 	return (
@@ -8,6 +9,7 @@ export default function HomePage() {
 			<Hero />
 			<Category />
 			<HowItWorks />
+			<Tools />
 		</div>
 	)
 }

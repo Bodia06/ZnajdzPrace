@@ -13,7 +13,7 @@ export default function HowItWorksStep({ item, number }) {
 				{String(number).padStart(2, '0')}
 			</span>
 			<h3 className='mt-6 text-lg font-extrabold tracking-tight text-ink sm:mt-8'>{title}</h3>
-			<p className='mt-2 text-sm leading-relaxed text-[#6b6d82] sm:text-[15px]'>{text}</p>
+			<p className='mt-2 text-sm leading-relaxed text-muted sm:text-[15px]'>{text}</p>
 		</li>
 	)
 }
