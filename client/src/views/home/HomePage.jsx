@@ -1,7 +1,9 @@
+import Hero from '@/components/features/home/Hero'
+
 export default function HomePage() {
-  return (
-    <section className="mx-auto max-w-6xl px-4 py-16">
-      <h1 className="text-3xl font-semibold tracking-tight">ZnajdzPrace</h1>
-    </section>
-  );
+	return (
+		<div className='px-0 py-2 sm:px-6 sm:py-4 lg:px-12 xl:px-20 xl:py-5'>
+			<Hero />
+		</div>
+	)
 }

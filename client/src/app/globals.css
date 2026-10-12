@@ -7,6 +7,23 @@
 
 @theme {
 	--breakpoint-nav: 1100px;
+	--breakpoint-3xl: 1920px;
+	--breakpoint-4xl: 2400px;
+	--color-accent: #c6f24e;
+	--color-primary: #5753f0;
+	--color-primary-soft: #ebebfd;
+	--color-ink: #0e0f1a;
+	--animate-float: float 6s ease-in-out infinite;
+
+	@keyframes float {
+		0%,
+		100% {
+			translate: 0 0;
+		}
+		50% {
+			translate: 0 -8px;
+		}
+	}
 }
 
 @theme inline {
