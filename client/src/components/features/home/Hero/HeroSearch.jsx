@@ -1,3 +1,4 @@
+import SearchIcon from '@/components/ui/SearchIcon'
 import { LINKS } from '@/constants'
 
 export default function HeroSearch({ item }) {
@@ -9,15 +10,7 @@ export default function HeroSearch({ item }) {
 			action={LINKS.OFFERS}
 			className='mt-6 sm:mt-9 flex max-w-xl 2xl:max-w-2xl items-center gap-1 rounded-2xl bg-white p-1 sm:gap-2 sm:rounded-[20px] sm:p-2 shadow-[0_0_0_4px_rgba(255,255,255,0.12)] transition-shadow focus-within:shadow-[0_0_0_4px_rgba(87,83,240,0.45)]'
 		>
-			<svg
-				viewBox='0 0 20 20'
-				className='ml-2 size-4 sm:ml-3 sm:size-5 shrink-0 text-primary'
-				fill='none'
-				aria-hidden='true'
-			>
-				<circle cx='9' cy='9' r='5.5' stroke='currentColor' strokeWidth='1.8' />
-				<path d='m13.5 13.5 3.5 3.5' stroke='currentColor' strokeWidth='1.8' strokeLinecap='round' />
-			</svg>
+			<SearchIcon className='ml-2 size-4 text-primary sm:ml-3 sm:size-5' />
 			<input
 				type='search'
 				name='q'

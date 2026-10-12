@@ -1,29 +1,15 @@
-import Image from 'next/image'
-import Link from 'next/link'
-
-import { siteConfig } from '@/config/site'
 import MobileMenu from '@/components/layout/MobileMenu'
 import NavLink from '@/components/layout/NavLink'
 import Button from '@/components/ui/Button'
-import { AUTH_ITEMS, LINKS, NAVIGATION_ITEMS } from '@/constants'
+import Logo from '@/components/ui/Logo'
+import { AUTH_ITEMS, NAVIGATION_ITEMS } from '@/constants'
 
 export default function Header() {
 	return (
 		<header className='relative z-50 border-b border-foreground/10 bg-background'>
 			<div className='mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-4 nav:grid nav:grid-cols-[1fr_auto_1fr]'>
 				<h1 className='justify-self-start'>
-					<Link href={LINKS.HOME} className='flex items-center gap-2.5'>
-						<Image
-							src='/images/logo.svg'
-							alt=''
-							width={36}
-							height={36}
-							priority
-						/>
-						<span className='text-lg font-bold tracking-tight'>
-							{siteConfig.name}
-						</span>
-					</Link>
+					<Logo />
 				</h1>
 
 				<nav aria-label='Główna nawigacja' className='hidden nav:block'>
