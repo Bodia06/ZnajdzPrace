@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import ArrowIcon from '@/components/ui/ArrowIcon'
+import Tilt from '@/components/ui/Tilt'
 
 const VARIANTS = {
 	dark: { card: 'bg-ink text-white', code: 'bg-accent text-ink' },
@@ -15,21 +16,23 @@ export default function CategoryItem({ item }) {
 
 	return (
 		<li>
-			<Link
-				href={link}
-				className={`group flex h-36 flex-col justify-between rounded-3xl p-5 transition hover:-translate-y-1 hover:shadow-[0_16px_32px_-12px_rgba(14,15,26,0.3)] sm:h-40 sm:p-5.5 ${styles.card}`}
-			>
-				<span
-					aria-hidden='true'
-					className={`flex size-11 items-center justify-center rounded-xl text-xs font-extrabold ${styles.code}`}
+			<Tilt className='rounded-3xl'>
+				<Link
+					href={link}
+					className={`group flex h-36 flex-col justify-between rounded-3xl p-5 transition hover:shadow-[0_16px_32px_-12px_rgba(14,15,26,0.3)] sm:h-40 sm:p-5.5 ${styles.card}`}
 				>
-					{code}
-				</span>
-				<span className='flex items-center justify-between gap-3 text-base font-bold tracking-tight sm:text-lg'>
-					{title}
-					<ArrowIcon className='size-5 transition group-hover:translate-x-1' />
-				</span>
-			</Link>
+					<span
+						aria-hidden='true'
+						className={`flex size-11 items-center justify-center rounded-xl text-xs font-extrabold ${styles.code}`}
+					>
+						{code}
+					</span>
+					<span className='flex items-center justify-between gap-3 text-base font-bold tracking-tight sm:text-lg'>
+						{title}
+						<ArrowIcon className='size-5 transition group-hover:translate-x-1' />
+					</span>
+				</Link>
+			</Tilt>
 		</li>
 	)
 }

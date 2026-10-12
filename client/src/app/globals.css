@@ -49,3 +49,24 @@ body {
 	outline: 2px solid var(--color-primary);
 	outline-offset: 2px;
 }
+
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+	.reveal {
+		opacity: 0;
+		transform: perspective(1400px) translateY(3rem) rotateX(14deg) scale(0.96);
+		transform-origin: 50% 0;
+		transition:
+			opacity 0.8s ease-out,
+			transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	.reveal.is-above {
+		transform: perspective(1400px) translateY(-3rem) rotateX(-14deg) scale(0.96);
+		transform-origin: 50% 100%;
+	}
+
+	.reveal.is-visible {
+		opacity: 1;
+		transform: none;
+	}
+}

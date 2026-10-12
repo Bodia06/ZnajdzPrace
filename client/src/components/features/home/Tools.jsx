@@ -1,3 +1,4 @@
+import Tilt from '@/components/ui/Tilt'
 import { TOOLS_DATA } from '@/constants'
 import CandidatePanelCard from './Tools/CandidatePanelCard'
 import CvAnalysisCard from './Tools/CvAnalysisCard'
@@ -11,15 +12,23 @@ export default function Tools() {
 	return (
 		<section
 			aria-labelledby='tools-title'
-			className='font-(family-name:--font-jakarta) px-4 pb-8 sm:px-6 sm:pb-10 lg:px-12 lg:pb-12'
+			className='font-(family-name:--font-jakarta) px-4 sm:px-6 lg:px-12'
 		>
 			<div className='mx-auto max-w-7xl 2xl:max-w-360'>
 				<ToolsTitle badge={badge} title={title} description={description} />
 				<div className='mt-6 grid grid-cols-1 gap-3 sm:mt-8 sm:gap-4 lg:grid-cols-12'>
-					<CvAnalysisCard item={cvAnalysis} className='lg:col-span-7' />
-					<OfferMatchCard item={offerMatch} className='lg:col-span-5' />
-					<CvGeneratorCard item={cvGenerator} className='lg:col-span-5' />
-					<CandidatePanelCard item={candidatePanel} className='lg:col-span-7' />
+					<Tilt className='rounded-4xl lg:col-span-7'>
+						<CvAnalysisCard item={cvAnalysis} className='h-full' />
+					</Tilt>
+					<Tilt className='rounded-4xl lg:col-span-5'>
+						<OfferMatchCard item={offerMatch} className='h-full' />
+					</Tilt>
+					<Tilt className='rounded-4xl lg:col-span-5'>
+						<CvGeneratorCard item={cvGenerator} className='h-full' />
+					</Tilt>
+					<Tilt className='rounded-4xl lg:col-span-7'>
+						<CandidatePanelCard item={candidatePanel} className='h-full' />
+					</Tilt>
 				</div>
 			</div>
 		</section>

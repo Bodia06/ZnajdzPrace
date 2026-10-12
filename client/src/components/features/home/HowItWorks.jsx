@@ -14,7 +14,7 @@ export default function HowItWorks() {
 	return (
 		<section
 			aria-labelledby={`how-it-works-title-${activeId}`}
-			className='font-(family-name:--font-jakarta) px-4 pb-8 sm:px-6 sm:pb-10 lg:px-12 lg:pb-12'
+			className='font-(family-name:--font-jakarta) px-4 sm:px-6 lg:px-12'
 		>
 			<div className='mx-auto max-w-7xl rounded-3xl bg-white p-5 sm:rounded-[36px] sm:p-8 lg:p-14 2xl:max-w-360'>
 				<div className='flex flex-col items-center gap-x-10 gap-y-6 text-center xl:flex-row xl:items-end xl:justify-between xl:text-left'>

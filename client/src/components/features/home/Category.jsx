@@ -8,7 +8,7 @@ export default function Category() {
 	return (
 		<section
 			aria-labelledby='category-title'
-			className='px-4 py-8 sm:px-6 sm:py-10 lg:px-12 lg:py-12'
+			className='px-4 sm:px-6 lg:px-12'
 		>
 			<div className='mx-auto max-w-7xl 2xl:max-w-360'>
 				<CategoryTitle badge={badge} title={title} button={button} />
