@@ -1,0 +1,73 @@
+# ── Dependencies ─────────────────────────────
+node_modules/
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# ── Environment & secrets ────────────────────
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ── Build output ─────────────────────────────
+# client (Next.js)
+.next/
+out/
+next-env.d.ts
+# server / general
+build/
+dist/
+*.tsbuildinfo
+
+# ── Testing & coverage ───────────────────────
+coverage/
+.nyc_output/
+
+# ── Caches ───────────────────────────────────
+.eslintcache
+.cache/
+.turbo/
+.parcel-cache/
+
+# ── Logs ─────────────────────────────────────
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ── Runtime data (server) ────────────────────
+uploads/
+*.sqlite
+*.sqlite3
+*.db
+pids/
+*.pid
+
+# ── Deploy ───────────────────────────────────
+.vercel
+
+# ── Editors & IDE ────────────────────────────
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+*.swp
+*.swo
+
+# ── OS ───────────────────────────────────────
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ── Temp ─────────────────────────────────────
+tmp/
+temp/
+*.tmp
