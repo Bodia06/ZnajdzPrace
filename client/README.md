@@ -21,19 +21,30 @@ npm run dev     # http://localhost:3000
 
 ```
 src/
-├── app/            # маршрути, layout, глобальні стилі
-├── views/          # вміст сторінок (views/<сторінка>/<Сторінка>Page.jsx)
+├── app/                    # маршрути, layout, глобальні стилі
+├── views/                  # вміст сторінок (views/<сторінка>/<Сторінка>Page.jsx)
 ├── components/
-│   ├── ui/         # базові UI-компоненти (кнопки, інпути…)
-│   ├── layout/     # Header, Footer та ін.
-│   └── features/   # компоненти конкретних фіч
-├── hooks/          # кастомні React-хуки
-├── lib/            # утиліти
-├── services/       # робота з API
-├── config/         # конфіг сайту
-└── constants/      # константи
-public/images/      # статичні зображення
+│   ├── ui/                 # базові UI-компоненти (Button, Badge, Logo…)
+│   │   ├── icons/          # SVG-іконки
+│   │   └── motion/         # анімаційні обгортки (Reveal, Tilt)
+│   ├── layout/             # Header, Footer та ін.
+│   └── features/<сторінка>/<Секція>/
+│       └── index.jsx       # секція + дрібні компоненти поруч
+├── hooks/                  # кастомні React-хуки
+├── lib/                    # утиліти
+├── services/               # робота з API
+├── config/                 # конфіг сайту
+└── constants/              # дані й тексти: links, navigation, footer, home/<секція>
+public/images/              # статичні зображення
 ```
+
+Секція сторінки — це папка з `index.jsx` (складання) і компонентами цієї секції.
+Тексти й посилання живуть у `constants`, у компонентах їх не вписуємо.
+Компонент, потрібний лише одній секції, лежить у її папці; у `ui/` — тільки універсальні.
+
+## Форматування
+
+Prettier (з плагіном Tailwind для порядку класів): `npm run format` / `npm run format:check`.
 
 Нова сторінка: створи `src/views/about/AboutPage.jsx`, потім `src/app/about/page.js`, який її рендерить.
 Папку не називаємо `pages`: `src/pages` Next трактує як Pages Router, що конфліктує з `app/`.

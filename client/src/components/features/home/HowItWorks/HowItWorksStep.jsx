@@ -3,7 +3,7 @@ export default function HowItWorksStep({ item, number }) {
 	const first = number === 1
 
 	return (
-		<li className='flex flex-col items-center rounded-3xl text-center sm:items-start sm:text-left bg-page p-5 sm:p-7'>
+		<li className='flex flex-col items-center rounded-3xl bg-page p-5 text-center sm:items-start sm:p-7 sm:text-left'>
 			<span
 				aria-hidden='true'
 				className={`flex size-12 items-center justify-center rounded-xl text-lg font-extrabold ${

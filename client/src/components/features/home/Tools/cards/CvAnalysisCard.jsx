@@ -3,9 +3,9 @@
 import { useState } from 'react'
 
 import ScoreRing from '@/components/ui/ScoreRing'
-import ToggleGroup from '@/components/ui/ToggleGroup'
-import ToolCard from './ToolCard'
-import ToolLink from './ToolLink'
+import ToggleGroup from '../ToggleGroup'
+import ToolCard from '../ToolCard'
+import ToolLink from '../ToolLink'
 
 export default function CvAnalysisCard({ item, className }) {
 	const { badge, title, toggleLabel, scoreLabel, modes, results, note, button } = item
@@ -38,7 +38,10 @@ export default function CvAnalysisCard({ item, className }) {
 								<span>{label}</span>
 								<span>{value}</span>
 							</div>
-							<div aria-hidden='true' className='mt-1.5 h-1.5 overflow-hidden rounded-full bg-white/12'>
+							<div
+								aria-hidden='true'
+								className='mt-1.5 h-1.5 overflow-hidden rounded-full bg-white/12'
+							>
 								<div
 									className='h-full rounded-full bg-accent transition-[width] duration-500 motion-reduce:transition-none'
 									style={{ width: `${value}%` }}
@@ -49,7 +52,9 @@ export default function CvAnalysisCard({ item, className }) {
 				</ul>
 			</div>
 			<div className='mt-6 flex flex-col items-center gap-4 border-t border-white/15 pt-5 sm:flex-row sm:justify-between sm:gap-6'>
-				<p className='max-w-sm text-center text-sm text-pretty text-white/65 sm:text-left'>{note}</p>
+				<p className='max-w-sm text-center text-sm text-pretty text-white/65 sm:text-left'>
+					{note}
+				</p>
 				<ToolLink href={button.link} tone='accent'>
 					{button.title}
 				</ToolLink>

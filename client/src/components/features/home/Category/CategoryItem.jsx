@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
-import ArrowIcon from '@/components/ui/ArrowIcon'
-import Tilt from '@/components/ui/Tilt'
+import ArrowIcon from '@/components/ui/icons/ArrowIcon'
+import Tilt from '@/components/ui/motion/Tilt'
 
 const VARIANTS = {
 	dark: { card: 'bg-ink text-white', code: 'bg-accent text-ink' },

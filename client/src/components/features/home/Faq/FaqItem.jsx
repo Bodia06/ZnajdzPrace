@@ -1,5 +1,5 @@
-import MinusIcon from '@/components/ui/MinusIcon'
-import PlusIcon from '@/components/ui/PlusIcon'
+import MinusIcon from '@/components/ui/icons/MinusIcon'
+import PlusIcon from '@/components/ui/icons/PlusIcon'
 
 export default function FaqItem({ item, open, onToggle, ghost = false }) {
 	const { id, question, answer } = item
@@ -38,7 +38,9 @@ export default function FaqItem({ item, open, onToggle, ghost = false }) {
 				}`}
 			>
 				<div className='overflow-hidden'>
-					<p className='px-5 pb-5 text-sm leading-relaxed text-pretty text-muted sm:px-6 sm:text-base'>{answer}</p>
+					<p className='px-5 pb-5 text-sm leading-relaxed text-pretty text-muted sm:px-6 sm:text-base'>
+						{answer}
+					</p>
 				</div>
 			</div>
 		</li>

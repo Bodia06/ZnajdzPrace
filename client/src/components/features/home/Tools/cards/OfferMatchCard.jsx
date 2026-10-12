@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 
-import OfferDetails from './OfferDetails'
-import ToolCard from './ToolCard'
+import OfferDetails from '../OfferDetails'
+import ToolCard from '../ToolCard'
 
 export default function OfferMatchCard({ item, className }) {
 	const { badge, title, offers } = item

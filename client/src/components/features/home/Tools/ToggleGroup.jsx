@@ -1,6 +1,10 @@
 export default function ToggleGroup({ label, options, value, onChange }) {
 	return (
-		<div role='group' aria-label={label} className='flex w-full shrink-0 gap-1 rounded-full bg-white/10 p-1 sm:w-auto'>
+		<div
+			role='group'
+			aria-label={label}
+			className='flex w-full shrink-0 gap-1 rounded-full bg-white/10 p-1 sm:w-auto'
+		>
 			{options.map(({ id, label: text }) => {
 				const selected = id === value
 

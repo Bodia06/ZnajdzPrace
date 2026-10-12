@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import ArrowIcon from '@/components/ui/ArrowIcon'
+import ArrowIcon from '@/components/ui/icons/ArrowIcon'
 
 export default function CategoryTitle({ badge, title, button }) {
 	return (

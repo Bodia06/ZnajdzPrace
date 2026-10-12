@@ -1,6 +1,6 @@
-import PlusIcon from '@/components/ui/PlusIcon'
+import PlusIcon from '@/components/ui/icons/PlusIcon'
 import ScoreRing from '@/components/ui/ScoreRing'
-import TickIcon from '@/components/ui/TickIcon'
+import TickIcon from '@/components/ui/icons/TickIcon'
 
 const SKILL_TONES = {
 	matched: 'bg-white text-emerald-700',
@@ -28,7 +28,9 @@ export default function OfferDetails({ item, selected }) {
 				>
 					<span className='text-xl font-extrabold sm:text-2xl'>{score}%</span>
 				</ScoreRing>
-				<p className='text-base leading-snug font-extrabold text-balance text-white sm:text-lg'>{verdict}</p>
+				<p className='text-base leading-snug font-extrabold text-balance text-white sm:text-lg'>
+					{verdict}
+				</p>
 			</div>
 			<ul className='mt-5 flex flex-wrap gap-2'>
 				{skills.map(({ id, text, matched }) => (

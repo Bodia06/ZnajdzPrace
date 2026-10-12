@@ -11,11 +11,7 @@ export default function MobileMenu() {
 
 	return (
 		<div className='nav:hidden'>
-			<BurgerButton
-				open={open}
-				onClick={toggle}
-				controls='mobile-menu'
-			/>
+			<BurgerButton open={open} onClick={toggle} controls='mobile-menu' />
 
 			<div
 				onClick={close}
@@ -28,10 +24,8 @@ export default function MobileMenu() {
 			<div
 				id='mobile-menu'
 				inert={!open}
-				className={`absolute inset-x-0 top-full border-b border-foreground/10 bg-background px-4 pb-8 pt-4 shadow-lg transition-[opacity,transform,visibility] duration-300 ease-out motion-reduce:transition-none ${
-					open
-						? 'visible translate-y-0 opacity-100'
-						: 'invisible -translate-y-3 opacity-0'
+				className={`absolute inset-x-0 top-full border-b border-foreground/10 bg-background px-4 pt-4 pb-8 shadow-lg transition-[opacity,transform,visibility] duration-300 ease-out motion-reduce:transition-none ${
+					open ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-3 opacity-0'
 				}`}
 			>
 				<nav aria-label='Menu mobilne' className='mx-auto max-w-sm'>

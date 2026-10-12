@@ -1,18 +1,19 @@
-import Tilt from '@/components/ui/Tilt'
+import Tilt from '@/components/ui/motion/Tilt'
 import { TOOLS_DATA } from '@/constants'
-import CandidatePanelCard from './Tools/CandidatePanelCard'
-import CvAnalysisCard from './Tools/CvAnalysisCard'
-import CvGeneratorCard from './Tools/CvGeneratorCard'
-import OfferMatchCard from './Tools/OfferMatchCard'
-import ToolsTitle from './Tools/ToolsTitle'
+import CandidatePanelCard from './cards/CandidatePanelCard'
+import CvAnalysisCard from './cards/CvAnalysisCard'
+import CvGeneratorCard from './cards/CvGeneratorCard'
+import OfferMatchCard from './cards/OfferMatchCard'
+import ToolsTitle from './ToolsTitle'
 
 export default function Tools() {
-	const { badge, title, description, cvAnalysis, offerMatch, cvGenerator, candidatePanel } = TOOLS_DATA
+	const { badge, title, description, cvAnalysis, offerMatch, cvGenerator, candidatePanel } =
+		TOOLS_DATA
 
 	return (
 		<section
 			aria-labelledby='tools-title'
-			className='font-(family-name:--font-jakarta) px-4 sm:px-6 lg:px-12'
+			className='px-4 font-(family-name:--font-jakarta) sm:px-6 lg:px-12'
 		>
 			<div className='mx-auto max-w-7xl 2xl:max-w-360'>
 				<ToolsTitle badge={badge} title={title} description={description} />

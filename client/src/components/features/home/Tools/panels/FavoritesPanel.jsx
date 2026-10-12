@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 
-import HeartIcon from '@/components/ui/HeartIcon'
-import ToolPanel from './ToolPanel'
+import HeartIcon from '@/components/ui/icons/HeartIcon'
+import ToolPanel from '../ToolPanel'
 
 export default function FavoritesPanel({ item }) {
 	const { title, label, empty, saved } = item

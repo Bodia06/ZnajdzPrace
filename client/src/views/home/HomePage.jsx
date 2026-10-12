@@ -3,7 +3,7 @@ import Faq from '@/components/features/home/Faq'
 import Hero from '@/components/features/home/Hero'
 import HowItWorks from '@/components/features/home/HowItWorks'
 import Tools from '@/components/features/home/Tools'
-import Reveal from '@/components/ui/Reveal'
+import Reveal from '@/components/ui/motion/Reveal'
 
 export default function HomePage() {
 	return (

@@ -14,7 +14,11 @@ const getObserver = () => {
 }
 
 const applyState = (element, entry) => {
-	const state = entry.isIntersecting ? 'is-visible' : entry.boundingClientRect.top < 0 ? 'is-above' : ''
+	const state = entry.isIntersecting
+		? 'is-visible'
+		: entry.boundingClientRect.top < 0
+			? 'is-above'
+			: ''
 
 	element.classList.remove('is-visible', 'is-above')
 	if (state) element.classList.add(state)

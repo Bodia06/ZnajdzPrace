@@ -19,7 +19,7 @@ export default function HowItWorksTabs({ tabs, activeId, onChange }) {
 			role='tablist'
 			aria-label='Rodzaj użytkownika'
 			onKeyDown={handleKeyDown}
-			className='flex w-full shrink-0 gap-1 sm:w-auto rounded-full bg-page p-1'
+			className='flex w-full shrink-0 gap-1 rounded-full bg-page p-1 sm:w-auto'
 		>
 			{tabs.map(({ id, label }) => {
 				const selected = id === activeId
@@ -34,7 +34,7 @@ export default function HowItWorksTabs({ tabs, activeId, onChange }) {
 						aria-selected={selected}
 						aria-controls={`panel-${id}`}
 						onClick={() => onChange(id)}
-						className={`flex-1 cursor-pointer whitespace-nowrap sm:flex-none rounded-full px-4 py-2.5 text-sm font-bold transition-colors sm:px-6 ${
+						className={`flex-1 cursor-pointer rounded-full px-4 py-2.5 text-sm font-bold whitespace-nowrap transition-colors sm:flex-none sm:px-6 ${
 							selected ? 'bg-ink text-white' : 'text-[#5b5d73] hover:text-ink'
 						}`}
 					>

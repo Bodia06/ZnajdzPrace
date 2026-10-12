@@ -1,15 +1,12 @@
 import { CATEGORY_DATA } from '@/constants'
-import CategoryItem from './Category/CategoryItem'
-import CategoryTitle from './Category/CategoryTitle'
+import CategoryItem from './CategoryItem'
+import CategoryTitle from './CategoryTitle'
 
 export default function Category() {
 	const { badge, title, button, cards } = CATEGORY_DATA
 
 	return (
-		<section
-			aria-labelledby='category-title'
-			className='px-4 sm:px-6 lg:px-12'
-		>
+		<section aria-labelledby='category-title' className='px-4 sm:px-6 lg:px-12'>
 			<div className='mx-auto max-w-7xl 2xl:max-w-360'>
 				<CategoryTitle badge={badge} title={title} button={button} />
 				<ul className='mt-6 grid grid-cols-1 gap-3 sm:mt-8 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4'>
