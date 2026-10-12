@@ -5,11 +5,19 @@
 	--foreground: #171717;
 }
 
+@theme {
+	--breakpoint-nav: 1100px;
+}
+
 @theme inline {
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
 	--font-sans: var(--font-geist-sans);
 	--font-mono: var(--font-geist-mono);
+}
+
+html {
+	scrollbar-gutter: stable;
 }
 
 body {

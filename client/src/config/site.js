@@ -1,5 +1,5 @@
 export const siteConfig = {
   name: "ZnajdzPrace",
   description: "ZnajdzPrace",
-  locale: "en",
+  locale: "pl",
 };
