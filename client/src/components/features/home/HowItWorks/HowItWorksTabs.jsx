@@ -1,18 +1,13 @@
+'use client'
+
+import { useTabKeyboard } from '@/hooks'
+
 export default function HowItWorksTabs({ tabs, activeId, onChange }) {
-	const handleKeyDown = (event) => {
-		const index = tabs.findIndex((tab) => tab.id === activeId)
-		let next
-
-		if (event.key === 'ArrowRight') next = (index + 1) % tabs.length
-		else if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length
-		else if (event.key === 'Home') next = 0
-		else if (event.key === 'End') next = tabs.length - 1
-		else return
-
-		event.preventDefault()
-		onChange(tabs[next].id)
-		document.getElementById(`tab-${tabs[next].id}`)?.focus()
-	}
+	const handleKeyDown = useTabKeyboard({
+		ids: tabs.map((tab) => tab.id),
+		activeId,
+		onChange
+	})
 
 	return (
 		<div

@@ -1,13 +1,12 @@
 'use client'
 
-import { useState } from 'react'
-
+import { useAccordion } from '@/hooks'
 import FaqItem from './FaqItem'
 
 const LIST = 'col-start-1 row-start-1 flex flex-col gap-2.5 self-start sm:gap-3'
 
 export default function FaqList({ items, defaultOpenId }) {
-	const [openId, setOpenId] = useState(defaultOpenId)
+	const { isOpen, toggle } = useAccordion(defaultOpenId)
 
 	return (
 		<div className='grid'>
@@ -24,8 +23,8 @@ export default function FaqList({ items, defaultOpenId }) {
 					<FaqItem
 						key={item.id}
 						item={item}
-						open={item.id === openId}
-						onToggle={() => setOpenId(item.id === openId ? null : item.id)}
+						open={isOpen(item.id)}
+						onToggle={() => toggle(item.id)}
 					/>
 				))}
 			</ul>
