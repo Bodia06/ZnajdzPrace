@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import Badge from '@/components/ui/Badge'
+import Badge from './Badge'
 
 export default function NavLink({ href, name, badge, className = '', onClick }) {
 	return (

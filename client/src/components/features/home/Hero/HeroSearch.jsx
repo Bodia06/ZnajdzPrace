@@ -1,14 +1,14 @@
 import SearchIcon from '@/components/ui/icons/SearchIcon'
 import { LINKS } from '@/constants'
 
-export default function HeroSearch({ item }) {
+export default function HeroSearch({ item, className = '' }) {
 	const { placeholder, button } = item
 
 	return (
 		<form
 			role='search'
 			action={LINKS.OFFERS}
-			className='mt-6 flex max-w-xl items-center gap-1 rounded-2xl bg-white p-1 shadow-[0_0_0_4px_rgba(255,255,255,0.12)] transition-shadow focus-within:shadow-[0_0_0_4px_rgba(87,83,240,0.45)] sm:mt-9 sm:gap-2 sm:rounded-[20px] sm:p-2 2xl:max-w-2xl'
+			className={`flex w-full max-w-xl items-center gap-1 rounded-2xl bg-white p-1 shadow-[0_0_0_4px_rgba(255,255,255,0.12)] transition-shadow focus-within:shadow-[0_0_0_4px_rgba(87,83,240,0.45)] sm:gap-2 sm:rounded-[20px] sm:p-2 2xl:max-w-2xl ${className}`}
 		>
 			<SearchIcon className='ml-2 size-4 text-primary sm:ml-3 sm:size-5' />
 			<input
@@ -16,7 +16,7 @@ export default function HeroSearch({ item }) {
 				name='q'
 				placeholder={placeholder}
 				aria-label={placeholder}
-				className='min-w-0 flex-1 truncate bg-transparent px-1 text-base font-medium text-ink outline-none placeholder:text-[#9b9db3]'
+				className='min-w-0 flex-1 truncate bg-transparent px-1 text-base font-medium text-ink outline-none placeholder:text-subtle'
 			/>
 			<button
 				type='submit'

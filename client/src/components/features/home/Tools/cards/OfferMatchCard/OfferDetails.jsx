@@ -1,5 +1,5 @@
 import PlusIcon from '@/components/ui/icons/PlusIcon'
-import ScoreRing from '@/components/ui/ScoreRing'
+import ScoreRing from '../../shared/ScoreRing'
 import TickIcon from '@/components/ui/icons/TickIcon'
 
 const SKILL_TONES = {

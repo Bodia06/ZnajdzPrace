@@ -1,4 +1,4 @@
-import { LINKS } from './links'
+import { LINKS } from '../links'
 
 export const FOOTER_DATA = {
 	description:

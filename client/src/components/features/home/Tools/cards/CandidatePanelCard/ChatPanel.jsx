@@ -1,4 +1,4 @@
-import ToolPanel from '../ToolPanel'
+import ToolPanel from './ToolPanel'
 
 export default function ChatPanel({ item }) {
 	const { title, incoming, outgoing } = item

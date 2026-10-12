@@ -13,7 +13,7 @@ export default function HeroTitle({ item, description }) {
 				</span>{' '}
 				{after}
 			</h2>
-			<p className='mt-3 max-w-136 text-sm leading-relaxed text-[#9b9db3] sm:mt-6 sm:text-base sm:text-[17px] 2xl:max-w-160 2xl:text-xl'>
+			<p className='mt-3 max-w-136 text-sm leading-relaxed text-subtle sm:mt-6 sm:text-base sm:text-[17px] 2xl:max-w-160 2xl:text-xl'>
 				{description}
 			</p>
 		</>

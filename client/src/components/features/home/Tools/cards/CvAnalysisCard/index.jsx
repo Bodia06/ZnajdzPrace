@@ -2,10 +2,10 @@
 
 import { useState } from 'react'
 
-import ScoreRing from '@/components/ui/ScoreRing'
-import ToggleGroup from '../ToggleGroup'
-import ToolCard from '../ToolCard'
-import ToolLink from '../ToolLink'
+import ScoreRing from '../../shared/ScoreRing'
+import ToggleGroup from './ToggleGroup'
+import ToolCard from '../../shared/ToolCard'
+import ToolLink from '../../shared/ToolLink'
 
 export default function CvAnalysisCard({ item, className }) {
 	const { badge, title, toggleLabel, scoreLabel, modes, results, note, button } = item

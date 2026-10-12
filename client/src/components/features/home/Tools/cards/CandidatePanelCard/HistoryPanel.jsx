@@ -1,4 +1,4 @@
-import ToolPanel from '../ToolPanel'
+import ToolPanel from './ToolPanel'
 
 const DOT_TONES = {
 	accent: 'bg-accent',

@@ -21,24 +21,34 @@ npm run dev     # http://localhost:3000
 
 ```
 src/
-├── app/                    # маршрути, layout, глобальні стилі
-├── views/                  # вміст сторінок (views/<сторінка>/<Сторінка>Page.jsx)
+├── app/                        # маршрути (page.js, not-found.js), layout, глобальні стилі
 ├── components/
-│   ├── ui/                 # базові UI-компоненти (Button, Badge, Logo…)
-│   │   ├── icons/          # SVG-іконки
-│   │   └── motion/         # анімаційні обгортки (Reveal, Tilt)
-│   ├── layout/             # Header, Footer та ін.
-│   └── features/<сторінка>/<Секція>/
-│       └── index.jsx       # секція + дрібні компоненти поруч
-├── hooks/                  # кастомні React-хуки
-├── lib/                    # утиліти
-├── services/               # робота з API
-├── config/                 # конфіг сайту
-└── constants/              # дані й тексти: links, navigation, footer, home/<секція>
+│   ├── ui/                     # універсальні компоненти (Button, Logo…)
+│   │   ├── icons/              # SVG-іконки
+│   │   └── motion/             # Reveal, Tilt, Parallax
+│   ├── layout/
+│   │   ├── Header/             # Header + MobileMenu, NavLink, Badge, BurgerButton
+│   │   └── Footer/
+│   └── features/
+│       ├── home/<Секція>/      # Hero, Category, HowItWorks, Tools, Faq
+│       │   ├── index.jsx       # складання секції
+│       │   └── …               # компоненти лише цієї секції
+│       └── not-found/          # сторінка з однією секцією — без зайвого рівня
+├── hooks/                      # кастомні React-хуки
+├── lib/                        # утиліти
+├── services/                   # робота з API
+├── config/                     # конфіг сайту
+└── constants/                  # дані й тексти
+    ├── links.js
+    ├── layout/                 # navigation, footer
+    ├── home/                   # hero, category, how-it-works, tools, faq
+    └── not-found.js
 public/images/              # статичні зображення
 ```
 
-Секція сторінки — це папка з `index.jsx` (складання) і компонентами цієї секції.
+Секція сторінки — це папка з `index.jsx` (складання) і компонентами цієї секції; складна частина (наприклад, картка в Tools) теж отримує власну папку.
+Сторінка з однією секцією (наприклад, 404) не має зайвого рівня: `features/not-found/index.jsx` лежить прямо в папці сторінки.
+Якщо компонент потрібен кільком секціям — він іде в `shared/` секції або в `ui/`.
 Тексти й посилання живуть у `constants`, у компонентах їх не вписуємо.
 Компонент, потрібний лише одній секції, лежить у її папці; у `ui/` — тільки універсальні.
 
@@ -46,7 +56,6 @@ public/images/              # статичні зображення
 
 Prettier (з плагіном Tailwind для порядку класів): `npm run format` / `npm run format:check`.
 
-Нова сторінка: створи `src/views/about/AboutPage.jsx`, потім `src/app/about/page.js`, який її рендерить.
-Папку не називаємо `pages`: `src/pages` Next трактує як Pages Router, що конфліктує з `app/`.
+Нова сторінка: створи `src/app/about/page.js` (стандартний роутинг Next.js App Router) і зібери її з компонентів `src/components/features/about/`.
 
 Alias `@/*` → `src/*`. Змінні середовища: див. `.env.example`.

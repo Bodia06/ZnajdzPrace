@@ -1,6 +1,5 @@
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? ''
 
-/** Thin fetch wrapper for talking to the backend. */
 export async function api(path, { method = 'GET', body, headers, ...options } = {}) {
 	const res = await fetch(`${API_URL}${path}`, {
 		method,

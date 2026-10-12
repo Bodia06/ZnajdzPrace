@@ -1,5 +1,5 @@
-import MobileMenu from '@/components/layout/MobileMenu'
-import NavLink from '@/components/layout/NavLink'
+import MobileMenu from '@/components/layout/Header/MobileMenu'
+import NavLink from '@/components/layout/Header/NavLink'
 import Button from '@/components/ui/Button'
 import Logo from '@/components/ui/Logo'
 import { AUTH_ITEMS, NAVIGATION_ITEMS } from '@/constants'

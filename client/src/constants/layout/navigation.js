@@ -1,4 +1,4 @@
-import { LINKS } from './links'
+import { LINKS } from '../links'
 
 export const NAVIGATION_ITEMS = [
 	{ id: 'offers', name: 'Oferty pracy', link: LINKS.OFFERS },

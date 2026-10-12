@@ -1,7 +1,7 @@
 'use client'
 
-import NavLink from '@/components/layout/NavLink'
-import BurgerButton from '@/components/ui/BurgerButton'
+import NavLink from '@/components/layout/Header/NavLink'
+import BurgerButton from '@/components/layout/Header/BurgerButton'
 import Button from '@/components/ui/Button'
 import { AUTH_ITEMS, NAVIGATION_ITEMS } from '@/constants'
 import { useMobileMenu } from '@/hooks'

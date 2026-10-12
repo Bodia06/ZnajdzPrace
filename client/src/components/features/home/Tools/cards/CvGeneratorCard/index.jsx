@@ -2,10 +2,10 @@
 
 import { useState } from 'react'
 
-import ColorPicker from '../ColorPicker'
-import CvPreview from '../CvPreview'
-import ToolCard from '../ToolCard'
-import ToolLink from '../ToolLink'
+import ColorPicker from './ColorPicker'
+import CvPreview from './CvPreview'
+import ToolCard from '../../shared/ToolCard'
+import ToolLink from '../../shared/ToolLink'
 
 export default function CvGeneratorCard({ item, className }) {
 	const { badge, title, colorsLabel, colors, preview, button } = item

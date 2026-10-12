@@ -1,5 +1,5 @@
+import ChatCard from '@/components/ui/ChatCard'
 import AppliedCard from './AppliedCard'
-import ChatCard from './ChatCard'
 import CvScoreCard from './CvScoreCard'
 import JobCard from './JobCard'
 
@@ -11,7 +11,10 @@ export default function HeroCards({ cards }) {
 		>
 			<JobCard item={cards.job} />
 			<CvScoreCard item={cards.cvScore} />
-			<ChatCard item={cards.chat} />
+			<ChatCard
+				item={cards.chat}
+				className='relative z-10 mt-4 ml-auto w-52 rotate-2 animate-float border border-white/10 [animation-delay:-4s] [animation-duration:8s] motion-reduce:animate-none sm:mt-5 sm:w-64 2xl:w-72'
+			/>
 			<AppliedCard item={cards.applied} />
 		</div>
 	)
