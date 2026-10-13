@@ -2,7 +2,7 @@ export default function JobCard({ item }) {
 	const { logo, title, company, location, tags, salary, button } = item
 
 	return (
-		<div className='relative z-10 rotate-[2.5deg] animate-float rounded-3xl bg-white p-4 text-ink shadow-[0_30px_60px_-20px_rgba(0,0,0,0.6)] motion-reduce:animate-none sm:rounded-[28px] sm:p-6 2xl:p-8'>
+		<div className='relative z-10 rotate-[2.5deg] rounded-3xl bg-white p-4 text-ink shadow-[0_30px_60px_-20px_rgba(0,0,0,0.6)] motion-reduce:animate-none sm:rounded-[28px] sm:p-6 md:animate-float 2xl:p-8'>
 			<div className='flex items-center gap-3'>
 				<span className='flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary-soft text-base font-extrabold text-primary sm:size-12 sm:rounded-2xl sm:text-lg'>
 					{logo}

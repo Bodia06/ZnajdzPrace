@@ -2,7 +2,7 @@ export default function CvScoreCard({ item }) {
 	const { score, title, tips } = item
 
 	return (
-		<div className='relative z-20 mt-5 w-56 rotate-[-5deg] animate-float rounded-3xl bg-accent px-4 py-3 text-ink shadow-[0_25px_50px_-20px_rgba(0,0,0,0.6)] [animation-delay:-2s] [animation-duration:7s] motion-reduce:animate-none sm:mt-7 sm:-ml-8 sm:w-72 sm:rounded-[28px] sm:px-6 sm:py-5 2xl:w-80'>
+		<div className='relative z-20 mt-5 w-56 rotate-[-5deg] rounded-3xl bg-accent px-4 py-3 text-ink shadow-[0_25px_50px_-20px_rgba(0,0,0,0.6)] [animation-delay:-2s] [animation-duration:7s] motion-reduce:animate-none sm:mt-7 sm:-ml-8 sm:w-72 sm:rounded-[28px] sm:px-6 sm:py-5 md:animate-float 2xl:w-80'>
 			<div className='flex items-center gap-3 sm:gap-4'>
 				<div
 					className='flex size-12 shrink-0 items-center justify-center rounded-full sm:size-16'

@@ -44,7 +44,7 @@ export default function RootLayout({ children }) {
 					Przejdź do treści
 				</a>
 				<Header />
-				<main id='main' className='flex-1'>
+				<main id='main' className='flex-1 overflow-x-clip'>
 					{children}
 				</main>
 				<Footer />

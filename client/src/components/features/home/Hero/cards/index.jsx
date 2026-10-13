@@ -13,7 +13,7 @@ export default function HeroCards({ cards }) {
 			<CvScoreCard item={cards.cvScore} />
 			<ChatCard
 				item={cards.chat}
-				className='relative z-10 mt-4 ml-auto w-52 rotate-2 animate-float border border-white/10 [animation-delay:-4s] [animation-duration:8s] motion-reduce:animate-none sm:mt-5 sm:w-64 2xl:w-72'
+				className='relative z-10 mt-4 ml-auto w-52 rotate-2 border border-white/10 [animation-delay:-4s] [animation-duration:8s] motion-reduce:animate-none sm:mt-5 sm:w-64 md:animate-float 2xl:w-72'
 			/>
 			<AppliedCard item={cards.applied} />
 		</div>

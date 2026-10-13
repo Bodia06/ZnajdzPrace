@@ -16,8 +16,8 @@ export default function MobileMenu() {
 			<div
 				onClick={close}
 				aria-hidden='true'
-				className={`fixed inset-x-0 top-16 bottom-0 bg-foreground/20 backdrop-blur-md transition-opacity duration-300 ease-out motion-reduce:transition-none ${
-					open ? 'opacity-100' : 'pointer-events-none opacity-0'
+				className={`fixed inset-x-0 top-16 bottom-0 bg-foreground/20 backdrop-blur-md transition-[opacity,visibility] duration-300 ease-out motion-reduce:transition-none ${
+					open ? 'visible opacity-100' : 'pointer-events-none invisible opacity-0'
 				}`}
 			/>
 

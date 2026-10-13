@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 
 const MAX_ANGLE = 7
+const DESKTOP_QUERY = '(hover: hover) and (pointer: fine) and (min-width: 768px)'
 
 export default function useTilt() {
 	const ref = useRef(null)
@@ -24,6 +25,7 @@ export default function useTilt() {
 
 	const onPointerMove = (event) => {
 		if (event.pointerType !== 'mouse') return
+		if (!window.matchMedia(DESKTOP_QUERY).matches) return
 		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
 		pointer.current = { x: event.clientX, y: event.clientY }
