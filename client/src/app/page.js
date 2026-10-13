@@ -5,7 +5,7 @@ import HowItWorks from '@/components/features/home/HowItWorks'
 import Tools from '@/components/features/home/Tools'
 import Reveal from '@/components/ui/motion/Reveal'
 
-export default function Page() {
+export default function HomePage() {
 	return (
 		<div className='flex flex-col gap-14 px-0 pt-2 pb-14 sm:gap-20 sm:px-6 sm:pt-4 sm:pb-20 lg:gap-24 lg:pb-24 xl:px-20 xl:pt-5 xl:pb-28'>
 			<Hero />
