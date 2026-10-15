@@ -4,7 +4,6 @@ export const NAVIGATION_ITEMS = [
 	{ id: 'offers', name: 'Oferty pracy', link: LINKS.OFFERS },
 	{ id: 'analysis', name: 'Analiza CV', link: LINKS.ANALYSIS, badge: 'AI' },
 	{ id: 'generator', name: 'Generator CV', link: LINKS.GENERATOR },
-	{ id: 'for-employers', name: 'Dla pracodawców', link: LINKS.FOR_EMPLOYERS }
 ]
 
 export const AUTH_ITEMS = [

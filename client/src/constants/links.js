@@ -3,7 +3,6 @@ export const LINKS = {
 	OFFERS: '/offers',
 	ANALYSIS: '/analysis-cv',
 	GENERATOR: '/generator-cv',
-	FOR_EMPLOYERS: '/for-employers',
 	LOGIN: '/login',
 	REGISTRATION: '/registration',
 	CONTACT: '/contact',

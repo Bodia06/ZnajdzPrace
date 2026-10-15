@@ -18,7 +18,6 @@ export const FOOTER_DATA = {
 			id: 'employers',
 			title: 'Dla pracodawców',
 			links: [
-				{ id: 'for-employers', name: 'Dla pracodawców', link: LINKS.FOR_EMPLOYERS },
 				{ id: 'company-account', name: 'Załóż konto firmy', link: LINKS.REGISTRATION },
 				{ id: 'login', name: 'Zaloguj się', link: LINKS.LOGIN }
 			]
