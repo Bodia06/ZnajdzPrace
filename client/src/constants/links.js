@@ -2,7 +2,7 @@ export const LINKS = {
 	HOME: '/',
 	OFFERS: '/offers',
 	ANALYSIS: '/analysis-cv',
-	GENERATOR: '/generator-cv',
+	GENERATOR: '/generator',
 	LOGIN: '/login',
 	REGISTRATION: '/registration',
 	CONTACT: '/contact',

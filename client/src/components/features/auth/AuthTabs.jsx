@@ -1,4 +1,5 @@
 import { AUTH_IDS, AUTH_MODES } from '@/constants'
+import { useTabKeyboard } from '@/hooks'
 
 export default function AuthTabs({ texts, mode, onLogin, onRegister }) {
 	const isLogin = mode === AUTH_MODES.login
@@ -7,14 +8,12 @@ export default function AuthTabs({ texts, mode, onLogin, onRegister }) {
 		{ mode: AUTH_MODES.register, label: texts.register, onClick: onRegister }
 	]
 
-	const onKeyDown = (event) => {
-		const target = { ArrowLeft: tabs[0], ArrowRight: tabs[1] }[event.key]
-		if (!target) return
-
-		event.preventDefault()
-		target.onClick()
-		document.getElementById(AUTH_IDS.tabs[target.mode])?.focus()
-	}
+	const onKeyDown = useTabKeyboard({
+		ids: tabs.map((tab) => tab.mode),
+		activeId: mode,
+		onChange: (id) => tabs.find((tab) => tab.mode === id).onClick(),
+		getTabId: (id) => AUTH_IDS.tabs[id]
+	})
 
 	return (
 		<div

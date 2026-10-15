@@ -1,5 +1,5 @@
 import HomePage from '../page'
-import AuthModal from '@/components/features/auth/AuthModal'
+import AuthModal from '@/components/features/auth'
 import { AUTH_DATA, AUTH_MODES } from '@/constants'
 
 export const metadata = {

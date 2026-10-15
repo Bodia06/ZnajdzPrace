@@ -19,7 +19,7 @@ export default function ResultsSort({ item, value, options }) {
 					name={item.name}
 					value={value}
 					onChange={change}
-					className='h-11 w-full cursor-pointer appearance-none rounded-lg bg-white pr-9 pl-3 text-sm font-bold text-ink ring-1 ring-ink/10 transition outline-none! hover:ring-primary/40 focus-visible:ring-2 focus-visible:ring-primary/50 sm:h-10 sm:w-auto sm:min-w-44'
+					className='h-11 w-full cursor-pointer appearance-none rounded-lg bg-white pr-9 pl-3 text-sm font-bold text-ink ring-1 ring-ink/10 transition outline-none hover:ring-primary/40 focus-visible:ring-2 focus-visible:ring-primary/50 sm:h-10 sm:w-auto sm:min-w-44'
 				>
 					{options.map((option) => (
 						<option key={option.value} value={option.value}>

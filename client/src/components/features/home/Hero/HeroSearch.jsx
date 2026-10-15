@@ -16,7 +16,7 @@ export default function HeroSearch({ item, className = '' }) {
 				name='q'
 				placeholder={placeholder}
 				aria-label={placeholder}
-				className='min-w-0 flex-1 truncate bg-transparent px-1 text-base font-medium text-ink outline-none! placeholder:text-subtle [&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-decoration]:appearance-none'
+				className='search-clean min-w-0 flex-1 truncate bg-transparent px-1 text-base font-medium text-ink outline-none placeholder:text-subtle'
 			/>
 			<button
 				type='submit'

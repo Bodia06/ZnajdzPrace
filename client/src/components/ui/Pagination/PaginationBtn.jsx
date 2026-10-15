@@ -6,14 +6,14 @@ const BASE =
 export default function PaginationBtn({ href, current = false, label, children }) {
 	if (!href) {
 		return (
-			<span
-				role='link'
+			<button
+				type='button'
+				disabled
 				aria-label={label}
-				aria-disabled='true'
-				className={`${BASE} bg-white text-subtle opacity-50 ring-ink/5`}
+				className={`${BASE} cursor-not-allowed bg-white text-subtle opacity-50 ring-ink/5`}
 			>
 				{children}
-			</span>
+			</button>
 		)
 	}
 

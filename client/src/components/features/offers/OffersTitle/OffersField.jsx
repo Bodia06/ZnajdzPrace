@@ -32,7 +32,7 @@ export default function OffersField({
 						placeholder={placeholder}
 						aria-label={placeholder}
 						{...inputProps}
-						className='min-w-0 flex-1 truncate bg-transparent text-base font-semibold text-ink outline-none! placeholder:text-subtle'
+						className='min-w-0 flex-1 truncate bg-transparent text-base font-semibold text-ink outline-none placeholder:text-subtle'
 					/>
 				</label>
 				{clearLabel && value && (

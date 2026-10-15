@@ -1,5 +1,5 @@
 import { useId } from 'react'
-import CitySuggestions from '@/components/ui/CitySuggestions'
+import CitySuggestions from '@/components/features/offers/CitySuggestions'
 import PinIcon from '@/components/ui/icons/PinIcon'
 import { OFFERS_IDS } from '@/constants'
 import { useCitySuggestions, useCombobox } from '@/hooks'
@@ -36,7 +36,7 @@ export default function FilterLocation({ item, value, onChange }) {
 						}}
 						onFocus={show}
 						{...getInputProps(listId)}
-						className='min-w-0 flex-1 truncate bg-transparent text-base font-semibold text-ink outline-none! placeholder:text-ink'
+						className='min-w-0 flex-1 truncate bg-transparent text-base font-semibold text-ink outline-none placeholder:text-ink'
 					/>
 				</div>
 				{expanded && (

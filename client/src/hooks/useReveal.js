@@ -13,15 +13,17 @@ const getObserver = () => {
 	return observer
 }
 
+const STATES = ['reveal-in', 'reveal-above', 'reveal-below']
+
 const applyState = (element, entry) => {
 	const state = entry.isIntersecting
-		? 'is-visible'
+		? 'reveal-in'
 		: entry.boundingClientRect.top < 0
-			? 'is-above'
-			: ''
+			? 'reveal-above'
+			: 'reveal-below'
 
-	element.classList.remove('is-visible', 'is-above')
-	if (state) element.classList.add(state)
+	element.classList.remove(...STATES)
+	element.classList.add(state)
 }
 
 export default function useReveal() {

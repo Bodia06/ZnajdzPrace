@@ -46,7 +46,7 @@ export default function OffersFilter({ initialFilters }) {
 				aria-label={title}
 				role={open ? 'dialog' : undefined}
 				aria-modal={open || undefined}
-				className={`fixed inset-x-0 bottom-0 z-60 mx-auto flex max-h-[90dvh] max-w-3xl flex-col rounded-t-3xl bg-white shadow-[0_-12px_40px_rgba(14,15,26,0.2)] transition-[translate,visibility] duration-300 ease-out outline-none! lg:visible lg:static lg:max-h-none lg:max-w-none lg:translate-y-0 lg:rounded-3xl lg:shadow-[0_12px_40px_rgba(14,15,26,0.06)] lg:ring-1 lg:ring-ink/5 lg:motion-safe:animate-rise ${
+				className={`fixed inset-x-0 bottom-0 z-60 mx-auto flex max-h-[90dvh] max-w-3xl flex-col rounded-t-3xl bg-white shadow-[0_-12px_40px_rgba(14,15,26,0.2)] transition-[translate,visibility] duration-300 ease-out outline-none lg:visible lg:static lg:max-h-none lg:max-w-none lg:translate-y-0 lg:rounded-3xl lg:shadow-[0_12px_40px_rgba(14,15,26,0.06)] lg:ring-1 lg:ring-ink/5 lg:motion-safe:animate-rise ${
 					open ? 'visible translate-y-0' : 'invisible translate-y-full'
 				}`}
 			>

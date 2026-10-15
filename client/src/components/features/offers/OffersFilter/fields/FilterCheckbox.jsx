@@ -13,8 +13,10 @@ export default function FilterCheckbox({ name, option, checked, onChange }) {
 				onChange={() => onChange(option.value)}
 				className='peer sr-only'
 			/>
-			<span className='flex size-5 shrink-0 items-center justify-center rounded-md border-[1.5px] border-subtle bg-white text-white shadow-sm transition group-hover:border-primary peer-checked:border-primary peer-checked:bg-primary peer-focus-visible:ring-2 peer-focus-visible:ring-primary/40 [&>svg]:scale-0 [&>svg]:transition-transform [&>svg]:duration-200 [&>svg]:ease-[cubic-bezier(0.34,1.56,0.64,1)] peer-checked:[&>svg]:scale-100'>
-				<TickIcon />
+			<span className='flex size-5 shrink-0 items-center justify-center rounded-md border-[1.5px] border-subtle bg-white text-white shadow-sm transition group-hover:border-primary peer-checked:border-primary peer-checked:bg-primary peer-focus-visible:ring-2 peer-focus-visible:ring-primary/40'>
+				<TickIcon
+					className={`transition-transform duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${checked ? 'scale-100' : 'scale-0'}`}
+				/>
 			</span>
 			<span className='text-sm font-semibold text-muted transition peer-checked:text-ink'>
 				{option.label}

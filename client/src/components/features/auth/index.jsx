@@ -33,7 +33,7 @@ export default function AuthModal({ initialMode, overlay = false }) {
 			role='dialog'
 			aria-modal='true'
 			aria-labelledby={isLogin ? AUTH_IDS.title : AUTH_IDS.registerTitle}
-			className='fixed inset-0 z-60 overflow-hidden overscroll-contain bg-ink/55 font-(family-name:--font-jakarta) backdrop-blur-sm outline-none! motion-safe:animate-fade-in'
+			className='fixed inset-0 z-60 overflow-hidden overscroll-contain bg-ink/55 font-(family-name:--font-jakarta) backdrop-blur-sm outline-none motion-safe:animate-fade-in print:hidden'
 		>
 			<div
 				onClick={(event) => event.target === event.currentTarget && dismiss()}

@@ -7,7 +7,7 @@ export default function ActiveFilters({ chips, label, removeLabel }) {
 	return (
 		<ul
 			aria-label={label}
-			className='-mx-2 -my-1 flex scrollbar-none gap-2 overflow-x-auto px-2 py-1 sm:m-0 sm:flex-wrap sm:overflow-visible sm:p-0 [&::-webkit-scrollbar]:hidden'
+			className='scrollbar-hidden -mx-2 -my-1 flex scrollbar-none gap-2 overflow-x-auto px-2 py-1 sm:m-0 sm:flex-wrap sm:overflow-visible sm:p-0'
 		>
 			{chips.map((chip) => (
 				<li key={chip.id} className='shrink-0'>

@@ -35,7 +35,7 @@ export default function AuthField({
 					id={id}
 					aria-invalid={hasError || undefined}
 					aria-describedby={error ? errorId : undefined}
-					className='min-w-0 flex-1 bg-transparent py-3.5 text-base font-medium text-ink outline-none! placeholder:text-subtle'
+					className='min-w-0 flex-1 bg-transparent py-3.5 text-base font-medium text-ink outline-none placeholder:text-subtle'
 					{...inputProps}
 				/>
 				{trailing}

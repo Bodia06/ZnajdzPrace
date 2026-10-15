@@ -28,7 +28,7 @@ export default function FilterSalary({ item, value, onChange }) {
 					inputMode='numeric'
 					placeholder={placeholder}
 					onChange={(e) => onChange(e.target.value)}
-					className='appearance-textfield min-w-0 flex-1 bg-transparent text-base font-semibold text-ink outline-none! placeholder:text-subtle [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none'
+					className='appearance-textfield number-clean min-w-0 flex-1 bg-transparent text-base font-semibold text-ink outline-none placeholder:text-subtle'
 				/>
 				<span className='text-sm font-semibold text-muted'>{unit}</span>
 				<button

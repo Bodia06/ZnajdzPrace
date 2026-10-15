@@ -39,7 +39,7 @@ export default function RootLayout({ children, modal }) {
 			<body className='flex min-h-full flex-col'>
 				<a
 					href='#main'
-					className='sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-100 focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white'
+					className='sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-100 focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white print:hidden'
 				>
 					Przejdź do treści
 				</a>

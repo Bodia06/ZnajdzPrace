@@ -6,7 +6,7 @@ import { AUTH_ITEMS, NAVIGATION_ITEMS } from '@/constants'
 
 export default function Header() {
 	return (
-		<header className='relative z-50 border-b border-foreground/10 bg-background'>
+		<header className='relative z-50 border-b border-foreground/10 bg-background print:hidden'>
 			<div className='mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-4 nav:grid nav:grid-cols-[1fr_auto_1fr]'>
 				<h1 className='justify-self-start'>
 					<Logo />

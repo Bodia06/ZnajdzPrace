@@ -14,11 +14,13 @@ export default function CheckField({ name, checked, onChange, error, children })
 					className='peer sr-only'
 				/>
 				<span
-					className={`mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-md border-[1.5px] bg-white text-white transition peer-checked:border-primary peer-checked:bg-primary peer-focus-visible:ring-2 peer-focus-visible:ring-primary/40 [&>svg]:scale-0 [&>svg]:transition-transform peer-checked:[&>svg]:scale-100 ${
+					className={`mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-md border-[1.5px] bg-white text-white transition peer-checked:border-primary peer-checked:bg-primary peer-focus-visible:ring-2 peer-focus-visible:ring-primary/40 ${
 						error ? 'border-red-500' : 'border-subtle group-hover:border-primary'
 					}`}
 				>
-					<TickIcon />
+					<TickIcon
+						className={`transition-transform duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${checked ? 'scale-100' : 'scale-0'}`}
+					/>
 				</span>
 				<span>{children}</span>
 			</label>

@@ -110,43 +110,70 @@
 	--font-sans: var(--font-geist-sans);
 }
 
-html {
-	scrollbar-gutter: stable;
-}
-
-body {
-	background: var(--color-page);
-	color: var(--foreground);
-	font-family: var(--font-sans), sans-serif;
-}
-
-:focus-visible {
-	outline: 2px solid var(--color-primary);
-	outline-offset: 2px;
-}
-
-@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
-	@media (min-width: 768px) {
-		.reveal {
-			opacity: 0;
-			transform: perspective(1400px) translateY(3rem) rotateX(14deg) scale(0.96);
-			transform-origin: 50% 0;
-			transition:
-				opacity 0.8s ease-out,
-				transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-		}
-
-		.reveal.is-above {
-			transform: perspective(1400px) translateY(-3rem) rotateX(-14deg) scale(0.96);
-			transform-origin: 50% 100%;
-		}
-
-		.reveal.is-visible {
-			opacity: 1;
-			transform: none;
-		}
-		.reveal:not(.is-visible) {
-			will-change: transform, opacity;
-		}
+@layer base {
+	html {
+		scrollbar-gutter: stable;
 	}
+
+	body {
+		background: var(--color-page);
+		color: var(--foreground);
+		font-family: var(--font-sans), sans-serif;
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--color-primary);
+		outline-offset: 2px;
+	}
+}
+
+@layer components {
+	.search-clean::-webkit-search-cancel-button,
+	.search-clean::-webkit-search-decoration {
+		appearance: none;
+	}
+
+	.number-clean::-webkit-inner-spin-button,
+	.number-clean::-webkit-outer-spin-button {
+		appearance: none;
+	}
+
+	.scrollbar-hidden::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) and (min-width: 768px) {
+	.reveal-below {
+		opacity: 0;
+		transform: perspective(1400px) translateY(3rem) rotateX(14deg) scale(0.96);
+		transform-origin: 50% 0;
+		transition:
+			opacity 0.8s ease-out,
+			transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+		will-change: transform, opacity;
+	}
+
+	.reveal-above {
+		opacity: 0;
+		transform: perspective(1400px) translateY(-3rem) rotateX(-14deg) scale(0.96);
+		transform-origin: 50% 100%;
+		transition:
+			opacity 0.8s ease-out,
+			transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+		will-change: transform, opacity;
+	}
+
+	.reveal-in {
+		opacity: 1;
+		transform: none;
+		transition:
+			opacity 0.8s ease-out,
+			transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+}
+
+@page {
+	size: A4;
+	margin: 0;
 }

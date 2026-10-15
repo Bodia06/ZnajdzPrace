@@ -5,47 +5,64 @@ import FilterLocation from './fields/FilterLocation'
 import FilterSalary from './fields/FilterSalary'
 import FilterSegmented from './fields/FilterSegmented'
 
+const LEFT_ROW = 'py-5 first:pt-0'
+const RIGHT_ROW = 'py-5 md:first:pt-0 lg:first:pt-5'
+
 export default function FilterFields({ data, filters, setField, toggleField }) {
 	const { location, contracts, modes, levels, salary } = data
 
 	return (
 		<div className='grid md:grid-cols-2 md:gap-x-10 lg:grid-cols-1'>
-			<div className='divide-y divide-ink/5 *:py-5 *:first:pt-0'>
-				<FilterLocation item={location} value={filters.location} onChange={setField('location')} />
+			<div className='divide-y divide-ink/5'>
+				<div className={LEFT_ROW}>
+					<FilterLocation
+						item={location}
+						value={filters.location}
+						onChange={setField('location')}
+					/>
+				</div>
 
-				<FilterGroup label={contracts.label}>
-					{contracts.options.map((option) => (
-						<FilterCheckbox
-							key={option.value}
-							name={contracts.name}
-							option={option}
-							checked={filters.contracts.includes(option.value)}
-							onChange={toggleField('contracts')}
-						/>
-					))}
-				</FilterGroup>
+				<div className={LEFT_ROW}>
+					<FilterGroup label={contracts.label}>
+						{contracts.options.map((option) => (
+							<FilterCheckbox
+								key={option.value}
+								name={contracts.name}
+								option={option}
+								checked={filters.contracts.includes(option.value)}
+								onChange={toggleField('contracts')}
+							/>
+						))}
+					</FilterGroup>
+				</div>
 			</div>
 
-			<div className='divide-y divide-ink/5 border-t border-ink/5 *:py-5 md:border-t-0 md:*:first:pt-0 lg:border-t lg:*:first:pt-5'>
-				<FilterGroup label={modes.label}>
-					<FilterSegmented
-						name={modes.name}
-						options={modes.options}
-						value={filters.mode}
-						onChange={setField('mode')}
-					/>
-				</FilterGroup>
+			<div className='divide-y divide-ink/5 border-t border-ink/5 md:border-t-0 lg:border-t'>
+				<div className={RIGHT_ROW}>
+					<FilterGroup label={modes.label}>
+						<FilterSegmented
+							name={modes.name}
+							options={modes.options}
+							value={filters.mode}
+							onChange={setField('mode')}
+						/>
+					</FilterGroup>
+				</div>
 
-				<FilterGroup label={levels.label}>
-					<FilterChips
-						name={levels.name}
-						options={levels.options}
-						selected={filters.levels}
-						onToggle={toggleField('levels')}
-					/>
-				</FilterGroup>
+				<div className={RIGHT_ROW}>
+					<FilterGroup label={levels.label}>
+						<FilterChips
+							name={levels.name}
+							options={levels.options}
+							selected={filters.levels}
+							onToggle={toggleField('levels')}
+						/>
+					</FilterGroup>
+				</div>
 
-				<FilterSalary item={salary} value={filters.salary} onChange={setField('salary')} />
+				<div className={RIGHT_ROW}>
+					<FilterSalary item={salary} value={filters.salary} onChange={setField('salary')} />
+				</div>
 			</div>
 		</div>
 	)
