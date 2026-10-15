@@ -2,7 +2,7 @@
 
 Next.js (App Router) + Tailwind CSS v4 + React Compiler.
 
-## Запуск
+## Getting started
 
 ```bash
 cd client
@@ -10,58 +10,58 @@ npm install
 npm run dev     # http://localhost:3000
 ```
 
-## Скрипти
+## Scripts
 
-- `npm run dev` — dev-сервер
-- `npm run build` — production-збірка
-- `npm start` — запуск збірки
+- `npm run dev` — development server
+- `npm run build` — production build
+- `npm start` — run the production build
 - `npm run lint` — ESLint
 
-## Структура
+## Structure
 
 ```
 src/
-├── app/                        # маршрути (page.js), layout, глобальні стилі
-│   ├── @modal/                 # паралельний слот: модальні вікна (перехоплені маршрути)
+├── app/                        # routes (page.js), layout, global styles
+│   ├── @modal/                 # parallel slot: modal windows (intercepted routes)
 │   └── login, registration, offers, generator, not-found.js …
 ├── components/
-│   ├── ui/                     # універсальні компоненти (Button, Logo, Collapse, Pagination…)
-│   │   ├── icons/              # SVG-іконки
+│   ├── ui/                     # shared components (Button, Logo, Collapse, Pagination…)
+│   │   ├── icons/              # SVG icons
 │   │   └── motion/             # Reveal, Tilt, Parallax
 │   ├── layout/
 │   │   ├── Header/             # Header + MobileMenu, NavLink, Badge, BurgerButton
 │   │   └── Footer/
 │   └── features/
-│       ├── home/<Секція>/      # Hero, Category, HowItWorks, Tools, Faq
-│       ├── offers/<Секція>/    # OffersTitle, OffersFilter, OffersResults (+ CitySuggestions)
-│       ├── auth/               # модальне вікно входу/реєстрації (index.jsx, форми, fields/)
-│       ├── generator/          # генератор CV (index.jsx, steps/, fields/, preview/)
-│       └── not-found/          # сторінка з однією секцією — без зайвого рівня
-├── hooks/                      # хуки; конкретні — у підпапках (auth, offers, generator, home, layout, autocomplete)
-│   └── index.js                # єдиний вхід: import { useX } from '@/hooks'
-├── lib/                        # чиста логіка без React (auth, offers, generator, format.js)
-├── services/                   # запити до API (api.js, auth.js)
-├── config/                     # конфіг сайту
-└── constants/                  # дані й тексти (єдиний вхід: '@/constants')
+│       ├── home/<Section>/     # Hero, Category, HowItWorks, Tools, Faq
+│       ├── offers/<Section>/   # OffersTitle, OffersFilter, OffersResults (+ CitySuggestions)
+│       ├── auth/               # login/registration modal (index.jsx, forms, fields/)
+│       ├── generator/          # CV generator (index.jsx, steps/, fields/, preview/)
+│       └── not-found/          # single-section page — no extra nesting level
+├── hooks/                      # hooks; feature-specific ones live in subfolders (auth, offers, generator, home, layout, autocomplete)
+│   └── index.js                # single entry point: import { useX } from '@/hooks'
+├── lib/                        # pure logic without React (auth, offers, generator, format.js)
+├── services/                   # API requests (api.js, auth.js)
+├── config/                     # site config
+└── constants/                  # data and texts (single entry point: '@/constants')
     ├── links.js
     ├── layout/, home/          # navigation, footer · hero, category, how-it-works, tools, faq
-    ├── offers/, auth/, generator/   # ids, тексти, мок-дані
+    ├── offers/, auth/, generator/   # ids, texts, mock data
     └── not-found.js
-public/images/                  # статичні зображення
+public/images/                  # static images
 ```
 
-Секція сторінки — це папка з `index.jsx` (складання) і компонентами цієї секції; складна частина (наприклад, картка в Tools) теж отримує власну папку.
-Сторінка з однією секцією (404, генератор, вікно авторизації) не має зайвого рівня: `index.jsx` лежить прямо в папці фічі.
-Якщо компонент потрібен кільком секціям — він іде в `shared/` секції або в `ui/`.
-Тексти, посилання та `id` живуть у `constants`, у компонентах їх не вписуємо.
-Компонент, потрібний лише одній секції, лежить у її папці; у `ui/` — тільки універсальні.
-Логіка без розмітки: стан і ефекти — у `hooks/`, чисті функції (валідація, форматування, побудова даних) — у `lib/`.
-Хук, потрібний одній фічі, лежить у її підпапці `hooks/<фіча>/`; універсальні (`useScrollLock`, `useModalFocus`, `useTabKeyboard`…) — у корені `hooks/`.
+A page section is a folder with an `index.jsx` (composition) and the components of that section; a complex part (for example, a card in Tools) gets its own folder too.
+A page with a single section (404, generator, auth modal) has no extra nesting level: `index.jsx` sits directly in the feature folder.
+If a component is needed by several sections, it goes into the section's `shared/` folder or into `ui/`.
+Texts, links and `id`s live in `constants`; we do not hardcode them in components.
+A component needed by only one section lives in that section's folder; `ui/` holds only truly shared components.
+Logic without markup: state and effects go into `hooks/`, pure functions (validation, formatting, data building) go into `lib/`.
+A hook needed by one feature lives in its subfolder `hooks/<feature>/`; shared ones (`useScrollLock`, `useModalFocus`, `useTabKeyboard`…) sit in the root of `hooks/`.
 
-## Форматування
+## Formatting
 
-Prettier (з плагіном Tailwind для порядку класів): `npm run format` / `npm run format:check`.
+Prettier (with the Tailwind plugin for class ordering): `npm run format` / `npm run format:check`.
 
-Нова сторінка: створи `src/app/about/page.js` (стандартний роутинг Next.js App Router) і зібери її з компонентів `src/components/features/about/`.
+New page: create `src/app/about/page.js` (standard Next.js App Router routing) and build it from the components in `src/components/features/about/`.
 
-Alias `@/*` → `src/*`. Змінні середовища: див. `.env.example`.
+Alias `@/*` → `src/*`. Environment variables: see `.env.example`.
