@@ -1,5 +1,5 @@
 import TickIcon from '@/components/ui/icons/TickIcon'
-import { OFFERS_FORM_ID } from '@/constants'
+import { OFFERS_IDS } from '@/constants'
 
 export default function FilterCheckbox({ name, option, checked, onChange }) {
 	return (
@@ -7,7 +7,7 @@ export default function FilterCheckbox({ name, option, checked, onChange }) {
 			<input
 				type='checkbox'
 				name={name}
-				form={OFFERS_FORM_ID}
+				form={OFFERS_IDS.form}
 				value={option.value}
 				checked={checked}
 				onChange={() => onChange(option.value)}

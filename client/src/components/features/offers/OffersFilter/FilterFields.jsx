@@ -1,9 +1,9 @@
-import FilterCheckbox from './FilterCheckbox'
-import FilterChips from './FilterChips'
-import FilterGroup from './FilterGroup'
-import FilterLocation from './FilterLocation'
-import FilterSalary from './FilterSalary'
-import FilterSegmented from './FilterSegmented'
+import FilterCheckbox from './fields/FilterCheckbox'
+import FilterChips from './fields/FilterChips'
+import FilterGroup from './fields/FilterGroup'
+import FilterLocation from './fields/FilterLocation'
+import FilterSalary from './fields/FilterSalary'
+import FilterSegmented from './fields/FilterSegmented'
 
 export default function FilterFields({ data, filters, setField, toggleField }) {
 	const { location, contracts, modes, levels, salary } = data

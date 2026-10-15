@@ -5,7 +5,7 @@ import OffersCityField from './OffersCityField'
 import OffersField from './OffersField'
 import ClearIcon from '@/components/ui/icons/ClearIcon'
 import SearchIcon from '@/components/ui/icons/SearchIcon'
-import { LINKS, OFFERS_FORM_ID } from '@/constants'
+import { LINKS, OFFERS_IDS } from '@/constants'
 
 export default function OffersSearch({ item, initial }) {
 	const { query, city, button } = item
@@ -14,9 +14,9 @@ export default function OffersSearch({ item, initial }) {
 
 	return (
 		<form
-			id={OFFERS_FORM_ID}
+			id={OFFERS_IDS.form}
 			role='search'
-			aria-labelledby='offers-title'
+			aria-labelledby={OFFERS_IDS.title}
 			action={LINKS.OFFERS}
 			className='grid grid-cols-1 gap-2 rounded-2xl bg-white p-2 shadow-[0_0_0_4px_rgba(255,255,255,0.12)] md:grid-cols-2 md:rounded-3xl lg:grid-cols-[1fr_1fr_auto]'
 		>

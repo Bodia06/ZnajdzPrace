@@ -1,4 +1,4 @@
-import { OFFERS_DATA, OFFERS_FILTER_DATA } from '@/constants'
+import { OFFERS_DATA, OFFERS_FILTER_DATA, OFFERS_RESULTS_DATA } from '@/constants'
 
 const MAX_TEXT_LENGTH = 100
 
@@ -10,8 +10,10 @@ const onlyKnown = (options, value) =>
 export function parseOffersParams(params = {}) {
 	const { location, contracts, modes, levels, salary } = OFFERS_FILTER_DATA
 	const { query, city } = OFFERS_DATA.search
+	const { sort, pagination } = OFFERS_RESULTS_DATA
 
 	const salaryText = toText(params[salary.name])
+	const pageNumber = Number.parseInt(toText(params[pagination.name]), 10)
 
 	return {
 		search: {
@@ -24,6 +26,10 @@ export function parseOffersParams(params = {}) {
 			mode: onlyKnown(modes.options, params[modes.name])[0] ?? '',
 			levels: onlyKnown(levels.options, params[levels.name]),
 			salary: /^\d+$/.test(salaryText) ? salaryText : ''
-		}
+		},
+		sort: onlyKnown(sort.options, params[sort.name])[0] ?? sort.options[0].value,
+		page: Number.isInteger(pageNumber)
+			? Math.min(Math.max(pageNumber, 1), pagination.totalPages)
+			: 1
 	}
 }

@@ -4,10 +4,9 @@ import FilterFields from './FilterFields'
 import FilterHeader from './FilterHeader'
 import FilterTrigger from './FilterTrigger'
 import ArrowIcon from '@/components/ui/icons/ArrowIcon'
-import { OFFERS_FILTER_DATA, OFFERS_FORM_ID } from '@/constants'
+import { OFFERS_FILTER_DATA, OFFERS_IDS } from '@/constants'
 import { useFilterSheet, useOffersFilter } from '@/hooks'
 
-const PANEL_ID = 'offers-filter-panel'
 const PARAM_NAMES = ['location', 'contracts', 'modes', 'levels', 'salary'].map(
 	(key) => OFFERS_FILTER_DATA[key].name
 )
@@ -21,14 +20,14 @@ export default function OffersFilter({ initialFilters }) {
 	const { open, show, hide, panelRef, triggerRef } = useFilterSheet()
 
 	return (
-		<div className='font-(family-name:--font-jakarta) lg:sticky lg:top-20'>
+		<aside className='font-(family-name:--font-jakarta) lg:sticky lg:top-20'>
 			<FilterTrigger
 				ref={triggerRef}
 				title={title}
 				label={toggle.open}
 				count={activeCount}
 				open={open}
-				controls={PANEL_ID}
+				controls={OFFERS_IDS.filterPanel}
 				onClick={show}
 			/>
 
@@ -42,7 +41,7 @@ export default function OffersFilter({ initialFilters }) {
 
 			<section
 				ref={panelRef}
-				id={PANEL_ID}
+				id={OFFERS_IDS.filterPanel}
 				tabIndex={-1}
 				aria-label={title}
 				role={open ? 'dialog' : undefined}
@@ -72,7 +71,7 @@ export default function OffersFilter({ initialFilters }) {
 				<div className='shrink-0 border-t border-ink/5 px-5 py-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:px-6 lg:border-0 lg:pt-1 lg:pb-6'>
 					<button
 						type='submit'
-						form={OFFERS_FORM_ID}
+						form={OFFERS_IDS.form}
 						className='group flex h-13 w-full cursor-pointer items-center justify-center gap-2 rounded-2xl bg-ink text-base font-bold text-white shadow-[0_8px_20px_rgba(14,15,26,0.18)] transition hover:-translate-y-0.5 hover:opacity-90 active:scale-[0.98]'
 					>
 						{submit}
@@ -80,6 +79,6 @@ export default function OffersFilter({ initialFilters }) {
 					</button>
 				</div>
 			</section>
-		</div>
+		</aside>
 	)
 }

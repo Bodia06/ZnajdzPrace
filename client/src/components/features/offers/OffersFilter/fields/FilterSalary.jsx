@@ -1,8 +1,8 @@
 import { useId } from 'react'
 import MinusIcon from '@/components/ui/icons/MinusIcon'
 import PlusIcon from '@/components/ui/icons/PlusIcon'
-import { OFFERS_FORM_ID } from '@/constants'
-import { canDecreaseSalary, stepSalary } from '@/lib/salary'
+import { OFFERS_IDS } from '@/constants'
+import { canDecreaseSalary, stepSalary } from '@/lib/offers/salary'
 
 const STEP_BUTTON =
 	'flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-lg bg-white text-ink shadow-sm transition hover:bg-primary-soft hover:text-primary active:scale-95 disabled:cursor-not-allowed disabled:opacity-40'
@@ -21,7 +21,7 @@ export default function FilterSalary({ item, value, onChange }) {
 					id={id}
 					type='number'
 					name={name}
-					form={OFFERS_FORM_ID}
+					form={OFFERS_IDS.form}
 					value={value}
 					min={0}
 					step={step}

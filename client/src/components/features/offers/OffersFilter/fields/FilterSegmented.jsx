@@ -1,4 +1,4 @@
-import { OFFERS_FORM_ID } from '@/constants'
+import { OFFERS_IDS } from '@/constants'
 
 export default function FilterSegmented({ name, options, value, onChange }) {
 	const index = options.findIndex((option) => option.value === value)
@@ -17,7 +17,7 @@ export default function FilterSegmented({ name, options, value, onChange }) {
 					<input
 						type='radio'
 						name={name}
-						form={OFFERS_FORM_ID}
+						form={OFFERS_IDS.form}
 						value={option.value}
 						checked={value === option.value}
 						onChange={() => onChange(option.value)}

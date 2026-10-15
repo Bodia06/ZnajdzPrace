@@ -1,7 +1,7 @@
 import { useId } from 'react'
 import CitySuggestions from '@/components/ui/CitySuggestions'
 import PinIcon from '@/components/ui/icons/PinIcon'
-import { OFFERS_FORM_ID } from '@/constants'
+import { OFFERS_IDS } from '@/constants'
 import { useCitySuggestions, useCombobox } from '@/hooks'
 
 export default function FilterLocation({ item, value, onChange }) {
@@ -26,7 +26,7 @@ export default function FilterLocation({ item, value, onChange }) {
 						id={id}
 						type='text'
 						name={name}
-						form={OFFERS_FORM_ID}
+						form={OFFERS_IDS.form}
 						value={value}
 						autoComplete={autoComplete}
 						placeholder={placeholder}
