@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import useScrollLock from '@/hooks/useScrollLock'
 
 const DESKTOP_QUERY = '(min-width: 1024px)'
 
@@ -12,6 +13,8 @@ export default function useFilterSheet() {
 	const show = () => setOpen(true)
 	const hide = () => setOpen(false)
 
+	useScrollLock(open)
+
 	useEffect(() => {
 		if (!open) return
 
@@ -21,7 +24,6 @@ export default function useFilterSheet() {
 
 		document.addEventListener('keydown', onKeyDown)
 		media.addEventListener('change', onMediaChange)
-		document.body.style.overflow = 'hidden'
 		const trigger = triggerRef.current
 		let frame = requestAnimationFrame(() => {
 			frame = requestAnimationFrame(() => panelRef.current?.focus())
@@ -31,7 +33,6 @@ export default function useFilterSheet() {
 			document.removeEventListener('keydown', onKeyDown)
 			media.removeEventListener('change', onMediaChange)
 			cancelAnimationFrame(frame)
-			document.body.style.overflow = ''
 			trigger?.focus()
 		}
 	}, [open])

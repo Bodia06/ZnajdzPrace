@@ -9,7 +9,9 @@ export async function api(path, { method = 'GET', body, headers, ...options } = 
 	})
 
 	if (!res.ok) {
-		throw new Error(`Request failed: ${res.status} ${res.statusText}`)
+		const error = new Error(`Request failed: ${res.status} ${res.statusText}`)
+		error.status = res.status
+		throw error
 	}
 
 	return res.status === 204 ? null : res.json()

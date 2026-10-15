@@ -1,14 +1,25 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import useScrollLock from '@/hooks/useScrollLock'
 
 const DESKTOP_QUERY = '(min-width: 1100px)'
 
 export default function useMobileMenu() {
 	const [open, setOpen] = useState(false)
+	const [instant, setInstant] = useState(false)
 
 	const close = () => setOpen(false)
-	const toggle = () => setOpen((prev) => !prev)
+	const closeNow = () => {
+		setInstant(true)
+		setOpen(false)
+	}
+	const toggle = () => {
+		setInstant(false)
+		setOpen((prev) => !prev)
+	}
+
+	useScrollLock(open)
 
 	useEffect(() => {
 		if (!open) return
@@ -19,14 +30,12 @@ export default function useMobileMenu() {
 
 		document.addEventListener('keydown', onKeyDown)
 		media.addEventListener('change', onMediaChange)
-		document.body.style.overflow = 'hidden'
 
 		return () => {
 			document.removeEventListener('keydown', onKeyDown)
 			media.removeEventListener('change', onMediaChange)
-			document.body.style.overflow = ''
 		}
 	}, [open])
 
-	return { open, close, toggle }
+	return { open, instant, close, closeNow, toggle }
 }
