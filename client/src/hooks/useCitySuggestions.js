@@ -3,14 +3,14 @@
 import { useEffect, useState } from 'react'
 
 const SEARCH_URL = 'https://geocoding-api.open-meteo.com/v1/search'
-const MIN_LENGTH = 2
+const MIN_LENGTH = 3
 const DEBOUNCE_MS = 200
-const MAX_SUGGESTIONS = 6
+const MAX_SUGGESTIONS = 10
 
 async function searchCities(query, signal) {
 	const params = new URLSearchParams({
 		name: query,
-		count: 10,
+		count: MAX_SUGGESTIONS,
 		language: 'pl',
 		countryCode: 'PL'
 	})
@@ -21,6 +21,7 @@ async function searchCities(query, signal) {
 
 	const seen = new Set()
 	return results
+		.filter(({ feature_code }) => feature_code?.startsWith('PPL'))
 		.map(({ id, name, admin1 = '' }) => ({
 			id: String(id),
 			name,
@@ -57,5 +58,5 @@ export default function useCitySuggestions(value) {
 	}, [query])
 
 	if (result.query !== query) return []
-	return result.cities.filter(city => city.name.toLowerCase() !== query.toLowerCase())
+	return result.cities.filter((city) => city.name.toLowerCase() !== query.toLowerCase())
 }

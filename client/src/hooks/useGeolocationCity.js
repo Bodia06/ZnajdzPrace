@@ -18,17 +18,13 @@ async function fetchCity({ latitude, longitude }) {
 	return address.city || address.town || address.village || address.municipality || ''
 }
 
-
 export default function useGeolocationCity(onCity) {
 	const asked = useRef(false)
 	const [loading, setLoading] = useState(false)
 
 	const request = () => {
 		if (asked.current) return
-		if (!window.isSecureContext || !('geolocation' in navigator)) {
-			console.warn('[geolocation] unavailable: needs https or localhost')
-			return
-		}
+		if (!window.isSecureContext || !('geolocation' in navigator)) return
 		asked.current = true
 		setLoading(true)
 
@@ -37,16 +33,12 @@ export default function useGeolocationCity(onCity) {
 				try {
 					const city = await fetchCity(coords)
 					if (city) onCity(city)
-				} catch (error) {
-					console.warn('[geolocation] reverse geocoding failed:', error)
+				} catch {
 				} finally {
 					setLoading(false)
 				}
 			},
-			(error) => {
-				console.warn('[geolocation]', error.code, error.message)
-				setLoading(false)
-			},
+			() => setLoading(false),
 			{ timeout: 10000, maximumAge: 600000 }
 		)
 	}

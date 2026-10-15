@@ -15,24 +15,26 @@ export default function OffersField({
 }) {
 	return (
 		<div className='relative min-w-0'>
-			<label
+			<div
 				className={`flex h-12 min-w-0 items-center gap-3 rounded-xl px-3 sm:h-14 sm:px-4 ${className}`}
 			>
-				{icon}
-				<input
-					onFocus={onFocus}
-					aria-busy={busy}
-					type='text'
-					name={name}
-					autoComplete={autoComplete}
-					enterKeyHint='search'
-					value={value}
-					onChange={(e) => onChange(e.target.value)}
-					placeholder={placeholder}
-					aria-label={placeholder}
-					{...inputProps}
-					className='min-w-0 flex-1 truncate bg-transparent text-base font-semibold text-ink outline-none! placeholder:text-subtle'
-				/>
+				<label className='flex min-w-0 flex-1 items-center gap-3'>
+					{icon}
+					<input
+						onFocus={onFocus}
+						aria-busy={busy}
+						type='text'
+						name={name}
+						autoComplete={autoComplete}
+						enterKeyHint='search'
+						value={value}
+						onChange={(e) => onChange(e.target.value)}
+						placeholder={placeholder}
+						aria-label={placeholder}
+						{...inputProps}
+						className='min-w-0 flex-1 truncate bg-transparent text-base font-semibold text-ink outline-none! placeholder:text-subtle'
+					/>
+				</label>
 				{clearLabel && value && (
 					<button
 						type='button'
@@ -43,7 +45,7 @@ export default function OffersField({
 						{clearIcon}
 					</button>
 				)}
-			</label>
+			</div>
 			{children}
 		</div>
 	)

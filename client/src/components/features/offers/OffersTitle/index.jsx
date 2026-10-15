@@ -1,7 +1,7 @@
 import OffersSearch from './OffersSearch'
 import { OFFERS_DATA } from '@/constants'
 
-export default function OffersTitle() {
+export default function OffersTitle({ initial }) {
 	const { title, search } = OFFERS_DATA
 
 	return (
@@ -15,7 +15,7 @@ export default function OffersTitle() {
 			>
 				{title}
 			</h2>
-			<OffersSearch item={search} />
+			<OffersSearch item={search} initial={initial} />
 		</section>
 	)
 }

@@ -5,16 +5,18 @@ import OffersCityField from './OffersCityField'
 import OffersField from './OffersField'
 import ClearIcon from '@/components/ui/icons/ClearIcon'
 import SearchIcon from '@/components/ui/icons/SearchIcon'
-import { LINKS } from '@/constants'
+import { LINKS, OFFERS_FORM_ID } from '@/constants'
 
-export default function OffersSearch({ item }) {
+export default function OffersSearch({ item, initial }) {
 	const { query, city, button } = item
-	const [queryValue, setQueryValue] = useState('')
-	const [cityValue, setCityValue] = useState('')
+	const [queryValue, setQueryValue] = useState(initial.query)
+	const [cityValue, setCityValue] = useState(initial.city)
 
 	return (
 		<form
+			id={OFFERS_FORM_ID}
 			role='search'
+			aria-labelledby='offers-title'
 			action={LINKS.OFFERS}
 			className='grid grid-cols-1 gap-2 rounded-2xl bg-white p-2 shadow-[0_0_0_4px_rgba(255,255,255,0.12)] md:grid-cols-2 md:rounded-3xl lg:grid-cols-[1fr_1fr_auto]'
 		>

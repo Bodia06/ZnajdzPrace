@@ -10,7 +10,6 @@ export default function FaqList({ items, defaultOpenId }) {
 
 	return (
 		<div className='grid'>
-			{/* Невидимі копії списку з різними відкритими пунктами задають висоту найвищого стану, тому розмітка не стрибає */}
 			{items.map(({ id: ghostId }) => (
 				<ul key={ghostId} aria-hidden='true' inert className={`invisible ${LIST}`}>
 					{items.map((item) => (

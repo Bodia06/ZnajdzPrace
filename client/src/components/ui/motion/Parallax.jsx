@@ -1,4 +1,3 @@
-/** Shifts its children with the pointer (needs a `usePointerParallax` ancestor); `depth` is the shift in px. */
 export default function Parallax({ depth = 20, className = '', children }) {
 	return (
 		<div
