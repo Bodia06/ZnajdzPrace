@@ -1,7 +1,6 @@
 import AuthField from './fields/AuthField'
 import FormAlert from './fields/FormAlert'
 import PasswordField from './fields/PasswordField'
-import SocialButtons from './fields/SocialButtons'
 import CheckField from './fields/CheckField'
 import Link from 'next/link'
 import MailIcon from '@/components/ui/icons/MailIcon'
@@ -68,8 +67,6 @@ export default function LoginForm({ texts, onSwitch }) {
 			>
 				{submitting ? texts.submitting : texts.submit}
 			</button>
-
-			<SocialButtons divider={texts.divider} providers={texts.social} />
 
 			<p className='text-center text-sm text-muted sm:text-base'>
 				{texts.switch.text}{' '}

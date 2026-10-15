@@ -45,8 +45,6 @@ export const AUTH_DATA = {
 		remember: { name: 'remember', label: 'Zapamiętaj mnie' },
 		submit: 'Zaloguj się',
 		submitting: 'Logowanie',
-		divider: 'lub kontynuuj z',
-		social: ['Google', 'LinkedIn'],
 		switch: { text: 'Nie masz konta?', action: 'Zarejestruj się' },
 		errors: {
 			invalid: 'Nieprawidłowy e-mail lub hasło. Spróbuj ponownie.',
