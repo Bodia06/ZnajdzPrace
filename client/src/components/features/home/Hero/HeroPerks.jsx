@@ -2,7 +2,7 @@ import CheckIcon from '@/components/ui/icons/CheckIcon'
 
 export default function HeroPerks({ items }) {
 	return (
-		<ul className='mt-5 flex max-w-xl flex-wrap gap-x-4 gap-y-2 sm:mt-7 sm:gap-x-6 sm:gap-y-3 2xl:max-w-2xl'>
+		<ul className='mx-auto mt-5 flex max-w-xl flex-wrap justify-center gap-x-4 gap-y-2 sm:mt-7 sm:gap-x-6 sm:gap-y-3 md:max-w-2xl lg:mx-0 lg:max-w-xl lg:justify-start 2xl:max-w-2xl'>
 			{items.map(({ id, text }) => (
 				<li
 					key={id}
