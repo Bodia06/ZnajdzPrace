@@ -48,6 +48,6 @@ export const OFFERS_RESULTS_DATA = {
 		next: 'Następna strona',
 		page: 'Strona',
 		name: 'page',
-		totalPages: 3
+		pageSize: 4
 	}
 }

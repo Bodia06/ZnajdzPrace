@@ -1,17 +1,21 @@
 import ActiveFilters from './ActiveFilters'
-import OfferCard from './OfferCard'
 import ResultsEmpty from './ResultsEmpty'
 import ResultsHeader from './ResultsHeader'
+import ResultsList from './ResultsList'
 import ResultsSort from './ResultsSort'
 import Pagination from '@/components/ui/Pagination'
 import { OFFERS_IDS, OFFERS_LIST, OFFERS_RESULTS_DATA } from '@/constants'
 import { formatResultsTitle } from '@/lib/format'
+import { getOffers } from '@/lib/offers/filter'
+import { paginate } from '@/lib/offers/pagination'
 import { getActiveFilters, getPagination, getSortOptions } from '@/lib/offers/url'
 
-export default function OffersResults({ search, filters, sort, page }) {
+export default function OffersResults({ search, filters, sort, page: requestedPage }) {
 	const { header, sort: sortData, activeFilters, card, empty, pagination } = OFFERS_RESULTS_DATA
+	const offers = getOffers(OFFERS_LIST, { search, filters, sort })
+	const { page, totalPages, items, filler } = paginate(offers, requestedPage)
 	const state = { search, filters, sort, page }
-	const { pages, prevHref, nextHref } = getPagination(state)
+	const { pages, compactPages, prevHref, nextHref } = getPagination(state, totalPages)
 
 	return (
 		<section
@@ -33,25 +37,22 @@ export default function OffersResults({ search, filters, sort, page }) {
 				removeLabel={activeFilters.remove}
 			/>
 
-			{OFFERS_LIST.length === 0 ? (
+			{offers.length === 0 ? (
 				<ResultsEmpty title={empty.title} text={empty.text} />
 			) : (
 				<>
-					<ul className='flex flex-col gap-3 sm:gap-4'>
-						{OFFERS_LIST.map((offer) => (
-							<li key={offer.id}>
-								<OfferCard offer={offer} labels={card} />
-							</li>
-						))}
-					</ul>
+					<ResultsList items={items} filler={filler} labels={card} />
 
-					<Pagination
-						labels={pagination}
-						pages={pages}
-						prevHref={prevHref}
-						nextHref={nextHref}
-						className='mt-4 self-center sm:mt-6'
-					/>
+					{totalPages > 1 && (
+						<Pagination
+							labels={pagination}
+							pages={pages}
+							compactPages={compactPages}
+							prevHref={prevHref}
+							nextHref={nextHref}
+							className='mt-4 self-center sm:mt-6'
+						/>
+					)}
 				</>
 			)}
 		</section>

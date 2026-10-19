@@ -1,9 +1,8 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { OFFERS_FILTER_DESKTOP_QUERY } from '@/constants'
 import useScrollLock from '@/hooks/useScrollLock'
-
-const DESKTOP_QUERY = '(min-width: 1024px)'
 
 export default function useFilterSheet() {
 	const [open, setOpen] = useState(false)
@@ -19,7 +18,7 @@ export default function useFilterSheet() {
 		if (!open) return
 
 		const onKeyDown = (e) => e.key === 'Escape' && setOpen(false)
-		const media = window.matchMedia(DESKTOP_QUERY)
+		const media = window.matchMedia(OFFERS_FILTER_DESKTOP_QUERY)
 		const onMediaChange = (e) => e.matches && setOpen(false)
 
 		document.addEventListener('keydown', onKeyDown)

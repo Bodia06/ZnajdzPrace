@@ -1,9 +1,12 @@
-import { OFFERS_DATA, OFFERS_FILTER_DATA, OFFERS_RESULTS_DATA } from '@/constants'
-
-const MAX_TEXT_LENGTH = 100
+import {
+	OFFERS_DATA,
+	OFFERS_FILTER_DATA,
+	OFFERS_MAX_TEXT_LENGTH,
+	OFFERS_RESULTS_DATA
+} from '@/constants'
 
 const toList = (value) => (value === undefined ? [] : Array.isArray(value) ? value : [value])
-const toText = (value) => (toList(value)[0] ?? '').trim().slice(0, MAX_TEXT_LENGTH)
+const toText = (value) => (toList(value)[0] ?? '').trim().slice(0, OFFERS_MAX_TEXT_LENGTH)
 const onlyKnown = (options, value) =>
 	toList(value).filter((item) => options.some((option) => option.value === item))
 
@@ -28,8 +31,6 @@ export function parseOffersParams(params = {}) {
 			salary: /^\d+$/.test(salaryText) ? salaryText : ''
 		},
 		sort: onlyKnown(sort.options, params[sort.name])[0] ?? sort.options[0].value,
-		page: Number.isInteger(pageNumber)
-			? Math.min(Math.max(pageNumber, 1), pagination.totalPages)
-			: 1
+		page: Number.isInteger(pageNumber) ? Math.max(pageNumber, 1) : 1
 	}
 }

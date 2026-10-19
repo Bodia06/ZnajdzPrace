@@ -1,5 +1,6 @@
 import { LINKS, OFFERS_DATA, OFFERS_FILTER_DATA, OFFERS_RESULTS_DATA } from '@/constants'
 import { formatNumber } from '@/lib/format'
+import { getPageRange, isGap } from './pagination'
 
 export function buildOffersHref({ search, filters, sort, page }) {
 	const params = new URLSearchParams()
@@ -73,17 +74,19 @@ export function getSortOptions(state) {
 	}))
 }
 
-export function getPagination(state) {
+export function getPagination(state, totalPages) {
 	const { page } = state
-	const { totalPages } = OFFERS_RESULTS_DATA.pagination
 	const hrefTo = (number) => buildOffersHref({ ...state, page: number })
+	const toItems = (range) =>
+		range.map((item, index) =>
+			isGap(item)
+				? { gap: true, key: `gap-${index}` }
+				: { number: item, key: item, href: hrefTo(item), current: item === page }
+		)
 
 	return {
-		pages: Array.from({ length: totalPages }, (_, index) => ({
-			number: index + 1,
-			href: hrefTo(index + 1),
-			current: index + 1 === page
-		})),
+		pages: toItems(getPageRange(totalPages, page, 1)),
+		compactPages: toItems(getPageRange(totalPages, page, 0)),
 		prevHref: page > 1 ? hrefTo(page - 1) : null,
 		nextHref: page < totalPages ? hrefTo(page + 1) : null
 	}

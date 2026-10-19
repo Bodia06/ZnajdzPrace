@@ -4,23 +4,19 @@ import FilterFields from './FilterFields'
 import FilterHeader from './FilterHeader'
 import FilterTrigger from './FilterTrigger'
 import ArrowIcon from '@/components/ui/icons/ArrowIcon'
-import { OFFERS_FILTER_DATA, OFFERS_IDS } from '@/constants'
+import { OFFERS_FILTER_DATA, OFFERS_FILTER_PARAMS, OFFERS_IDS } from '@/constants'
 import { useFilterSheet, useOffersFilter } from '@/hooks'
-
-const PARAM_NAMES = ['location', 'contracts', 'modes', 'levels', 'salary'].map(
-	(key) => OFFERS_FILTER_DATA[key].name
-)
 
 export default function OffersFilter({ initialFilters }) {
 	const { title, clear, submit, toggle } = OFFERS_FILTER_DATA
 	const { filters, activeCount, setField, toggleField, reset } = useOffersFilter(
 		initialFilters,
-		PARAM_NAMES
+		OFFERS_FILTER_PARAMS
 	)
 	const { open, show, hide, panelRef, triggerRef } = useFilterSheet()
 
 	return (
-		<aside className='font-(family-name:--font-jakarta) lg:sticky lg:top-20'>
+		<aside className='font-(family-name:--font-jakarta)'>
 			<FilterTrigger
 				ref={triggerRef}
 				title={title}
@@ -46,7 +42,7 @@ export default function OffersFilter({ initialFilters }) {
 				aria-label={title}
 				role={open ? 'dialog' : undefined}
 				aria-modal={open || undefined}
-				className={`fixed inset-x-0 bottom-0 z-60 mx-auto flex max-h-[90dvh] max-w-3xl flex-col rounded-t-3xl bg-white shadow-[0_-12px_40px_rgba(14,15,26,0.2)] transition-[translate,visibility] duration-300 ease-out outline-none lg:visible lg:static lg:max-h-none lg:max-w-none lg:translate-y-0 lg:rounded-3xl lg:shadow-[0_12px_40px_rgba(14,15,26,0.06)] lg:ring-1 lg:ring-ink/5 lg:motion-safe:animate-rise ${
+				className={`fixed inset-x-0 bottom-0 z-60 mx-auto flex max-h-[90dvh] max-w-3xl flex-col rounded-t-3xl bg-white shadow-[0_-12px_40px_rgba(14,15,26,0.2)] transition-[translate,visibility] duration-300 ease-out outline-none lg:visible lg:static lg:max-h-[calc(100dvh-2rem)] lg:max-w-none lg:translate-y-0 lg:rounded-3xl lg:shadow-[0_12px_40px_rgba(14,15,26,0.06)] lg:ring-1 lg:ring-ink/5 lg:motion-safe:animate-rise ${
 					open ? 'visible translate-y-0' : 'invisible translate-y-full'
 				}`}
 			>
@@ -59,7 +55,7 @@ export default function OffersFilter({ initialFilters }) {
 					onClose={hide}
 				/>
 
-				<div className='min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 sm:px-6 lg:overflow-visible'>
+				<div className='min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 sm:px-6 lg:overflow-y-auto'>
 					<FilterFields
 						data={OFFERS_FILTER_DATA}
 						filters={filters}
