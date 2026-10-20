@@ -1,13 +1,13 @@
 import { AUTH_ROLES } from '@/constants'
 
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@.]+(?:\.[^\s@.]+)*\.[^\s@.]{2,}$/
 const NIP_WEIGHTS = [6, 5, 7, 2, 3, 4, 5, 6, 7]
 const MIN_PASSWORD_LENGTH = 8
 export const MAX_PASSWORD_STRENGTH = 4
 
-export const isEmail = (value) => EMAIL_PATTERN.test(value.trim())
+const isEmail = (value) => EMAIL_PATTERN.test(value.trim())
 
-export function isNip(value) {
+function isNip(value) {
 	const digits = value.replace(/[\s-]/g, '')
 	if (!/^\d{10}$/.test(digits)) return false
 

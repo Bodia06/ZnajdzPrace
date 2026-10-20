@@ -1,4 +1,5 @@
 import AuthField from './fields/AuthField'
+import AuthSwitch from './fields/AuthSwitch'
 import FormAlert from './fields/FormAlert'
 import PasswordField from './fields/PasswordField'
 import CheckField from './fields/CheckField'
@@ -68,16 +69,7 @@ export default function LoginForm({ texts, onSwitch }) {
 				{submitting ? texts.submitting : texts.submit}
 			</button>
 
-			<p className='text-center text-sm text-muted sm:text-base'>
-				{texts.switch.text}{' '}
-				<button
-					type='button'
-					onClick={onSwitch}
-					className='cursor-pointer p-1 font-extrabold text-primary hover:underline'
-				>
-					{texts.switch.action}
-				</button>
-			</p>
+			<AuthSwitch text={texts.switch.text} action={texts.switch.action} onSwitch={onSwitch} />
 		</form>
 	)
 }

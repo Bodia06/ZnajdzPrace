@@ -1,4 +1,4 @@
-import { LINKS } from './links'
+import { LINKS } from '../layout/links'
 
 export const NOT_FOUND_DATA = {
 	title: {

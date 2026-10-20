@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import CompanyLogo from '@/components/features/offers/OffersResults/OfferCard/CompanyLogo'
+import CompanyLogo from '@/components/ui/CompanyLogo'
 import { LINKS } from '@/constants'
 import { formatSalaryShort } from '@/lib/format'
 

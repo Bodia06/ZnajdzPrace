@@ -1,12 +1,10 @@
 import { useId, useState } from 'react'
-import AddButton from '../fields/AddButton'
-import EntryCard from '../fields/EntryCard'
-import TextField from '../fields/TextField'
+import AddButton from '@/components/features/generator/fields/AddButton'
+import EntryCard from '@/components/features/generator/fields/EntryCard'
+import TextField from '@/components/features/generator/fields/TextField'
 import CrossIcon from '@/components/ui/icons/CrossIcon'
 import { GENERATOR_LEVELS } from '@/constants'
-
-const CONTROL =
-	'h-12 w-full rounded-xl border-[1.5px] border-transparent bg-page px-4 text-base font-medium text-ink transition outline-none placeholder:text-subtle hover:border-primary/30 focus:border-primary/50 focus:bg-white focus:ring-4 focus:ring-primary/10'
+import { CONTROL } from '@/components/features/generator/fields/styles'
 
 export default function SkillsStep({
 	texts,
@@ -42,7 +40,7 @@ export default function SkillsStep({
 							event.preventDefault()
 							submitSkill()
 						}}
-						className={CONTROL}
+						className={`${CONTROL} h-12`}
 					/>
 					<button
 						type='button'
@@ -119,7 +117,7 @@ function LevelSelect({ label, value, onChange }) {
 				id={id}
 				value={value}
 				onChange={(event) => onChange(event.target.value)}
-				className={`${CONTROL} cursor-pointer`}
+				className={`${CONTROL} h-12 cursor-pointer`}
 			>
 				{GENERATOR_LEVELS.map((level) => (
 					<option key={level} value={level}>

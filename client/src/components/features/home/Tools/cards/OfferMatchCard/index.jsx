@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 
-import OfferDetails from './OfferDetails'
-import ToolCard from '../../shared/ToolCard'
+import OfferMatchDetails from './OfferMatchDetails'
+import ToolCard from '@/components/features/home/Tools/shared/ToolCard'
 
 export default function OfferMatchCard({ item, className }) {
 	const { badge, title, offers } = item
@@ -28,7 +28,7 @@ export default function OfferMatchCard({ item, className }) {
 			</div>
 			<div className='mt-6 grid'>
 				{offers.map((offer) => (
-					<OfferDetails key={offer.id} item={offer} selected={offer.id === activeId} />
+					<OfferMatchDetails key={offer.id} item={offer} selected={offer.id === activeId} />
 				))}
 			</div>
 		</ToolCard>

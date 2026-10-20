@@ -1,7 +1,7 @@
 import BackButton from './BackButton'
 import SaveButton from './SaveButton'
 import ShareButton from './ShareButton'
-import CompanyLogo from '@/components/features/offers/OffersResults/OfferCard/CompanyLogo'
+import CompanyLogo from '@/components/ui/CompanyLogo'
 import Button from '@/components/ui/Button'
 import PinIcon from '@/components/ui/icons/PinIcon'
 import { LINKS } from '@/constants'

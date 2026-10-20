@@ -1,4 +1,4 @@
-import TextField from '../fields/TextField'
+import TextField from '@/components/features/generator/fields/TextField'
 
 export default function PersonalStep({ texts, personal, onChange }) {
 	const { fields } = texts

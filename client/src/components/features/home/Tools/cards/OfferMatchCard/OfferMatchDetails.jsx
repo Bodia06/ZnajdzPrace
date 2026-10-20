@@ -1,5 +1,5 @@
 import PlusIcon from '@/components/ui/icons/PlusIcon'
-import ScoreRing from '../../shared/ScoreRing'
+import ScoreRing from '@/components/features/home/Tools/shared/ScoreRing'
 import TickIcon from '@/components/ui/icons/TickIcon'
 
 const SKILL_TONES = {
@@ -7,7 +7,7 @@ const SKILL_TONES = {
 	missing: 'border-2 border-dashed border-white/50 bg-black/15 text-white'
 }
 
-export default function OfferDetails({ item, selected }) {
+export default function OfferMatchDetails({ item, selected }) {
 	const { score, verdict, skills } = item
 
 	return (

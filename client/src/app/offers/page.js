@@ -1,7 +1,7 @@
 import OffersFilter from '@/components/features/offers/OffersFilter'
 import OffersResults from '@/components/features/offers/OffersResults'
 import OffersTitle from '@/components/features/offers/OffersTitle'
-import { getOffersPageData } from '@/lib/offers/data'
+import { getOffersPageData } from '@/services/offers'
 import { parseOffersParams } from '@/lib/offers/params'
 
 export const metadata = {

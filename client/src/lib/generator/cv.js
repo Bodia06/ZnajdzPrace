@@ -5,16 +5,16 @@ import {
 	GENERATOR_TEMPLATE_IDS
 } from '@/constants'
 
-export const EMPTY_ENTRIES = {
+const EMPTY_ENTRIES = {
 	experience: { position: '', company: '', from: '', to: '', description: '' },
 	education: { school: '', degree: '', from: '', to: '' }
 }
 
-export const DEFAULT_LEVEL = 'B2'
+const DEFAULT_LEVEL = 'B2'
 
 let counter = 0
 
-export const createId = () => {
+const createId = () => {
 	counter += 1
 	return `entry-${Date.now().toString(36)}-${counter}`
 }

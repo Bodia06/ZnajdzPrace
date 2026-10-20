@@ -4,7 +4,7 @@ const range = (from, to) => Array.from({ length: to - from + 1 }, (_, index) => 
 
 export const isGap = (item) => item === GAP
 
-export const getTotalPages = (total, pageSize) => Math.max(1, Math.ceil(total / pageSize))
+const getTotalPages = (total, pageSize) => Math.max(1, Math.ceil(total / pageSize))
 
 export function getPageRange(total, current, siblings) {
 	const slots = siblings * 2 + 5

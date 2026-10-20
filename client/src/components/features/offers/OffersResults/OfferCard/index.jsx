@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import CompanyLogo from './CompanyLogo'
+import CompanyLogo from '../../../../ui/CompanyLogo'
 import FavoriteButton from './FavoriteButton'
 import OfferSalary from './OfferSalary'
 import OfferTags from './OfferTags'

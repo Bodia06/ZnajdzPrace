@@ -1,5 +1,5 @@
 import { useId } from 'react'
-import CitySuggestions from '@/components/features/offers/CitySuggestions'
+import CitySuggestions from '@/components/features/offers/city/CitySuggestions'
 import PinIcon from '@/components/ui/icons/PinIcon'
 import { OFFERS_IDS } from '@/constants'
 import { useCitySuggestions, useCombobox } from '@/hooks'

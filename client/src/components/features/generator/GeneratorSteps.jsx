@@ -12,6 +12,17 @@ const BADGE = {
 	todo: 'bg-page text-muted'
 }
 
+const BAR = {
+	active: 'bg-ink',
+	done: 'bg-emerald-500',
+	todo: 'bg-ink/10'
+}
+
+const stateOf = (step) => {
+	if (step.active) return 'active'
+	return step.done ? 'done' : 'todo'
+}
+
 export default function GeneratorSteps({ label, steps }) {
 	const current = steps.find((step) => step.active)
 	const activeIndex = steps.findIndex((step) => step.active)
@@ -38,9 +49,7 @@ export default function GeneratorSteps({ label, steps }) {
 							<span className='sr-only'>{step.label}</span>
 							<span
 								aria-hidden='true'
-								className={`block h-1.5 w-full rounded-full transition-colors duration-500 ${
-									step.active ? 'bg-ink' : step.done ? 'bg-emerald-500' : 'bg-ink/10'
-								}`}
+								className={`block h-1.5 w-full rounded-full transition-colors duration-500 ${BAR[stateOf(step)]}`}
 							/>
 						</li>
 					))}
@@ -48,7 +57,7 @@ export default function GeneratorSteps({ label, steps }) {
 			</div>
 			<ol className='hidden items-center gap-1 min-[900px]:flex'>
 				{steps.map((step, index) => {
-					const state = step.active ? 'active' : step.done ? 'done' : 'todo'
+					const state = stateOf(step)
 
 					return (
 						<li

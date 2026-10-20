@@ -2,7 +2,7 @@ import { LINKS } from '@/constants'
 import { formatNumber } from '@/lib/format'
 import { getPageRange, isGap } from './pagination'
 
-export function buildOffersHref({ search, filters, sort, page }, { header, filter, results }) {
+function buildOffersHref({ search, filters, sort, page }, { header, filter, results }) {
 	const params = new URLSearchParams()
 	const set = (name, value) => value && params.set(name, value)
 	const append = (name, list) => list.forEach((value) => params.append(name, value))

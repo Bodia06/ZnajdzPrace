@@ -1,8 +1,8 @@
 import ChatPanel from './ChatPanel'
 import FavoritesPanel from './FavoritesPanel'
 import HistoryPanel from './HistoryPanel'
-import ToolCard from '../../shared/ToolCard'
-import ToolLink from '../../shared/ToolLink'
+import ToolCard from '@/components/features/home/Tools/shared/ToolCard'
+import ToolLink from '@/components/features/home/Tools/shared/ToolLink'
 
 export default function CandidatePanelCard({ item, className }) {
 	const { badge, title, chat, history, favorites, button } = item

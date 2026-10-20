@@ -25,11 +25,14 @@ const formatPosted = (date) => {
 	return days === 0 ? 'dzisiaj' : pluralDays(days)
 }
 
-const groupBy = (rows, key) =>
-	rows.reduce((groups, row) => {
-		;(groups[row[key]] ??= []).push(row)
-		return groups
-	}, {})
+const groupBy = (rows, key) => {
+	const groups = {}
+	for (const row of rows) {
+		groups[row[key]] ??= []
+		groups[row[key]].push(row)
+	}
+	return groups
+}
 
 function joinOffers() {
 	const companies = Object.fromEntries(COMPANIES.map((company) => [company.id, company]))
@@ -73,8 +76,6 @@ function joinOffers() {
 	}))
 }
 
-// Єдина точка, звідки сторінка /offers бере дані. Зараз читає константи,
-// пізніше тут будуть запити до бази — компоненти про це не знають.
 export async function getOffersPageData() {
 	return {
 		offers: joinOffers(),

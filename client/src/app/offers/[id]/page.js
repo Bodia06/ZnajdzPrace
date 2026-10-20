@@ -1,6 +1,6 @@
 import NotFound from '@/components/features/not-found'
 import OfferDetails from '@/components/features/offer-details'
-import { getOfferPageData } from '@/lib/offers/data'
+import { getOfferPageData } from '@/services/offers'
 
 export default async function OfferPage({ params }) {
 	const { id } = await params

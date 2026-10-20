@@ -15,12 +15,13 @@ const getObserver = () => {
 
 const STATES = ['reveal-in', 'reveal-above', 'reveal-below']
 
+const stateOf = (entry) => {
+	if (entry.isIntersecting) return 'reveal-in'
+	return entry.boundingClientRect.top < 0 ? 'reveal-above' : 'reveal-below'
+}
+
 const applyState = (element, entry) => {
-	const state = entry.isIntersecting
-		? 'reveal-in'
-		: entry.boundingClientRect.top < 0
-			? 'reveal-above'
-			: 'reveal-below'
+	const state = stateOf(entry)
 
 	element.classList.remove(...STATES)
 	element.classList.add(state)

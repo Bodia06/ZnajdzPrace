@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import OffersCityField from './OffersCityField'
 import OffersField from './OffersField'
-import ClearIcon from '@/components/ui/icons/ClearIcon'
+import ClearIcon from '@/components/ui/icons/ClearCircleIcon'
 import SearchIcon from '@/components/ui/icons/SearchIcon'
 import { LINKS, OFFERS_IDS } from '@/constants'
 

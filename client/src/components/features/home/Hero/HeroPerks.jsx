@@ -1,4 +1,4 @@
-import CheckIcon from '@/components/ui/icons/CheckIcon'
+import CheckIcon from '@/components/ui/icons/CheckBadgeIcon'
 
 export default function HeroPerks({ items }) {
 	return (

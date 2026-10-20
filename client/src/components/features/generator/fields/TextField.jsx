@@ -1,7 +1,5 @@
 import { useId } from 'react'
-
-const CONTROL =
-	'w-full rounded-xl border-[1.5px] border-transparent bg-page px-4 text-base font-medium text-ink transition outline-none placeholder:text-subtle hover:border-primary/30 focus:border-primary/50 focus:bg-white focus:ring-4 focus:ring-primary/10'
+import { CONTROL } from '@/components/features/generator/fields/styles'
 
 export default function TextField({ item, value, onChange, className = '', ...props }) {
 	const id = useId()

@@ -1,4 +1,4 @@
-import ColorSwatches from '../fields/ColorSwatches'
+import ColorSwatches from '@/components/features/generator/fields/ColorSwatches'
 import { GENERATOR_COLORS, GENERATOR_TEMPLATE_IDS, GENERATOR_TEMPLATES } from '@/constants'
 
 export default function TemplateStep({ texts, cv, onTemplate, onColor }) {

@@ -15,12 +15,13 @@ export function formatSalaryShort({ from, to }, { unit, thousand }) {
 	return `${range} ${thousand} ${unit}`
 }
 
-export const formatYears = (years) => {
+const yearsNoun = (years) => {
+	if (years === 1) return 'rok'
 	const last = years % 10
-	const noun =
-		years === 1 ? 'rok' : last >= 2 && last <= 4 && (years < 10 || years > 20) ? 'lata' : 'lat'
-	return `${years} ${noun}`
+	return last >= 2 && last <= 4 && (years < 10 || years > 20) ? 'lata' : 'lat'
 }
+
+export const formatYears = (years) => `${years} ${yearsNoun(years)}`
 
 export function formatResultsTitle({ query, city, location }, { fallbackTitle, locative }) {
 	const place = city || location

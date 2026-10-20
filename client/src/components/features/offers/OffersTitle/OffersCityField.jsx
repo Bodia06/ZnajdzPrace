@@ -2,7 +2,7 @@
 
 import { useId } from 'react'
 import OffersField from './OffersField'
-import CitySuggestions from '@/components/features/offers/CitySuggestions'
+import CitySuggestions from '@/components/features/offers/city/CitySuggestions'
 import PinIcon from '@/components/ui/icons/PinIcon'
 import { useCitySuggestions, useCombobox, useGeolocationCity } from '@/hooks'
 

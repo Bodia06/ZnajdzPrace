@@ -1,4 +1,4 @@
-export default function CheckIcon({ className = '' }) {
+export default function CheckBadgeIcon({ className = '' }) {
 	return (
 		<span
 			className={`flex size-5 shrink-0 items-center justify-center rounded-full bg-accent text-zinc-900 ${className}`}

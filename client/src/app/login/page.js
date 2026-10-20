@@ -1,4 +1,4 @@
-import HomePage from '../page'
+import HomePage from '@/app/page'
 import AuthModal from '@/components/features/auth'
 import { AUTH_DATA, AUTH_MODES } from '@/constants'
 

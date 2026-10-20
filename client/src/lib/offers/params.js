@@ -1,6 +1,9 @@
 import { OFFERS_MAX_TEXT_LENGTH } from '@/constants'
 
-const toList = (value) => (value === undefined ? [] : Array.isArray(value) ? value : [value])
+const toList = (value) => {
+	if (value === undefined) return []
+	return Array.isArray(value) ? value : [value]
+}
 const toText = (value) => (toList(value)[0] ?? '').trim().slice(0, OFFERS_MAX_TEXT_LENGTH)
 const onlyKnown = (options, value) =>
 	toList(value).filter((item) => options.some((option) => option.value === item))

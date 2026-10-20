@@ -1,5 +1,5 @@
 import FilterBadge from './FilterBadge'
-import ClearIcon from '@/components/ui/icons/ClearIcon'
+import ClearIcon from '@/components/ui/icons/ClearCircleIcon'
 
 export default function FilterHeader({ title, count, clearLabel, closeLabel, onClear, onClose }) {
 	return (
