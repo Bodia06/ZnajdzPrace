@@ -1,8 +1,8 @@
 import OffersSearch from './OffersSearch'
-import { OFFERS_DATA, OFFERS_IDS } from '@/constants'
+import { OFFERS_IDS } from '@/constants'
 
-export default function OffersTitle({ initial }) {
-	const { title, search } = OFFERS_DATA
+export default function OffersTitle({ data, initial }) {
+	const { title, search } = data
 
 	return (
 		<section

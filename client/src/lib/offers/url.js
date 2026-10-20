@@ -1,35 +1,35 @@
-import { LINKS, OFFERS_DATA, OFFERS_FILTER_DATA, OFFERS_RESULTS_DATA } from '@/constants'
+import { LINKS } from '@/constants'
 import { formatNumber } from '@/lib/format'
 import { getPageRange, isGap } from './pagination'
 
-export function buildOffersHref({ search, filters, sort, page }) {
+export function buildOffersHref({ search, filters, sort, page }, { header, filter, results }) {
 	const params = new URLSearchParams()
 	const set = (name, value) => value && params.set(name, value)
 	const append = (name, list) => list.forEach((value) => params.append(name, value))
 
-	set(OFFERS_DATA.search.query.name, search.query)
-	set(OFFERS_DATA.search.city.name, search.city)
-	set(OFFERS_FILTER_DATA.location.name, filters.location)
-	append(OFFERS_FILTER_DATA.contracts.name, filters.contracts)
-	set(OFFERS_FILTER_DATA.modes.name, filters.mode)
-	append(OFFERS_FILTER_DATA.levels.name, filters.levels)
-	set(OFFERS_FILTER_DATA.salary.name, filters.salary)
+	set(header.search.query.name, search.query)
+	set(header.search.city.name, search.city)
+	set(filter.location.name, filters.location)
+	append(filter.contracts.name, filters.contracts)
+	set(filter.modes.name, filters.mode)
+	append(filter.levels.name, filters.levels)
+	set(filter.salary.name, filters.salary)
 
-	if (sort !== OFFERS_RESULTS_DATA.sort.options[0].value) set(OFFERS_RESULTS_DATA.sort.name, sort)
-	if (page > 1) set(OFFERS_RESULTS_DATA.pagination.name, String(page))
+	if (sort !== results.sort.options[0].value) set(results.sort.name, sort)
+	if (page > 1) set(results.pagination.name, String(page))
 
 	const query = params.toString()
 	return query ? `${LINKS.OFFERS}?${query}` : LINKS.OFFERS
 }
 
-export function getActiveFilters(state) {
+export function getActiveFilters(state, content) {
 	const { filters } = state
-	const { contracts, modes, levels } = OFFERS_FILTER_DATA
-	const { salaryPrefix, salaryUnit } = OFFERS_RESULTS_DATA.activeFilters
+	const { contracts, modes, levels } = content.filter
+	const { salaryPrefix, salaryUnit } = content.results.activeFilters
 	const labelOf = (options, value) => options.find((option) => option.value === value)?.label
 
 	const withFilters = (patch) =>
-		buildOffersHref({ ...state, page: 1, filters: { ...filters, ...patch } })
+		buildOffersHref({ ...state, page: 1, filters: { ...filters, ...patch } }, content)
 	const chips = []
 
 	if (filters.location) {
@@ -67,16 +67,16 @@ export function getActiveFilters(state) {
 	return chips
 }
 
-export function getSortOptions(state) {
-	return OFFERS_RESULTS_DATA.sort.options.map((option) => ({
+export function getSortOptions(state, content) {
+	return content.results.sort.options.map((option) => ({
 		...option,
-		href: buildOffersHref({ ...state, sort: option.value, page: 1 })
+		href: buildOffersHref({ ...state, sort: option.value, page: 1 }, content)
 	}))
 }
 
-export function getPagination(state, totalPages) {
+export function getPagination(state, totalPages, content) {
 	const { page } = state
-	const hrefTo = (number) => buildOffersHref({ ...state, page: number })
+	const hrefTo = (number) => buildOffersHref({ ...state, page: number }, content)
 	const toItems = (range) =>
 		range.map((item, index) =>
 			isGap(item)

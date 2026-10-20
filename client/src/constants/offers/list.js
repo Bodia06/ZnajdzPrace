@@ -1,922 +1,145 @@
+export const COMPANIES = [
+	{
+		id: 101,
+		name: 'Nordwave Software'
+	},
+	{ id: 102, name: 'Kodeo Studio' },
+	{ id: 103, name: 'Bankowe Systemy IT' },
+	{ id: 104, name: 'Sklepik24' }
+]
+
 export const OFFERS_LIST = [
 	{
 		id: 'frontend-developer-react',
+		company_id: 101,
 		title: 'Frontend Developer (React)',
-		company: 'Nordwave Software',
 		location: 'Warszawa, Mokotów',
-		posted: 'dzisiaj',
-		isNew: true,
-		isFavorite: false,
+		posted_at: '2026-10-20T09:00:00Z',
+		valid_until: '2026-10-11',
 		tone: 'violet',
-		contracts: ['b2b', 'employment'],
 		mode: 'hybrid',
 		level: 'mid',
-		salary: { from: 12000, to: 16000 },
-		tags: [
-			{ label: 'B2B / UoP', accent: true },
-			{ label: 'Hybrydowo' },
-			{ label: 'React' },
-			{ label: 'TypeScript' }
-		]
+		workload: 'full',
+		description:
+			'Dołącz do zespołu, który rozwija platformę rezerwacji dla sieci klinik w całej Polsce. Będziesz budować nowe widoki aplikacji w React, współpracować z projektantem UX i backendem oraz dbać o jakość kodu w code review.',
+		salary_from: 12000,
+		salary_to: 16000,
+		address: 'ul. Puławska 145, Warszawa',
+		latitude: 52.1935,
+		longitude: 21.0205,
+		requirements_note: 'Komunikatywny język angielski (B2) oraz umiejętność pracy w zespole Scrum.'
 	},
 	{
 		id: 'junior-frontend-developer',
+		company_id: 102,
 		title: 'Junior Frontend Developer',
-		company: 'Kodeo Studio',
-		location: 'Warszawa, Wola',
-		posted: '1 dzień temu',
-		isNew: true,
-		isFavorite: true,
+		location: 'Kraków',
+		posted_at: '2026-10-18T09:00:00Z',
+		valid_until: '2026-11-15',
 		tone: 'dark',
-		contracts: ['employment'],
-		mode: 'office',
+		mode: 'remote',
 		level: 'junior',
-		salary: { from: 7000, to: 9000 },
-		tags: [
-			{ label: 'Umowa o pracę', accent: true },
-			{ label: 'Biuro' },
-			{ label: 'JavaScript' },
-			{ label: 'Vue' }
-		]
+		workload: 'full',
+		description: 'Dołącz do zespołu produktowego i rozwijaj interfejsy aplikacji webowych.',
+		salary_from: 7000,
+		salary_to: 9000,
+		address: '',
+		requirements_note: ''
 	},
 	{
 		id: 'ui-developer-angular',
+		company_id: 103,
 		title: 'UI Developer / Angular',
-		company: 'Bankowe Systemy IT',
-		location: 'Warszawa, Śródmieście',
-		posted: '3 dni temu',
-		isNew: false,
-		isFavorite: false,
+		location: 'Wrocław',
+		posted_at: '2026-10-17T09:00:00Z',
+		valid_until: '2026-11-20',
 		tone: 'peach',
-		contracts: ['employment'],
 		mode: 'hybrid',
 		level: 'mid',
-		salary: { from: 11000, to: 14500 },
-		tags: [
-			{ label: 'Umowa o pracę', accent: true },
-			{ label: 'Hybrydowo' },
-			{ label: 'Angular' },
-			{ label: 'RxJS' }
-		]
+		workload: 'full',
+		description: 'Rozwijaj panele bankowości internetowej w Angularze.',
+		salary_from: 11000,
+		salary_to: 14500,
+		address: '',
+		requirements_note: ''
 	},
 	{
 		id: 'fullstack-developer-nextjs',
+		company_id: 104,
 		title: 'Fullstack Developer (Next.js)',
-		company: 'Sklepik24',
-		location: 'Warszawa / zdalnie',
-		posted: '4 dni temu',
-		isNew: false,
-		isFavorite: false,
+		location: 'Gdańsk',
+		posted_at: '2026-10-16T09:00:00Z',
+		valid_until: '2026-11-25',
 		tone: 'solid',
-		contracts: ['b2b'],
-		mode: 'remote',
-		level: 'mid',
-		salary: { from: 15000, to: 20000 },
-		tags: [
-			{ label: 'B2B', accent: true },
-			{ label: 'Zdalnie' },
-			{ label: 'Next.js' },
-			{ label: 'Node.js' }
-		]
-	},
-	{
-		id: 'stazysta-frontend',
-		title: 'Stażysta – Frontend',
-		company: 'MediTech Polska',
-		location: 'Warszawa, Ursynów',
-		posted: '6 dni temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'sky',
-		contracts: ['internship'],
-		mode: 'office',
-		level: 'trainee',
-		salary: { from: 4800 },
-		tags: [
-			{ label: 'Staż', accent: true },
-			{ label: 'Biuro' },
-			{ label: 'HTML/CSS' },
-			{ label: 'Git' }
-		]
-	},
-	{
-		id: 'web-developer-wordpress',
-		title: 'Web Developer WordPress',
-		company: 'Pixel i Słowo',
-		location: 'Warszawa, Praga',
-		posted: '1 tydzień temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'lime',
-		contracts: ['mandate'],
-		mode: 'hybrid',
-		level: 'mid',
-		salary: { from: 6500, to: 8000 },
-		tags: [
-			{ label: 'Umowa zlecenie', accent: true },
-			{ label: 'Hybrydowo' },
-			{ label: 'WordPress' },
-			{ label: 'PHP' }
-		]
-	},
-	{
-		id: 'backend-developer-node-js',
-		title: 'Backend Developer (Node.js)',
-		company: 'Cloudline',
-		location: 'Warszawa, Wola',
-		posted: 'dzisiaj',
-		isNew: true,
-		isFavorite: false,
-		tone: 'violet',
-		contracts: ['b2b'],
-		mode: 'remote',
-		level: 'mid',
-		salary: { from: 14000, to: 19000 },
-		tags: [
-			{ label: 'B2B', accent: true },
-			{ label: 'Zdalnie' },
-			{ label: 'Node.js' },
-			{ label: 'PostgreSQL' }
-		]
-	},
-	{
-		id: 'react-native-developer',
-		title: 'React Native Developer',
-		company: 'Appforge',
-		location: 'Kraków, Podgórze',
-		posted: 'dzisiaj',
-		isNew: true,
-		isFavorite: false,
-		tone: 'dark',
-		contracts: ['b2b', 'employment'],
-		mode: 'hybrid',
-		level: 'mid',
-		salary: { from: 13000, to: 17500 },
-		tags: [
-			{ label: 'B2B / UoP', accent: true },
-			{ label: 'Hybrydowo' },
-			{ label: 'React Native' },
-			{ label: 'TypeScript' }
-		]
-	},
-	{
-		id: 'qa-engineer-automation',
-		title: 'QA Engineer (Automation)',
-		company: 'TestLab Polska',
-		location: 'Wrocław, Krzyki',
-		posted: '1 dzień temu',
-		isNew: true,
-		isFavorite: false,
-		tone: 'peach',
-		contracts: ['employment'],
-		mode: 'hybrid',
-		level: 'mid',
-		salary: { from: 9500, to: 13000 },
-		tags: [
-			{ label: 'Umowa o pracę', accent: true },
-			{ label: 'Hybrydowo' },
-			{ label: 'Cypress' },
-			{ label: 'Playwright' }
-		]
-	},
-	{
-		id: 'devops-engineer',
-		title: 'DevOps Engineer',
-		company: 'Infrabit',
-		location: 'Gdańsk, Wrzeszcz',
-		posted: '1 dzień temu',
-		isNew: true,
-		isFavorite: false,
-		tone: 'solid',
-		contracts: ['b2b'],
-		mode: 'remote',
-		level: 'mid',
-		salary: { from: 17000, to: 23000 },
-		tags: [
-			{ label: 'B2B', accent: true },
-			{ label: 'Zdalnie' },
-			{ label: 'Kubernetes' },
-			{ label: 'AWS' }
-		]
-	},
-	{
-		id: 'python-developer',
-		title: 'Python Developer',
-		company: 'DataNest',
-		location: 'Poznań, Jeżyce',
-		posted: '2 dni temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'sky',
-		contracts: ['employment'],
-		mode: 'office',
-		level: 'mid',
-		salary: { from: 11000, to: 15000 },
-		tags: [
-			{ label: 'Umowa o pracę', accent: true },
-			{ label: 'Biuro' },
-			{ label: 'Python' },
-			{ label: 'Django' }
-		]
-	},
-	{
-		id: 'java-developer',
-		title: 'Java Developer',
-		company: 'Bankowe Systemy IT',
-		location: 'Warszawa, Śródmieście',
-		posted: '2 dni temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'lime',
-		contracts: ['employment'],
-		mode: 'hybrid',
-		level: 'mid',
-		salary: { from: 14000, to: 19000 },
-		tags: [
-			{ label: 'Umowa o pracę', accent: true },
-			{ label: 'Hybrydowo' },
-			{ label: 'Java' },
-			{ label: 'Spring' }
-		]
-	},
-	{
-		id: 'ux-ui-designer',
-		title: 'UX/UI Designer',
-		company: 'Pixel i Słowo',
-		location: 'Warszawa, Praga',
-		posted: '3 dni temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'violet',
-		contracts: ['mandate'],
-		mode: 'remote',
-		level: 'mid',
-		salary: { from: 8000, to: 12000 },
-		tags: [
-			{ label: 'Umowa zlecenie', accent: true },
-			{ label: 'Zdalnie' },
-			{ label: 'Figma' },
-			{ label: 'Design System' }
-		]
-	},
-	{
-		id: 'data-analyst',
-		title: 'Data Analyst',
-		company: 'MediTech Polska',
-		location: 'Łódź, Śródmieście',
-		posted: '3 dni temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'dark',
-		contracts: ['employment'],
-		mode: 'hybrid',
-		level: 'mid',
-		salary: { from: 9000, to: 12500 },
-		tags: [
-			{ label: 'Umowa o pracę', accent: true },
-			{ label: 'Hybrydowo' },
-			{ label: 'SQL' },
-			{ label: 'Power BI' }
-		]
-	},
-	{
-		id: 'vue-js-developer',
-		title: 'Vue.js Developer',
-		company: 'Kodeo Studio',
-		location: 'Warszawa, Wola',
-		posted: '3 dni temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'peach',
-		contracts: ['b2b', 'employment'],
-		mode: 'remote',
-		level: 'mid',
-		salary: { from: 11500, to: 15500 },
-		tags: [
-			{ label: 'B2B / UoP', accent: true },
-			{ label: 'Zdalnie' },
-			{ label: 'Vue' },
-			{ label: 'Pinia' }
-		]
-	},
-	{
-		id: 'product-manager',
-		title: 'Product Manager',
-		company: 'Sklepik24',
-		location: 'Warszawa / zdalnie',
-		posted: '4 dni temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'solid',
-		contracts: ['employment'],
-		mode: 'hybrid',
-		level: 'mid',
-		salary: { from: 15000, to: 20000 },
-		tags: [
-			{ label: 'Umowa o pracę', accent: true },
-			{ label: 'Hybrydowo' },
-			{ label: 'Jira' },
-			{ label: 'Roadmap' }
-		]
-	},
-	{
-		id: 'junior-backend-developer',
-		title: 'Junior Backend Developer',
-		company: 'Cloudline',
-		location: 'Kraków, Stare Miasto',
-		posted: '4 dni temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'sky',
-		contracts: ['employment'],
-		mode: 'office',
-		level: 'junior',
-		salary: { from: 6500, to: 9000 },
-		tags: [
-			{ label: 'Umowa o pracę', accent: true },
-			{ label: 'Biuro' },
-			{ label: 'Node.js' },
-			{ label: 'MongoDB' }
-		]
-	},
-	{
-		id: 'android-developer-kotlin',
-		title: 'Android Developer (Kotlin)',
-		company: 'Appforge',
-		location: 'Katowice, Śródmieście',
-		posted: '5 dni temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'lime',
-		contracts: ['b2b'],
-		mode: 'hybrid',
-		level: 'mid',
-		salary: { from: 12500, to: 17000 },
-		tags: [
-			{ label: 'B2B', accent: true },
-			{ label: 'Hybrydowo' },
-			{ label: 'Kotlin' },
-			{ label: 'Jetpack' }
-		]
-	},
-	{
-		id: 'ios-developer-swift',
-		title: 'iOS Developer (Swift)',
-		company: 'Nordwave Software',
-		location: 'Warszawa, Mokotów',
-		posted: '5 dni temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'violet',
-		contracts: ['b2b', 'employment'],
-		mode: 'remote',
-		level: 'mid',
-		salary: { from: 13500, to: 18000 },
-		tags: [
-			{ label: 'B2B / UoP', accent: true },
-			{ label: 'Zdalnie' },
-			{ label: 'Swift' },
-			{ label: 'SwiftUI' }
-		]
-	},
-	{
-		id: 'stazysta-qa',
-		title: 'Stażysta – QA',
-		company: 'TestLab Polska',
-		location: 'Wrocław, Krzyki',
-		posted: '6 dni temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'dark',
-		contracts: ['internship'],
-		mode: 'office',
-		level: 'trainee',
-		salary: { from: 4500 },
-		tags: [
-			{ label: 'Staż', accent: true },
-			{ label: 'Biuro' },
-			{ label: 'Testy manualne' },
-			{ label: 'Jira' }
-		]
-	},
-	{
-		id: 'cloud-engineer-azure',
-		title: 'Cloud Engineer (Azure)',
-		company: 'Infrabit',
-		location: 'Poznań, Jeżyce',
-		posted: '6 dni temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'peach',
-		contracts: ['b2b'],
-		mode: 'remote',
-		level: 'mid',
-		salary: { from: 16000, to: 22000 },
-		tags: [
-			{ label: 'B2B', accent: true },
-			{ label: 'Zdalnie' },
-			{ label: 'Azure' },
-			{ label: 'Terraform' }
-		]
-	},
-	{
-		id: 'fullstack-developer-net-react',
-		title: 'Fullstack Developer (.NET + React)',
-		company: 'Bankowe Systemy IT',
-		location: 'Warszawa, Śródmieście',
-		posted: '1 tydzień temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'solid',
-		contracts: ['employment'],
-		mode: 'hybrid',
-		level: 'mid',
-		salary: { from: 13000, to: 18000 },
-		tags: [
-			{ label: 'Umowa o pracę', accent: true },
-			{ label: 'Hybrydowo' },
-			{ label: 'C#' },
-			{ label: 'React' }
-		]
-	},
-	{
-		id: 'machine-learning-engineer',
-		title: 'Machine Learning Engineer',
-		company: 'DataNest',
-		location: 'Warszawa, Ursynów',
-		posted: '1 tydzień temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'sky',
-		contracts: ['b2b'],
-		mode: 'hybrid',
-		level: 'mid',
-		salary: { from: 18000, to: 25000 },
-		tags: [
-			{ label: 'B2B', accent: true },
-			{ label: 'Hybrydowo' },
-			{ label: 'Python' },
-			{ label: 'PyTorch' }
-		]
-	},
-	{
-		id: 'scrum-master',
-		title: 'Scrum Master',
-		company: 'Sklepik24',
-		location: 'Gdańsk, Śródmieście',
-		posted: '1 tydzień temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'lime',
-		contracts: ['employment'],
-		mode: 'remote',
-		level: 'mid',
-		salary: { from: 12000, to: 16000 },
-		tags: [
-			{ label: 'Umowa o pracę', accent: true },
-			{ label: 'Zdalnie' },
-			{ label: 'Scrum' },
-			{ label: 'Agile' }
-		]
-	},
-	{
-		id: 'php-developer-laravel',
-		title: 'PHP Developer (Laravel)',
-		company: 'Pixel i Słowo',
-		location: 'Lublin, Śródmieście',
-		posted: '1 tydzień temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'violet',
-		contracts: ['employment'],
-		mode: 'office',
-		level: 'mid',
-		salary: { from: 8500, to: 12000 },
-		tags: [
-			{ label: 'Umowa o pracę', accent: true },
-			{ label: 'Biuro' },
-			{ label: 'PHP' },
-			{ label: 'Laravel' }
-		]
-	},
-	{
-		id: 'frontend-developer-angular',
-		title: 'Frontend Developer (Angular)',
-		company: 'Bankowe Systemy IT',
-		location: 'Kraków, Krowodrza',
-		posted: '1 tydzień temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'dark',
-		contracts: ['employment'],
-		mode: 'hybrid',
-		level: 'mid',
-		salary: { from: 11000, to: 15000 },
-		tags: [
-			{ label: 'Umowa o pracę', accent: true },
-			{ label: 'Hybrydowo' },
-			{ label: 'Angular' },
-			{ label: 'NgRx' }
-		]
-	},
-	{
-		id: 'junior-ux-designer',
-		title: 'Junior UX Designer',
-		company: 'Kodeo Studio',
-		location: 'Warszawa, Wola',
-		posted: '8 dni temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'peach',
-		contracts: ['employment'],
-		mode: 'office',
-		level: 'junior',
-		salary: { from: 6000, to: 8000 },
-		tags: [
-			{ label: 'Umowa o pracę', accent: true },
-			{ label: 'Biuro' },
-			{ label: 'Figma' },
-			{ label: 'Prototypowanie' }
-		]
-	},
-	{
-		id: 'security-engineer',
-		title: 'Security Engineer',
-		company: 'Infrabit',
-		location: 'Warszawa, Mokotów',
-		posted: '8 dni temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'solid',
-		contracts: ['b2b'],
-		mode: 'remote',
-		level: 'mid',
-		salary: { from: 17000, to: 24000 },
-		tags: [
-			{ label: 'B2B', accent: true },
-			{ label: 'Zdalnie' },
-			{ label: 'Pentesty' },
-			{ label: 'OWASP' }
-		]
-	},
-	{
-		id: 'go-developer',
-		title: 'Go Developer',
-		company: 'Cloudline',
-		location: 'Wrocław, Fabryczna',
-		posted: '9 dni temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'sky',
-		contracts: ['b2b', 'employment'],
-		mode: 'remote',
-		level: 'mid',
-		salary: { from: 16000, to: 21000 },
-		tags: [
-			{ label: 'B2B / UoP', accent: true },
-			{ label: 'Zdalnie' },
-			{ label: 'Go' },
-			{ label: 'gRPC' }
-		]
-	},
-	{
-		id: 'customer-support-specialist-it',
-		title: 'Customer Support Specialist (IT)',
-		company: 'MediTech Polska',
-		location: 'Łódź, Bałuty',
-		posted: '9 dni temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'lime',
-		contracts: ['employment'],
-		mode: 'hybrid',
-		level: 'mid',
-		salary: { from: 6000, to: 8000 },
-		tags: [
-			{ label: 'Umowa o pracę', accent: true },
-			{ label: 'Hybrydowo' },
-			{ label: 'Zendesk' },
-			{ label: 'Angielski B2' }
-		]
-	},
-	{
-		id: 'technical-writer',
-		title: 'Technical Writer',
-		company: 'Nordwave Software',
-		location: 'Warszawa, Mokotów',
-		posted: '10 dni temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'violet',
-		contracts: ['mandate'],
-		mode: 'remote',
-		level: 'mid',
-		salary: { from: 7500, to: 10500 },
-		tags: [
-			{ label: 'Umowa zlecenie', accent: true },
-			{ label: 'Zdalnie' },
-			{ label: 'Dokumentacja' },
-			{ label: 'Markdown' }
-		]
-	},
-	{
-		id: 'frontend-developer-next-js',
-		title: 'Frontend Developer (Next.js)',
-		company: 'Sklepik24',
-		location: 'Warszawa / zdalnie',
-		posted: '10 dni temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'dark',
-		contracts: ['b2b'],
-		mode: 'remote',
-		level: 'mid',
-		salary: { from: 14000, to: 19000 },
-		tags: [
-			{ label: 'B2B', accent: true },
-			{ label: 'Zdalnie' },
-			{ label: 'Next.js' },
-			{ label: 'TypeScript' }
-		]
-	},
-	{
-		id: 'database-administrator',
-		title: 'Database Administrator',
-		company: 'DataNest',
-		location: 'Poznań, Nowe Miasto',
-		posted: '11 dni temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'peach',
-		contracts: ['employment'],
-		mode: 'office',
-		level: 'mid',
-		salary: { from: 12000, to: 16000 },
-		tags: [
-			{ label: 'Umowa o pracę', accent: true },
-			{ label: 'Biuro' },
-			{ label: 'PostgreSQL' },
-			{ label: 'MySQL' }
-		]
-	},
-	{
-		id: 'game-developer-unity',
-		title: 'Game Developer (Unity)',
-		company: 'Pixel i Słowo',
-		location: 'Kraków, Zabłocie',
-		posted: '11 dni temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'solid',
-		contracts: ['employment'],
-		mode: 'hybrid',
-		level: 'mid',
-		salary: { from: 9000, to: 13500 },
-		tags: [
-			{ label: 'Umowa o pracę', accent: true },
-			{ label: 'Hybrydowo' },
-			{ label: 'Unity' },
-			{ label: 'C#' }
-		]
-	},
-	{
-		id: 'stazysta-data',
-		title: 'Stażysta – Data',
-		company: 'DataNest',
-		location: 'Warszawa, Ursynów',
-		posted: '12 dni temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'sky',
-		contracts: ['internship'],
-		mode: 'office',
-		level: 'trainee',
-		salary: { from: 4700 },
-		tags: [
-			{ label: 'Staż', accent: true },
-			{ label: 'Biuro' },
-			{ label: 'SQL' },
-			{ label: 'Excel' }
-		]
-	},
-	{
-		id: 'sre-engineer',
-		title: 'SRE Engineer',
-		company: 'Infrabit',
-		location: 'Gdańsk, Wrzeszcz',
-		posted: '12 dni temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'lime',
-		contracts: ['b2b'],
 		mode: 'remote',
 		level: 'senior',
-		salary: { from: 18000, to: 24000 },
-		tags: [
-			{ label: 'B2B', accent: true },
-			{ label: 'Zdalnie' },
-			{ label: 'Prometheus' },
-			{ label: 'Grafana' }
-		]
-	},
-	{
-		id: 'web-developer-html-css',
-		title: 'Web Developer (HTML/CSS)',
-		company: 'Kodeo Studio',
-		location: 'Szczecin, Centrum',
-		posted: '13 dni temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'violet',
-		contracts: ['mandate'],
-		mode: 'remote',
-		level: 'mid',
-		salary: { from: 5500, to: 7500 },
-		tags: [
-			{ label: 'Umowa zlecenie', accent: true },
-			{ label: 'Zdalnie' },
-			{ label: 'HTML/CSS' },
-			{ label: 'JavaScript' }
-		]
-	},
-	{
-		id: 'business-analyst',
-		title: 'Business Analyst',
-		company: 'Bankowe Systemy IT',
-		location: 'Warszawa, Śródmieście',
-		posted: '2 tygodnie temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'dark',
-		contracts: ['employment'],
-		mode: 'hybrid',
-		level: 'mid',
-		salary: { from: 10000, to: 14000 },
-		tags: [
-			{ label: 'Umowa o pracę', accent: true },
-			{ label: 'Hybrydowo' },
-			{ label: 'UML' },
-			{ label: 'SQL' }
-		]
-	},
-	{
-		id: 'ruby-on-rails-developer',
-		title: 'Ruby on Rails Developer',
-		company: 'Cloudline',
-		location: 'Warszawa, Wola',
-		posted: '2 tygodnie temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'peach',
-		contracts: ['b2b'],
-		mode: 'remote',
-		level: 'mid',
-		salary: { from: 13000, to: 17500 },
-		tags: [
-			{ label: 'B2B', accent: true },
-			{ label: 'Zdalnie' },
-			{ label: 'Ruby' },
-			{ label: 'Rails' }
-		]
-	},
-	{
-		id: 'junior-python-developer',
-		title: 'Junior Python Developer',
-		company: 'DataNest',
-		location: 'Wrocław, Krzyki',
-		posted: '2 tygodnie temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'solid',
-		contracts: ['employment'],
-		mode: 'office',
-		level: 'junior',
-		salary: { from: 6500, to: 9000 },
-		tags: [
-			{ label: 'Umowa o pracę', accent: true },
-			{ label: 'Biuro' },
-			{ label: 'Python' },
-			{ label: 'Flask' }
-		]
-	},
-	{
-		id: 'tech-lead-frontend',
-		title: 'Tech Lead (Frontend)',
-		company: 'Nordwave Software',
-		location: 'Warszawa, Mokotów',
-		posted: '2 tygodnie temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'sky',
-		contracts: ['b2b', 'employment'],
-		mode: 'hybrid',
-		level: 'senior',
-		salary: { from: 19000, to: 26000 },
-		tags: [
-			{ label: 'B2B / UoP', accent: true },
-			{ label: 'Hybrydowo' },
-			{ label: 'React' },
-			{ label: 'Architektura' }
-		]
-	},
-	{
-		id: 'embedded-developer-c',
-		title: 'Embedded Developer (C++)',
-		company: 'MediTech Polska',
-		location: 'Gdynia, Śródmieście',
-		posted: '2 tygodnie temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'lime',
-		contracts: ['employment'],
-		mode: 'office',
-		level: 'mid',
-		salary: { from: 11000, to: 15500 },
-		tags: [
-			{ label: 'Umowa o pracę', accent: true },
-			{ label: 'Biuro' },
-			{ label: 'C++' },
-			{ label: 'RTOS' }
-		]
-	},
-	{
-		id: 'mobile-qa-tester',
-		title: 'Mobile QA Tester',
-		company: 'TestLab Polska',
-		location: 'Kraków, Podgórze',
-		posted: '3 tygodnie temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'violet',
-		contracts: ['employment'],
-		mode: 'hybrid',
-		level: 'mid',
-		salary: { from: 7500, to: 10000 },
-		tags: [
-			{ label: 'Umowa o pracę', accent: true },
-			{ label: 'Hybrydowo' },
-			{ label: 'Appium' },
-			{ label: 'Android' }
-		]
-	},
-	{
-		id: 'salesforce-developer',
-		title: 'Salesforce Developer',
-		company: 'Sklepik24',
-		location: 'Warszawa / zdalnie',
-		posted: '3 tygodnie temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'dark',
-		contracts: ['b2b'],
-		mode: 'remote',
-		level: 'mid',
-		salary: { from: 14500, to: 19500 },
-		tags: [
-			{ label: 'B2B', accent: true },
-			{ label: 'Zdalnie' },
-			{ label: 'Apex' },
-			{ label: 'Salesforce' }
-		]
-	},
-	{
-		id: 'stazysta-ux-ui',
-		title: 'Stażysta – UX/UI',
-		company: 'Pixel i Słowo',
-		location: 'Warszawa, Praga',
-		posted: '3 tygodnie temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'peach',
-		contracts: ['internship'],
-		mode: 'office',
-		level: 'trainee',
-		salary: { from: 4500 },
-		tags: [
-			{ label: 'Staż', accent: true },
-			{ label: 'Biuro' },
-			{ label: 'Figma' },
-			{ label: 'Adobe XD' }
-		]
-	},
-	{
-		id: 'angular-developer-junior',
-		title: 'Angular Developer (Junior)',
-		company: 'Bankowe Systemy IT',
-		location: 'Warszawa, Śródmieście',
-		posted: '1 miesiąc temu',
-		isNew: false,
-		isFavorite: false,
-		tone: 'solid',
-		contracts: ['employment'],
-		mode: 'office',
-		level: 'junior',
-		salary: { from: 6500, to: 9000 },
-		tags: [
-			{ label: 'Umowa o pracę', accent: true },
-			{ label: 'Biuro' },
-			{ label: 'Angular' },
-			{ label: 'TypeScript' }
-		]
+		workload: 'full',
+		description: 'Buduj sklepy internetowe w Next.js i Node.js od interfejsu po API.',
+		salary_from: 15000,
+		salary_to: 20000,
+		address: '',
+		requirements_note: ''
 	}
+]
+
+export const OFFER_CONTRACTS = [
+	{ offer_id: 'frontend-developer-react', contract_type: 'b2b' },
+	{ offer_id: 'frontend-developer-react', contract_type: 'employment' }
+]
+
+export const OFFER_ITEMS = [
+	{
+		offer_id: 'frontend-developer-react',
+		category: 'duty',
+		label: 'Tworzenie i rozwój komponentów interfejsu w React i TypeScript'
+	},
+	{
+		offer_id: 'frontend-developer-react',
+		category: 'duty',
+		label: 'Integracja z REST API i obsługa stanów aplikacji'
+	},
+	{
+		offer_id: 'frontend-developer-react',
+		category: 'duty',
+		label: 'Pisanie testów jednostkowych i udział w code review'
+	},
+	{ offer_id: 'frontend-developer-react', category: 'benefit', label: 'Prywatna opieka medyczna' },
+	{ offer_id: 'frontend-developer-react', category: 'benefit', label: 'Karta sportowa' },
+	{ offer_id: 'frontend-developer-react', category: 'benefit', label: 'Budżet szkoleniowy' },
+	{
+		offer_id: 'frontend-developer-react',
+		category: 'benefit',
+		label: '2 dni pracy z biura w tygodniu'
+	},
+	{ offer_id: 'frontend-developer-react', category: 'recruitment', label: 'Krótka rozmowa z HR' },
+	{
+		offer_id: 'frontend-developer-react',
+		category: 'recruitment',
+		label: 'Zadanie techniczne (ok. 2 h)'
+	},
+	{ offer_id: 'frontend-developer-react', category: 'recruitment', label: 'Spotkanie z zespołem' }
+]
+
+export const OFFER_TAGS = [
+	{ offer_id: 'frontend-developer-react', label: 'B2B / UoP', is_accent: true },
+	{ offer_id: 'frontend-developer-react', label: 'Hybrydowo', is_accent: false },
+	{ offer_id: 'frontend-developer-react', label: 'React', is_accent: false },
+	{ offer_id: 'frontend-developer-react', label: 'TypeScript', is_accent: false }
+]
+
+export const SKILLS = [
+	{ id: 1, name: 'React', slug: 'react' },
+	{ id: 2, name: 'TypeScript', slug: 'typescript' },
+	{ id: 3, name: 'Next.js', slug: 'nextjs' },
+	{ id: 4, name: 'Tailwind CSS', slug: 'tailwind-css' },
+	{ id: 5, name: 'Redux', slug: 'redux' },
+	{ id: 6, name: 'Figma', slug: 'figma' },
+	{ id: 7, name: 'Node.js', slug: 'nodejs' }
+]
+
+export const OFFER_SKILLS = [
+	{ offer_id: 'frontend-developer-react', skill_id: 1, is_required: true, experience_years: 3 },
+	{ offer_id: 'frontend-developer-react', skill_id: 2, is_required: true, experience_years: 2 },
+	{ offer_id: 'frontend-developer-react', skill_id: 4, is_required: false, experience_years: 1 },
+	{ offer_id: 'frontend-developer-react', skill_id: 6, is_required: false, experience_years: null }
 ]

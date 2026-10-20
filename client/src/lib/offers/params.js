@@ -1,19 +1,18 @@
-import {
-	OFFERS_DATA,
-	OFFERS_FILTER_DATA,
-	OFFERS_MAX_TEXT_LENGTH,
-	OFFERS_RESULTS_DATA
-} from '@/constants'
+import { OFFERS_MAX_TEXT_LENGTH } from '@/constants'
 
 const toList = (value) => (value === undefined ? [] : Array.isArray(value) ? value : [value])
 const toText = (value) => (toList(value)[0] ?? '').trim().slice(0, OFFERS_MAX_TEXT_LENGTH)
 const onlyKnown = (options, value) =>
 	toList(value).filter((item) => options.some((option) => option.value === item))
 
-export function parseOffersParams(params = {}) {
-	const { location, contracts, modes, levels, salary } = OFFERS_FILTER_DATA
-	const { query, city } = OFFERS_DATA.search
-	const { sort, pagination } = OFFERS_RESULTS_DATA
+const FILTER_KEYS = ['location', 'contracts', 'modes', 'levels', 'salary']
+
+export const getFilterParams = (filter) => FILTER_KEYS.map((key) => filter[key].name)
+
+export function parseOffersParams(params = {}, { header, filter, results }) {
+	const { location, contracts, modes, levels, salary } = filter
+	const { query, city } = header.search
+	const { sort, pagination } = results
 
 	const salaryText = toText(params[salary.name])
 	const pageNumber = Number.parseInt(toText(params[pagination.name]), 10)

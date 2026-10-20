@@ -4,18 +4,25 @@ import ResultsHeader from './ResultsHeader'
 import ResultsList from './ResultsList'
 import ResultsSort from './ResultsSort'
 import Pagination from '@/components/ui/Pagination'
-import { OFFERS_IDS, OFFERS_LIST, OFFERS_RESULTS_DATA } from '@/constants'
+import { OFFERS_IDS } from '@/constants'
 import { formatResultsTitle } from '@/lib/format'
 import { getOffers } from '@/lib/offers/filter'
 import { paginate } from '@/lib/offers/pagination'
 import { getActiveFilters, getPagination, getSortOptions } from '@/lib/offers/url'
 
-export default function OffersResults({ search, filters, sort, page: requestedPage }) {
-	const { header, sort: sortData, activeFilters, card, empty, pagination } = OFFERS_RESULTS_DATA
-	const offers = getOffers(OFFERS_LIST, { search, filters, sort })
-	const { page, totalPages, items, filler } = paginate(offers, requestedPage)
+export default function OffersResults({
+	offers: allOffers,
+	content,
+	search,
+	filters,
+	sort,
+	page: requestedPage
+}) {
+	const { header, sort: sortData, activeFilters, card, empty, pagination } = content.results
+	const offers = getOffers(allOffers, { search, filters, sort })
+	const { page, totalPages, items, filler } = paginate(offers, requestedPage, pagination.pageSize)
 	const state = { search, filters, sort, page }
-	const { pages, compactPages, prevHref, nextHref } = getPagination(state, totalPages)
+	const { pages, compactPages, prevHref, nextHref } = getPagination(state, totalPages, content)
 
 	return (
 		<section
@@ -28,11 +35,11 @@ export default function OffersResults({ search, filters, sort, page: requestedPa
 					title={formatResultsTitle({ ...search, location: filters.location }, header)}
 					description={header.description}
 				/>
-				<ResultsSort item={sortData} value={sort} options={getSortOptions(state)} />
+				<ResultsSort item={sortData} value={sort} options={getSortOptions(state, content)} />
 			</div>
 
 			<ActiveFilters
-				chips={getActiveFilters(state)}
+				chips={getActiveFilters(state, content)}
 				label={activeFilters.label}
 				removeLabel={activeFilters.remove}
 			/>

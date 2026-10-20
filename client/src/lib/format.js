@@ -2,9 +2,24 @@ const number = new Intl.NumberFormat('pl-PL', { useGrouping: 'always' })
 
 export const formatNumber = (value) => number.format(Number(value))
 
+export const formatDate = (value) => value.split('-').reverse().join('.')
+
 export function formatSalary({ from, to }, unit) {
 	const range = to ? `${number.format(from)} – ${number.format(to)}` : number.format(from)
 	return `${range} ${unit}`
+}
+
+export function formatSalaryShort({ from, to }, { unit, thousand }) {
+	const k = (value) => number.format(value / 1000)
+	const range = to && to !== from ? `${k(from)}–${k(to)}` : k(from)
+	return `${range} ${thousand} ${unit}`
+}
+
+export const formatYears = (years) => {
+	const last = years % 10
+	const noun =
+		years === 1 ? 'rok' : last >= 2 && last <= 4 && (years < 10 || years > 20) ? 'lata' : 'lat'
+	return `${years} ${noun}`
 }
 
 export function formatResultsTitle({ query, city, location }, { fallbackTitle, locative }) {

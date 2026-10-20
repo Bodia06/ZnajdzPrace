@@ -4,14 +4,15 @@ import FilterFields from './FilterFields'
 import FilterHeader from './FilterHeader'
 import FilterTrigger from './FilterTrigger'
 import ArrowIcon from '@/components/ui/icons/ArrowIcon'
-import { OFFERS_FILTER_DATA, OFFERS_FILTER_PARAMS, OFFERS_IDS } from '@/constants'
+import { OFFERS_IDS } from '@/constants'
 import { useFilterSheet, useOffersFilter } from '@/hooks'
+import { getFilterParams } from '@/lib/offers/params'
 
-export default function OffersFilter({ initialFilters }) {
-	const { title, clear, submit, toggle } = OFFERS_FILTER_DATA
+export default function OffersFilter({ data, initialFilters }) {
+	const { title, clear, submit, toggle } = data
 	const { filters, activeCount, setField, toggleField, reset } = useOffersFilter(
 		initialFilters,
-		OFFERS_FILTER_PARAMS
+		getFilterParams(data)
 	)
 	const { open, show, hide, panelRef, triggerRef } = useFilterSheet()
 
@@ -57,7 +58,7 @@ export default function OffersFilter({ initialFilters }) {
 
 				<div className='min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 sm:px-6 lg:overflow-y-auto'>
 					<FilterFields
-						data={OFFERS_FILTER_DATA}
+						data={data}
 						filters={filters}
 						setField={setField}
 						toggleField={toggleField}

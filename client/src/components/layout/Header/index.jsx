@@ -8,9 +8,9 @@ export default function Header() {
 	return (
 		<header className='relative z-50 border-b border-foreground/10 bg-background print:hidden'>
 			<div className='mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-4 nav:grid nav:grid-cols-[1fr_auto_1fr]'>
-				<h1 className='justify-self-start'>
-					<Logo />
-				</h1>
+				<div className='justify-self-start'>
+					<Logo heading />
+				</div>
 
 				<nav aria-label='Główna nawigacja' className='hidden nav:block'>
 					<ul className='flex items-center gap-7'>
