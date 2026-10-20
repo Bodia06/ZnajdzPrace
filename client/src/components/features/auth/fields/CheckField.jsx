@@ -1,4 +1,4 @@
-import FieldError from './FieldError'
+import FieldMessage from '@/components/ui/FieldMessage'
 import TickIcon from '@/components/ui/icons/TickIcon'
 
 export default function CheckField({ name, checked, onChange, error, children }) {
@@ -24,7 +24,7 @@ export default function CheckField({ name, checked, onChange, error, children })
 				</span>
 				<span>{children}</span>
 			</label>
-			<FieldError message={error} />
+			<FieldMessage error={error} />
 		</div>
 	)
 }

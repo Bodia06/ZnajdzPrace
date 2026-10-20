@@ -6,13 +6,16 @@ import { useEntryAccordion } from '@/hooks'
 const WIDE = 'min-[480px]:col-span-2'
 
 export default function EntriesStep({
+	section,
 	texts,
 	entries,
 	fields,
 	summaryFields,
 	onAdd,
 	onRemove,
-	onChange
+	onChange,
+	fieldProps,
+	isInvalid
 }) {
 	const { isCollapsed, toggle, add } = useEntryAccordion(entries, onAdd)
 
@@ -27,7 +30,7 @@ export default function EntriesStep({
 							.map((name) => entry[name])
 							.filter(Boolean)
 							.join(' · ')}
-						collapsed={isCollapsed(entry.id)}
+						collapsed={isCollapsed(entry.id) && !isInvalid(`${section}.${entry.id}.`)}
 						onToggle={() => toggle(entry.id)}
 						removeLabel={texts.remove}
 						onRemove={entries.length > 1 ? () => onRemove(entry.id) : undefined}
@@ -40,6 +43,7 @@ export default function EntriesStep({
 									value={entry[name]}
 									onChange={(value) => onChange(entry.id, name, value)}
 									className={wide ? WIDE : ''}
+									{...fieldProps(`${section}.${entry.id}.${name}`)}
 								/>
 							))}
 						</div>

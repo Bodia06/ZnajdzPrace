@@ -1,4 +1,5 @@
 export const OFFERS_MAX_TEXT_LENGTH = 100
+export const OFFERS_MAX_SALARY_DIGITS = 7
 
 export const OFFERS_INITIAL_FILTERS = {
 	location: '',

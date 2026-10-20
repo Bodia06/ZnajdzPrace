@@ -2,8 +2,9 @@ import { useId, useState } from 'react'
 import AddButton from '@/components/features/generator/fields/AddButton'
 import EntryCard from '@/components/features/generator/fields/EntryCard'
 import TextField from '@/components/features/generator/fields/TextField'
+import FieldMessage from '@/components/ui/FieldMessage'
 import CrossIcon from '@/components/ui/icons/CrossIcon'
-import { GENERATOR_LEVELS } from '@/constants'
+import { GENERATOR_LEVELS, GENERATOR_LIMITS } from '@/constants'
 import { CONTROL } from '@/components/features/generator/fields/styles'
 
 export default function SkillsStep({
@@ -14,13 +15,24 @@ export default function SkillsStep({
 	onRemoveSkill,
 	onAddLanguage,
 	onRemoveLanguage,
-	onChangeLanguage
+	onChangeLanguage,
+	fieldProps,
+	errorTexts
 }) {
 	const [draft, setDraft] = useState('')
+	const [skillError, setSkillError] = useState(null)
 	const skillId = useId()
+	const skillMessageId = `${skillId}-message`
+
+	const changeDraft = (value) => {
+		setDraft(value)
+		setSkillError(null)
+	}
 
 	const submitSkill = () => {
-		if (onAddSkill(draft)) setDraft('')
+		const error = onAddSkill(draft)
+		setSkillError(error)
+		if (!error) setDraft('')
 	}
 
 	return (
@@ -34,13 +46,16 @@ export default function SkillsStep({
 						id={skillId}
 						value={draft}
 						placeholder={texts.skillPlaceholder}
-						onChange={(event) => setDraft(event.target.value)}
+						maxLength={GENERATOR_LIMITS.skill}
+						aria-invalid={Boolean(skillError) || undefined}
+						aria-describedby={skillMessageId}
+						onChange={(event) => changeDraft(event.target.value)}
 						onKeyDown={(event) => {
 							if (event.key !== 'Enter') return
 							event.preventDefault()
 							submitSkill()
 						}}
-						className={`${CONTROL} h-12`}
+						className={`${CONTROL} h-12 ${skillError ? 'border-red-500! bg-red-50 focus:bg-white' : ''}`}
 					/>
 					<button
 						type='button'
@@ -50,6 +65,11 @@ export default function SkillsStep({
 						{texts.addSkill}
 					</button>
 				</div>
+				<FieldMessage
+					id={skillMessageId}
+					error={skillError && errorTexts[skillError]}
+					hint={`${texts.skillHint} (${skills.length}/${GENERATOR_LIMITS.skills})`}
+				/>
 				{skills.length > 0 && (
 					<ul className='flex flex-wrap gap-2'>
 						{skills.map((skill) => (
@@ -88,6 +108,7 @@ export default function SkillsStep({
 										item={texts.languageName}
 										value={language.name}
 										onChange={(value) => onChangeLanguage(language.id, 'name', value)}
+										{...fieldProps(`languages.${language.id}.name`)}
 									/>
 									<LevelSelect
 										label={texts.languageLevel}

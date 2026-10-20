@@ -2,6 +2,7 @@ import { useId } from 'react'
 import MinusIcon from '@/components/ui/icons/MinusIcon'
 import PlusIcon from '@/components/ui/icons/PlusIcon'
 import { OFFERS_IDS } from '@/constants'
+import { salaryValue } from '@/lib/offers/params'
 import { canDecreaseSalary, stepSalary } from '@/lib/offers/salary'
 
 const STEP_BUTTON =
@@ -10,6 +11,11 @@ const STEP_BUTTON =
 export default function FilterSalary({ item, value, onChange }) {
 	const { name, label, unit, step, placeholder } = item
 	const id = useId()
+
+	const change = (next) => {
+		const result = salaryValue.safeParse(next)
+		if (result.success) onChange(result.data)
+	}
 
 	return (
 		<div>
@@ -27,13 +33,13 @@ export default function FilterSalary({ item, value, onChange }) {
 					step={step}
 					inputMode='numeric'
 					placeholder={placeholder}
-					onChange={(e) => onChange(e.target.value)}
+					onChange={(e) => change(e.target.value)}
 					className='appearance-textfield number-clean min-w-0 flex-1 bg-transparent text-base font-semibold text-ink outline-none placeholder:text-subtle'
 				/>
 				<span className='text-sm font-semibold text-muted'>{unit}</span>
 				<button
 					type='button'
-					onClick={() => onChange(stepSalary(value, -step))}
+					onClick={() => change(stepSalary(value, -step))}
 					disabled={!canDecreaseSalary(value)}
 					aria-label={item.decrease}
 					className={STEP_BUTTON}
@@ -42,7 +48,7 @@ export default function FilterSalary({ item, value, onChange }) {
 				</button>
 				<button
 					type='button'
-					onClick={() => onChange(stepSalary(value, step))}
+					onClick={() => change(stepSalary(value, step))}
 					aria-label={item.increase}
 					className={STEP_BUTTON}
 				>

@@ -1,4 +1,5 @@
 import { GENERATOR_STEP_IDS, GENERATOR_TEMPLATE_IDS } from './ids'
+import { GENERATOR_LIMITS } from './limits'
 
 export const GENERATOR_STEPS = [
 	{ id: GENERATOR_STEP_IDS.template, label: 'Szablon' },
@@ -66,26 +67,52 @@ export const GENERATOR_DATA = {
 		title: 'Dane osobowe',
 		text: 'Te informacje pojawią się w nagłówku CV.',
 		fields: {
-			firstName: { label: 'Imię', placeholder: 'Anna', autoComplete: 'given-name' },
-			lastName: { label: 'Nazwisko', placeholder: 'Kowalska', autoComplete: 'family-name' },
-			jobTitle: { label: 'Stanowisko', placeholder: 'Frontend Developer' },
+			firstName: {
+				label: 'Imię',
+				placeholder: 'Anna',
+				autoComplete: 'given-name',
+				maxLength: GENERATOR_LIMITS.name
+			},
+			lastName: {
+				label: 'Nazwisko',
+				placeholder: 'Kowalska',
+				autoComplete: 'family-name',
+				maxLength: GENERATOR_LIMITS.name
+			},
+			jobTitle: {
+				label: 'Stanowisko',
+				placeholder: 'Frontend Developer',
+				hint: 'Pojawi się pod imieniem w nagłówku CV',
+				maxLength: GENERATOR_LIMITS.jobTitle
+			},
 			email: {
 				label: 'Adres e-mail',
 				placeholder: 'anna.kowalska@poczta.pl',
 				type: 'email',
-				autoComplete: 'email'
+				autoComplete: 'email',
+				hint: 'Na ten adres odpowiedzą rekruterzy'
 			},
 			phone: {
 				label: 'Telefon',
 				placeholder: '+48 600 000 000',
 				type: 'tel',
-				autoComplete: 'tel'
+				autoComplete: 'tel',
+				hint: 'Opcjonalnie, np. +48 600 000 000',
+				maxLength: GENERATOR_LIMITS.phone
 			},
-			city: { label: 'Miasto', placeholder: 'Warszawa', autoComplete: 'address-level2' },
+			city: {
+				label: 'Miasto',
+				placeholder: 'Warszawa',
+				autoComplete: 'address-level2',
+				hint: 'Opcjonalnie',
+				maxLength: GENERATOR_LIMITS.city
+			},
 			summary: {
 				label: 'Krótki opis',
 				placeholder: 'Kilka zdań o Twoim doświadczeniu i celach zawodowych.',
-				multiline: true
+				hint: 'Opcjonalnie – 2–4 zdania o sobie',
+				multiline: true,
+				maxLength: GENERATOR_LIMITS.summary
 			}
 		}
 	},
@@ -96,14 +123,29 @@ export const GENERATOR_DATA = {
 		remove: 'Usuń',
 		add: 'Dodaj kolejne stanowisko',
 		fields: {
-			position: { label: 'Stanowisko', placeholder: 'Junior Frontend Developer' },
-			company: { label: 'Firma', placeholder: 'Webly sp. z o.o.' },
-			from: { label: 'Od', placeholder: '03.2025' },
-			to: { label: 'Do', placeholder: 'obecnie' },
+			position: {
+				label: 'Stanowisko',
+				placeholder: 'Junior Frontend Developer',
+				maxLength: GENERATOR_LIMITS.entryTitle
+			},
+			company: {
+				label: 'Firma',
+				placeholder: 'Webly sp. z o.o.',
+				maxLength: GENERATOR_LIMITS.entryTitle
+			},
+			from: { label: 'Od', placeholder: '03.2025', hint: 'MM.RRRR lub RRRR', maxLength: 7 },
+			to: {
+				label: 'Do',
+				placeholder: 'obecnie',
+				hint: 'MM.RRRR lub „obecnie”',
+				maxLength: 7
+			},
 			description: {
 				label: 'Opis obowiązków',
 				placeholder: 'Opisz, czym się zajmowałeś i jakie osiągnięcia masz na koncie.',
-				multiline: true
+				hint: 'Najważniejsze zadania i osiągnięcia',
+				multiline: true,
+				maxLength: GENERATOR_LIMITS.description
 			}
 		}
 	},
@@ -114,21 +156,53 @@ export const GENERATOR_DATA = {
 		remove: 'Usuń',
 		add: 'Dodaj kolejną szkołę',
 		fields: {
-			school: { label: 'Uczelnia lub szkoła', placeholder: 'Politechnika Warszawska' },
-			degree: { label: 'Kierunek i tytuł', placeholder: 'Informatyka, inż.' },
-			from: { label: 'Od', placeholder: '2022' },
-			to: { label: 'Do', placeholder: '2026' }
+			school: {
+				label: 'Uczelnia lub szkoła',
+				placeholder: 'Politechnika Warszawska',
+				maxLength: GENERATOR_LIMITS.entryTitle
+			},
+			degree: {
+				label: 'Kierunek i tytuł',
+				placeholder: 'Informatyka, inż.',
+				maxLength: GENERATOR_LIMITS.entryTitle
+			},
+			from: { label: 'Od', placeholder: '2022', hint: 'RRRR lub MM.RRRR', maxLength: 7 },
+			to: {
+				label: 'Do',
+				placeholder: '2026',
+				hint: 'RRRR lub „obecnie”',
+				maxLength: 7
+			}
 		}
+	},
+	errors: {
+		required: 'To pole jest wymagane',
+		tooLong: 'Wartość jest zbyt długa',
+		name: 'Użyj tylko liter, spacji i myślnika',
+		email: 'Podaj poprawny adres e-mail',
+		phone: 'Podaj poprawny numer, np. +48 600 000 000',
+		city: 'Podaj poprawną nazwę miasta',
+		date: 'Użyj formatu MM.RRRR lub RRRR',
+		dateFuture: 'Data rozpoczęcia nie może być z przyszłości',
+		dateOrder: 'Data końcowa nie może być wcześniejsza niż początkowa',
+		skillChars: 'Umiejętność zawiera niedozwolone znaki',
+		skillDuplicate: 'Ta umiejętność jest już na liście',
+		skillLimit: 'Osiągnięto limit 30 umiejętności'
 	},
 	skills: {
 		title: 'Umiejętności i języki',
 		text: 'Wpisz umiejętność i naciśnij Enter, aby ją dodać.',
 		skillsLabel: 'Umiejętności',
 		skillPlaceholder: 'np. React, TypeScript',
+		skillHint: 'Każda do 40 znaków, maks. 30 umiejętności',
 		addSkill: 'Dodaj',
 		removeSkill: 'Usuń umiejętność',
 		languagesLabel: 'Języki',
-		languageName: { label: 'Język', placeholder: 'Angielski' },
+		languageName: {
+			label: 'Język',
+			placeholder: 'Angielski',
+			maxLength: GENERATOR_LIMITS.language
+		},
 		languageLevel: 'Poziom',
 		addLanguage: 'Dodaj język',
 		removeLanguage: 'Usuń język'

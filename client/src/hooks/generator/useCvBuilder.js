@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { GENERATOR_STEPS, GENERATOR_STORAGE_KEY } from '@/constants'
+import { GENERATOR_DATA, GENERATOR_STEPS, GENERATOR_STORAGE_KEY } from '@/constants'
 import {
 	createEntry,
 	createInitialCv,
@@ -9,6 +9,7 @@ import {
 	isStepDone,
 	mergeDraft
 } from '@/lib/generator/cv'
+import { stepOfPath, validateCv, validateSkill } from '@/lib/generator/validation'
 
 const SAVED_TIMEOUT = 2200
 
@@ -16,6 +17,9 @@ export default function useCvBuilder() {
 	const [cv, setCv] = useState(createInitialCv)
 	const [stepIndex, setStepIndex] = useState(0)
 	const [saved, setSaved] = useState(false)
+	const [touched, setTouched] = useState({})
+	const [attempted, setAttempted] = useState({})
+	const [focusTick, setFocusTick] = useState(0)
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -36,6 +40,29 @@ export default function useCvBuilder() {
 		const timer = setTimeout(() => setSaved(false), SAVED_TIMEOUT)
 		return () => clearTimeout(timer)
 	}, [saved])
+
+	useEffect(() => {
+		if (focusTick) document.querySelector('[aria-invalid="true"]')?.focus()
+	}, [focusTick])
+
+	const errors = validateCv(cv)
+	const stepHasErrors = (stepId) => Object.keys(errors).some((path) => stepOfPath(path) === stepId)
+	const isInvalid = (prefix) => Object.keys(errors).some((path) => path.startsWith(prefix))
+
+	const fieldProps = (path) => {
+		const visible = errors[path] && (touched[path] || attempted[stepOfPath(path)])
+
+		return {
+			error: visible ? GENERATOR_DATA.errors[errors[path]] : undefined,
+			onBlur: () =>
+				setTouched((current) => (current[path] ? current : { ...current, [path]: true }))
+		}
+	}
+
+	const reveal = (stepId) => {
+		setAttempted((current) => ({ ...current, [stepId]: true }))
+		setFocusTick((tick) => tick + 1)
+	}
 
 	const steps = GENERATOR_STEPS.map((step, index) => ({
 		...step,
@@ -64,13 +91,11 @@ export default function useCvBuilder() {
 		)
 
 	const addSkill = (text) => {
-		const skill = text.trim()
-		if (!skill) return false
+		const error = validateSkill(text, cv.skills)
+		if (error) return error
 
-		updateList('skills', (list) =>
-			list.some((item) => item.toLowerCase() === skill.toLowerCase()) ? list : [...list, skill]
-		)
-		return true
+		updateList('skills', (list) => [...list, text.trim()])
+		return null
 	}
 
 	const removeSkill = (skill) =>
@@ -95,7 +120,20 @@ export default function useCvBuilder() {
 		}
 	}
 
-	const download = () => window.print()
+	const next = () => {
+		const { id } = GENERATOR_STEPS[stepIndex]
+		if (stepHasErrors(id)) return reveal(id)
+
+		setStepIndex((index) => Math.min(index + 1, GENERATOR_STEPS.length - 1))
+	}
+
+	const download = () => {
+		const invalidIndex = GENERATOR_STEPS.findIndex((step) => stepHasErrors(step.id))
+		if (invalidIndex === -1) return window.print()
+
+		setStepIndex(invalidIndex)
+		reveal(GENERATOR_STEPS[invalidIndex].id)
+	}
 
 	return {
 		cv,
@@ -104,10 +142,12 @@ export default function useCvBuilder() {
 		isFirst: stepIndex === 0,
 		isLast: stepIndex === GENERATOR_STEPS.length - 1,
 		saved,
-		next: () => setStepIndex((index) => Math.min(index + 1, GENERATOR_STEPS.length - 1)),
+		next,
 		back: () => setStepIndex((index) => Math.max(index - 1, 0)),
 		setTemplate: (template) => update({ template }),
 		setColor: (color) => update({ color }),
+		fieldProps,
+		isInvalid,
 		setPersonal,
 		addEntry,
 		removeEntry,

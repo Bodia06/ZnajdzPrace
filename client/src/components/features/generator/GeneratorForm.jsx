@@ -50,7 +50,12 @@ export default function GeneratorForm({ builder }) {
 					/>
 				)}
 				{step.id === GENERATOR_STEP_IDS.personal && (
-					<PersonalStep texts={texts} personal={cv.personal} onChange={builder.setPersonal} />
+					<PersonalStep
+						texts={texts}
+						personal={cv.personal}
+						onChange={builder.setPersonal}
+						fieldProps={builder.fieldProps}
+					/>
 				)}
 				{step.id === GENERATOR_STEP_IDS.experience && (
 					<ExperienceStep
@@ -59,6 +64,8 @@ export default function GeneratorForm({ builder }) {
 						onAdd={() => builder.addEntry('experience')}
 						onRemove={(id) => builder.removeEntry('experience', id)}
 						onChange={(id, name, value) => builder.setEntry('experience', id, name, value)}
+						fieldProps={builder.fieldProps}
+						isInvalid={builder.isInvalid}
 					/>
 				)}
 				{step.id === GENERATOR_STEP_IDS.education && (
@@ -68,6 +75,8 @@ export default function GeneratorForm({ builder }) {
 						onAdd={() => builder.addEntry('education')}
 						onRemove={(id) => builder.removeEntry('education', id)}
 						onChange={(id, name, value) => builder.setEntry('education', id, name, value)}
+						fieldProps={builder.fieldProps}
+						isInvalid={builder.isInvalid}
 					/>
 				)}
 				{step.id === GENERATOR_STEP_IDS.skills && (
@@ -80,6 +89,8 @@ export default function GeneratorForm({ builder }) {
 						onAddLanguage={builder.addLanguage}
 						onRemoveLanguage={builder.removeLanguage}
 						onChangeLanguage={builder.setLanguage}
+						fieldProps={builder.fieldProps}
+						errorTexts={GENERATOR_DATA.errors}
 					/>
 				)}
 			</div>

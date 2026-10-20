@@ -24,6 +24,7 @@ export default function RegisterForm({ texts, onSwitch }) {
 		autoComplete: fields[name].autoComplete,
 		inputMode: fields[name].inputMode,
 		placeholder: fields[name].placeholder,
+		hint: fields[name].hint,
 		error: errors[name] && texts.errors[errors[name]],
 		...extra
 	})

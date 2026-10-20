@@ -9,5 +9,12 @@ const FIELDS = [
 ]
 
 export default function ExperienceStep(props) {
-	return <EntriesStep {...props} fields={FIELDS} summaryFields={['position', 'company']} />
+	return (
+		<EntriesStep
+			{...props}
+			section='experience'
+			fields={FIELDS}
+			summaryFields={['position', 'company']}
+		/>
+	)
 }

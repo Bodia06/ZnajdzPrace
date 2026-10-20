@@ -1,5 +1,5 @@
 import { useId } from 'react'
-import FieldError from './FieldError'
+import FieldMessage from '@/components/ui/FieldMessage'
 
 const BOX =
 	'flex items-center gap-3 rounded-2xl border-[1.5px] bg-page/70 transition focus-within:border-primary focus-within:bg-white focus-within:ring-4 focus-within:ring-primary/10'
@@ -9,6 +9,7 @@ export default function AuthField({
 	labelAside,
 	icon,
 	error,
+	hint,
 	invalid = false,
 	trailing,
 	children,
@@ -16,7 +17,7 @@ export default function AuthField({
 	...inputProps
 }) {
 	const id = useId()
-	const errorId = `${id}-error`
+	const messageId = `${id}-message`
 	const hasError = invalid || Boolean(error)
 
 	return (
@@ -34,13 +35,13 @@ export default function AuthField({
 				<input
 					id={id}
 					aria-invalid={hasError || undefined}
-					aria-describedby={error ? errorId : undefined}
+					aria-describedby={error || hint ? messageId : undefined}
 					className='min-w-0 flex-1 bg-transparent py-3.5 text-base font-medium text-ink outline-none placeholder:text-subtle'
 					{...inputProps}
 				/>
 				{trailing}
 			</div>
-			<FieldError id={errorId} message={error} />
+			<FieldMessage id={messageId} error={error} hint={hint} />
 			{children}
 		</div>
 	)

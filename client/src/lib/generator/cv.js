@@ -1,9 +1,15 @@
+import { z } from 'zod'
 import {
 	GENERATOR_COLORS,
 	GENERATOR_SAMPLE,
 	GENERATOR_STEP_IDS,
 	GENERATOR_TEMPLATE_IDS
 } from '@/constants'
+import { draftSchema, personalSchema } from '@/lib/generator/schemas'
+
+const filledSchema = z.string().trim().min(1)
+
+const requiredPersonalSchema = personalSchema.pick({ firstName: true, lastName: true, email: true })
 
 const EMPTY_ENTRIES = {
 	experience: { position: '', company: '', from: '', to: '', description: '' },
@@ -43,19 +49,17 @@ export const createInitialCv = () => ({
 
 const filled = (value) => Boolean(value?.trim())
 
-const hasContent = (entry) =>
+export const hasContent = (entry) =>
 	Object.entries(entry).some(([key, value]) => key !== 'id' && filled(value))
 
 export const isStepDone = (stepId, cv) => {
 	switch (stepId) {
 		case GENERATOR_STEP_IDS.personal:
-			return (
-				filled(cv.personal.firstName) && filled(cv.personal.lastName) && filled(cv.personal.email)
-			)
+			return requiredPersonalSchema.safeParse(cv.personal).success
 		case GENERATOR_STEP_IDS.experience:
-			return cv.experience.some((entry) => filled(entry.position))
+			return cv.experience.some((entry) => filledSchema.safeParse(entry.position).success)
 		case GENERATOR_STEP_IDS.education:
-			return cv.education.some((entry) => filled(entry.school))
+			return cv.education.some((entry) => filledSchema.safeParse(entry.school).success)
 		case GENERATOR_STEP_IDS.skills:
 			return cv.skills.length > 0
 		default:
@@ -65,16 +69,19 @@ export const isStepDone = (stepId, cv) => {
 
 export const mergeDraft = (draft) => {
 	const base = createInitialCv()
-	if (!draft || typeof draft !== 'object') return base
+	const result = draftSchema.safeParse(draft)
+	if (!result.success) return base
+
+	const { template, color, personal, experience, education, skills, languages } = result.data
 
 	return {
-		...base,
-		...draft,
-		personal: { ...base.personal, ...draft.personal },
-		experience: draft.experience?.length ? draft.experience : base.experience,
-		education: draft.education?.length ? draft.education : base.education,
-		skills: draft.skills ?? base.skills,
-		languages: draft.languages ?? base.languages
+		template: template ?? base.template,
+		color: color ?? base.color,
+		personal: { ...base.personal, ...personal },
+		experience: experience.length ? experience : base.experience,
+		education: education.length ? education : base.education,
+		skills,
+		languages
 	}
 }
 

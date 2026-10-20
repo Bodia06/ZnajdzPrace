@@ -1,4 +1,4 @@
-import { MAX_PASSWORD_STRENGTH } from '@/lib/auth/validation'
+import { MAX_PASSWORD_STRENGTH } from '@/lib/auth/password'
 
 export default function PasswordStrength({ level, labels }) {
 	return (

@@ -1,6 +1,6 @@
 import TextField from '@/components/features/generator/fields/TextField'
 
-export default function PersonalStep({ texts, personal, onChange }) {
+export default function PersonalStep({ texts, personal, onChange, fieldProps }) {
 	const { fields } = texts
 	const field = (name, className) => (
 		<TextField
@@ -8,6 +8,7 @@ export default function PersonalStep({ texts, personal, onChange }) {
 			value={personal[name]}
 			onChange={(value) => onChange(name, value)}
 			className={className}
+			{...fieldProps(`personal.${name}`)}
 		/>
 	)
 

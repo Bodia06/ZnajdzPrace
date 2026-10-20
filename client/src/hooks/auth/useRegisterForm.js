@@ -2,7 +2,9 @@
 
 import { useState } from 'react'
 import { AUTH_ROLES } from '@/constants'
-import { getPasswordStrength, validateRegistration } from '@/lib/auth/validation'
+import { getPasswordStrength } from '@/lib/auth/password'
+import { registerSchema } from '@/lib/auth/schemas'
+import { validate } from '@/lib/validation'
 import { registerRequest } from '@/services/auth'
 
 const INITIAL_VALUES = {
@@ -35,13 +37,13 @@ export default function useRegisterForm() {
 		event.preventDefault()
 		if (status === 'submitting') return
 
-		const found = validateRegistration(role, values)
+		const { data, errors: found } = validate(registerSchema, { role, ...values })
 		setErrors(found)
-		if (Object.keys(found).length > 0) return
+		if (!data) return
 
 		setStatus('submitting')
 		try {
-			await registerRequest({ role, ...values })
+			await registerRequest(data)
 			setStatus('done')
 		} catch {
 			setStatus('failed')

@@ -9,7 +9,7 @@ import { AUTH_IDS } from '@/constants'
 import { useLoginForm } from '@/hooks'
 
 export default function LoginForm({ texts, onSwitch }) {
-	const { values, error, submitting, setValue, submit } = useLoginForm()
+	const { values, errors, error, submitting, setValue, submit } = useLoginForm()
 	const invalid = error === 'invalid'
 
 	return (
@@ -36,6 +36,7 @@ export default function LoginForm({ texts, onSwitch }) {
 				placeholder={texts.email.placeholder}
 				autoComplete={texts.email.autoComplete}
 				invalid={invalid}
+				error={errors.email && texts.errors[errors.email]}
 			/>
 			<PasswordField
 				texts={texts.password}
@@ -52,6 +53,7 @@ export default function LoginForm({ texts, onSwitch }) {
 				value={values.password}
 				onChange={(e) => setValue('password')(e.target.value)}
 				invalid={invalid}
+				error={errors.password && texts.errors[errors.password]}
 			/>
 			<CheckField
 				name={texts.remember.name}

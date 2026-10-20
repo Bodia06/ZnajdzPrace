@@ -47,6 +47,8 @@ export const AUTH_DATA = {
 		submitting: 'Logowanie',
 		switch: { text: 'Nie masz konta?', action: 'Zarejestruj się' },
 		errors: {
+			required: 'To pole jest wymagane',
+			email: 'Podaj poprawny adres e-mail',
 			invalid: 'Nieprawidłowy e-mail lub hasło. Spróbuj ponownie.',
 			server: 'Nie udało się zalogować. Spróbuj ponownie za chwilę.'
 		}
@@ -78,7 +80,13 @@ export const AUTH_DATA = {
 				placeholder: 'Acme Sp. z o.o.',
 				autoComplete: 'organization'
 			},
-			nip: { name: 'nip', label: 'NIP', placeholder: '1234567890', inputMode: 'numeric' },
+			nip: {
+				name: 'nip',
+				label: 'NIP',
+				placeholder: '1234567890',
+				inputMode: 'numeric',
+				hint: '10 cyfr, bez prefiksu PL'
+			},
 			email: {
 				name: 'email',
 				label: 'Adres e-mail',
@@ -89,7 +97,8 @@ export const AUTH_DATA = {
 				name: 'password',
 				label: 'Hasło',
 				placeholder: 'Min. 8 znaków',
-				autoComplete: 'new-password'
+				autoComplete: 'new-password',
+				hint: 'Użyj wielkich i małych liter, cyfry oraz znaku specjalnego'
 			},
 			confirm: {
 				name: 'confirm',
@@ -112,7 +121,10 @@ export const AUTH_DATA = {
 		errors: {
 			required: 'To pole jest wymagane',
 			email: 'Podaj poprawny adres e-mail',
+			tooLong: 'Wartość jest zbyt długa',
+			name: 'Użyj tylko liter, spacji i myślnika',
 			passwordShort: 'Hasło musi mieć co najmniej 8 znaków',
+			passwordLong: 'Hasło może mieć maksymalnie 128 znaków',
 			mismatch: 'Hasła nie są identyczne',
 			nip: 'Podaj poprawny numer NIP',
 			terms: 'Zaakceptuj regulamin i politykę prywatności',

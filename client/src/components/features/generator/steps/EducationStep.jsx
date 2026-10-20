@@ -8,5 +8,12 @@ const FIELDS = [
 ]
 
 export default function EducationStep(props) {
-	return <EntriesStep {...props} fields={FIELDS} summaryFields={['school', 'degree']} />
+	return (
+		<EntriesStep
+			{...props}
+			section='education'
+			fields={FIELDS}
+			summaryFields={['school', 'degree']}
+		/>
+	)
 }
