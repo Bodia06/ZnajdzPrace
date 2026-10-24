@@ -1,9 +1,9 @@
-import { desc } from 'drizzle-orm'
+import { desc, eq } from 'drizzle-orm'
 import { Hono } from 'hono'
 import { describeRoute, validator } from 'hono-openapi'
 import { db } from '../db/index.js'
 import { offers } from '../db/schema.js'
-import { createOfferSchema } from '../schemas/offers.js'
+import { createOfferSchema, offerParamsSchema } from '../schemas/offers.js'
 
 export const offersRoutes = new Hono()
 
@@ -30,6 +30,32 @@ offersRoutes.get(
 			.orderBy(desc(offers.createdAt), desc(offers.id))
 
 		return c.json(result)
+	}
+)
+
+offersRoutes.get(
+	'/:id',
+	describeRoute({
+		summary: 'Get job offer details',
+		responses: {
+			200: { description: 'Full offer details, including description, requirements and company.' },
+			400: { description: 'Invalid offer id.' },
+			404: { description: 'Offer not found.' },
+			500: { description: 'Could not read the offer from the database.' }
+		}
+	}),
+	validator('param', offerParamsSchema, (result, c) => {
+		if (!result.success) {
+			return c.json({ error: 'Invalid offer id', details: result.error }, 400)
+		}
+	}),
+	async (c) => {
+		const { id } = c.req.valid('param')
+		const [offer] = await db.select().from(offers).where(eq(offers.id, id))
+
+		if (!offer) return c.json({ error: 'Offer not found' }, 404)
+
+		return c.json(offer)
 	}
 )
 
