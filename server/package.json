@@ -11,15 +11,22 @@
 		"build": "tsc",
 		"start": "node --env-file-if-exists=.env dist/server.js",
 		"typecheck": "tsc --noEmit",
-		"lint": "eslint ."
+		"lint": "eslint .",
+		"db:check": "tsx --env-file-if-exists=.env src/db/check.ts",
+		"db:generate": "drizzle-kit generate",
+		"db:migrate": "drizzle-kit migrate"
 	},
 	"dependencies": {
 		"@hono/node-server": "^2.1.5",
-		"hono": "^4.13.13"
+		"drizzle-orm": "^0.45.4",
+		"hono": "^4.13.13",
+		"pg": "^8.23.1"
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
 		"@types/node": "^24.19.2",
+		"@types/pg": "^8.23.1",
+		"drizzle-kit": "^0.31.11",
 		"eslint": "^10.13.0",
 		"tsx": "^4.23.15",
 		"typescript": "^6.0.3",
