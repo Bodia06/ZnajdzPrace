@@ -1,22 +1,8 @@
 'use client'
 
 import { useRef, useState } from 'react'
-import { parseCity } from '@/lib/geocoding'
-
-const REVERSE_URL = 'https://nominatim.openstreetmap.org/reverse'
-
-async function fetchCity({ latitude, longitude }) {
-	const params = new URLSearchParams({
-		format: 'jsonv2',
-		lat: latitude,
-		lon: longitude,
-		zoom: 10,
-		'accept-language': 'pl'
-	})
-	const res = await fetch(`${REVERSE_URL}?${params}`)
-	if (!res.ok) throw new Error('reverse geocoding failed')
-	return parseCity(await res.json())
-}
+import { GEOLOCATION_OPTIONS } from '@/constants'
+import { fetchCity } from '@/services/sources/geocoding'
 
 export default function useGeolocationCity(onCity) {
 	const asked = useRef(false)
@@ -39,7 +25,7 @@ export default function useGeolocationCity(onCity) {
 				}
 			},
 			() => setLoading(false),
-			{ timeout: 10000, maximumAge: 600000 }
+			GEOLOCATION_OPTIONS
 		)
 	}
 

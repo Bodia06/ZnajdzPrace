@@ -2,17 +2,14 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { LINKS } from '@/constants'
-import { loginSchema } from '@/lib/auth/schemas'
-import { loginRequest } from '@/services/auth'
-import { validate } from '@/lib/validation'
-
-const INITIAL_VALUES = { email: '', password: '', remember: true }
-const INVALID_STATUSES = [400, 401, 403]
+import { AUTH_INVALID_STATUSES, AUTH_LOGIN_INITIAL_VALUES, LINKS } from '@/constants'
+import { loginSchema } from '@/utils/validation/auth'
+import { loginRequest } from '@/services/api/auth'
+import { validate } from '@/utils/validation'
 
 export default function useLoginForm() {
 	const router = useRouter()
-	const [values, setValues] = useState(INITIAL_VALUES)
+	const [values, setValues] = useState(AUTH_LOGIN_INITIAL_VALUES)
 	const [errors, setErrors] = useState({})
 	const [error, setError] = useState(null)
 	const [submitting, setSubmitting] = useState(false)
@@ -37,7 +34,7 @@ export default function useLoginForm() {
 			await loginRequest(data)
 			router.push(LINKS.HOME)
 		} catch (requestError) {
-			setError(INVALID_STATUSES.includes(requestError.status) ? 'invalid' : 'server')
+			setError(AUTH_INVALID_STATUSES.includes(requestError.status) ? 'invalid' : 'server')
 			setSubmitting(false)
 		}
 	}

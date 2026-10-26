@@ -12,7 +12,7 @@ export default function useOffersFilter(initialFilters = OFFERS_INITIAL_FILTERS,
 	const activeCount =
 		filters.contracts.length +
 		filters.levels.length +
-		[filters.location, filters.mode, filters.salary].filter(Boolean).length
+		[filters.mode, filters.salary].filter(Boolean).length
 
 	const setField = (key) => (value) => setFilters((current) => ({ ...current, [key]: value }))
 	const toggleField = (key) => (value) =>

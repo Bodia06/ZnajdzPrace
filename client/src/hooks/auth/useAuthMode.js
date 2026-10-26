@@ -1,19 +1,14 @@
 'use client'
 
 import { useState } from 'react'
-import { AUTH_MODES, LINKS } from '@/constants'
-
-const PATHS = {
-	[AUTH_MODES.login]: LINKS.LOGIN,
-	[AUTH_MODES.register]: LINKS.REGISTRATION
-}
+import { AUTH_MODES, AUTH_PATHS } from '@/constants'
 
 export default function useAuthMode(initialMode) {
 	const [mode, setMode] = useState(initialMode)
 
 	const switchTo = (next) => {
 		setMode(next)
-		window.history.replaceState(null, '', PATHS[next])
+		window.history.replaceState(null, '', AUTH_PATHS[next])
 	}
 
 	return {

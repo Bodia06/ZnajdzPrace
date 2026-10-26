@@ -2,8 +2,8 @@ import { useId } from 'react'
 import MinusIcon from '@/components/ui/icons/MinusIcon'
 import PlusIcon from '@/components/ui/icons/PlusIcon'
 import { OFFERS_IDS } from '@/constants'
-import { salaryValue } from '@/lib/offers/params'
-import { canDecreaseSalary, stepSalary } from '@/lib/offers/salary'
+import { salaryValue } from '@/lib/offersParams'
+import { canDecreaseSalary, stepSalary } from '@/lib/salary'
 
 const STEP_BUTTON =
 	'flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-lg bg-white text-ink shadow-sm transition hover:bg-primary-soft hover:text-primary active:scale-95 disabled:cursor-not-allowed disabled:opacity-40'

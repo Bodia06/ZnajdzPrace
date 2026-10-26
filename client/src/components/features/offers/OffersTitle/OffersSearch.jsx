@@ -1,19 +1,29 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import OffersCityField from './OffersCityField'
 import OffersField from './OffersField'
 import ClearIcon from '@/components/ui/icons/ClearCircleIcon'
 import SearchIcon from '@/components/ui/icons/SearchIcon'
 import { LINKS, OFFERS_IDS } from '@/constants'
+import { useOffersCity } from '@/hooks'
 
 export default function OffersSearch({ item, initial }) {
 	const { query, city, button } = item
 	const [queryValue, setQueryValue] = useState(initial.query)
-	const [cityValue, setCityValue] = useState(initial.city)
+	const { city: cityValue, setCity: setCityValue } = useOffersCity()
+	const formRef = useRef(null)
+
+	const clearedQuery = initial.query !== '' && queryValue === ''
+	const clearedCity = initial.city !== '' && cityValue === ''
+
+	useEffect(() => {
+		if (clearedQuery || clearedCity) formRef.current?.requestSubmit()
+	}, [clearedQuery, clearedCity])
 
 	return (
 		<form
+			ref={formRef}
 			id={OFFERS_IDS.form}
 			role='search'
 			aria-labelledby={OFFERS_IDS.title}

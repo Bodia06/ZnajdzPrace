@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { OFFERS_FILTER_DESKTOP_QUERY } from '@/constants'
-import useScrollLock from '@/hooks/useScrollLock'
+import useScrollLock from '@/hooks/common/useScrollLock'
 
 export default function useFilterSheet() {
 	const [open, setOpen] = useState(false)

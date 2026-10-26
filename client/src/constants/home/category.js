@@ -1,4 +1,8 @@
 import { LINKS } from '@/constants/layout/links'
+import { OFFERS_DATA } from '@/constants/offers/search'
+
+const searchLink = (query) =>
+	`${LINKS.OFFERS}?${new URLSearchParams({ [OFFERS_DATA.search.query.name]: query })}`
 
 export const CATEGORY_DATA = {
 	badge: 'Kategorie',
@@ -12,28 +16,28 @@ export const CATEGORY_DATA = {
 			id: 'it',
 			code: 'IT',
 			title: 'IT i programowanie',
-			link: `${LINKS.OFFERS}?category=it`,
+			link: searchLink('IT'),
 			variant: 'dark'
 		},
 		{
 			id: 'sales',
 			code: 'SP',
 			title: 'Sprzedaż',
-			link: `${LINKS.OFFERS}?category=sprzedaz`,
+			link: searchLink('Sprzedaż'),
 			variant: 'light'
 		},
 		{
 			id: 'finance',
 			code: 'FK',
 			title: 'Finanse i księgowość',
-			link: `${LINKS.OFFERS}?category=finanse`,
+			link: searchLink('Finanse'),
 			variant: 'peach'
 		},
 		{
 			id: 'logistics',
 			code: 'LM',
 			title: 'Logistyka i magazyn',
-			link: `${LINKS.OFFERS}?category=logistyka`,
+			link: searchLink('Logistyka'),
 			variant: 'primary'
 		}
 	]

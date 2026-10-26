@@ -4,7 +4,6 @@ export const OFFERS_FILTER_DATA = {
 	submit: 'Pokaż wyniki',
 	toggle: { open: 'Pokaż filtry', close: 'Ukryj filtry' },
 	location: {
-		name: 'location',
 		label: 'Lokalizacja',
 		placeholder: 'Cała Polska',
 		autoComplete: 'address-level2'

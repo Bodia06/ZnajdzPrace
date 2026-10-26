@@ -1,4 +1,5 @@
-import { CvEducation, CvExperience } from './CvEntries'
+import CvEducation from './entries/CvEducation'
+import CvExperience from './entries/CvExperience'
 import { GENERATOR_LABELS } from '@/constants'
 
 const TITLE = 'mb-2 text-[10px] font-extrabold tracking-[0.14em] uppercase print:break-after-avoid'

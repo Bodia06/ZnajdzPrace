@@ -1,6 +1,6 @@
-import ChatPanel from './ChatPanel'
-import FavoritesPanel from './FavoritesPanel'
-import HistoryPanel from './HistoryPanel'
+import ChatPanel from './panels/ChatPanel'
+import FavoritesPanel from './panels/FavoritesPanel'
+import HistoryPanel from './panels/HistoryPanel'
 import ToolCard from '@/components/features/home/Tools/shared/ToolCard'
 import ToolLink from '@/components/features/home/Tools/shared/ToolLink'
 

@@ -1,0 +1,1 @@
+ALTER TABLE "offers" DROP COLUMN "contract_type";

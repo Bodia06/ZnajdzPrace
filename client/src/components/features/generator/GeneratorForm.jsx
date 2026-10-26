@@ -1,5 +1,5 @@
-import EducationStep from './steps/EducationStep'
-import ExperienceStep from './steps/ExperienceStep'
+import EducationStep from './steps/entries/EducationStep'
+import ExperienceStep from './steps/entries/ExperienceStep'
 import PersonalStep from './steps/PersonalStep'
 import SkillsStep from './steps/SkillsStep'
 import TemplateStep from './steps/TemplateStep'
@@ -9,6 +9,7 @@ import {
 	GENERATOR_IDS,
 	GENERATOR_PANEL_HEIGHT,
 	GENERATOR_STEP_IDS,
+	GENERATOR_SECTIONS,
 	GENERATOR_STEPS
 } from '@/constants'
 
@@ -61,9 +62,11 @@ export default function GeneratorForm({ builder }) {
 					<ExperienceStep
 						texts={texts}
 						entries={cv.experience}
-						onAdd={() => builder.addEntry('experience')}
-						onRemove={(id) => builder.removeEntry('experience', id)}
-						onChange={(id, name, value) => builder.setEntry('experience', id, name, value)}
+						onAdd={() => builder.addEntry(GENERATOR_SECTIONS.experience)}
+						onRemove={(id) => builder.removeEntry(GENERATOR_SECTIONS.experience, id)}
+						onChange={(id, name, value) =>
+							builder.setEntry(GENERATOR_SECTIONS.experience, id, name, value)
+						}
 						fieldProps={builder.fieldProps}
 						isInvalid={builder.isInvalid}
 					/>
@@ -72,9 +75,11 @@ export default function GeneratorForm({ builder }) {
 					<EducationStep
 						texts={texts}
 						entries={cv.education}
-						onAdd={() => builder.addEntry('education')}
-						onRemove={(id) => builder.removeEntry('education', id)}
-						onChange={(id, name, value) => builder.setEntry('education', id, name, value)}
+						onAdd={() => builder.addEntry(GENERATOR_SECTIONS.education)}
+						onRemove={(id) => builder.removeEntry(GENERATOR_SECTIONS.education, id)}
+						onChange={(id, name, value) =>
+							builder.setEntry(GENERATOR_SECTIONS.education, id, name, value)
+						}
 						fieldProps={builder.fieldProps}
 						isInvalid={builder.isInvalid}
 					/>

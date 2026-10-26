@@ -39,7 +39,12 @@ export default function OfferCard({ offer, labels }) {
 			</div>
 
 			<div className='col-span-2 flex flex-col gap-3 border-t border-ink/5 pt-4 min-[750px]:col-span-1 min-[750px]:col-start-3 min-[750px]:row-span-2 min-[750px]:row-start-1 min-[750px]:items-end min-[750px]:justify-between min-[750px]:gap-4 min-[750px]:self-stretch min-[750px]:border-0 min-[750px]:pt-0'>
-				<OfferSalary salary={salary} unit={labels.salaryUnit} period={labels.salaryPeriod} />
+				<OfferSalary
+					salary={salary}
+					unit={labels.salaryUnit}
+					period={labels.salaryPeriod}
+					missing={labels.salaryMissing}
+				/>
 				<div className='flex items-center gap-3'>
 					<FavoriteButton
 						initial={isFavorite}

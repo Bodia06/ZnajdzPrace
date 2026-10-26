@@ -1,7 +1,8 @@
 import { Geist, Plus_Jakarta_Sans } from 'next/font/google'
 import Footer from '@/components/layout/Footer'
 import Header from '@/components/layout/Header'
-import { siteConfig } from '@/config/site'
+import StoreProvider from '@/components/providers/StoreProvider'
+import { siteConfig } from '@/config'
 
 import './globals.css'
 
@@ -43,12 +44,14 @@ export default function RootLayout({ children, modal }) {
 				>
 					Przejdź do treści
 				</a>
-				<Header />
-				<main id='main' className='flex-1 overflow-x-clip'>
-					{children}
-				</main>
-				<Footer />
-				{modal}
+				<StoreProvider>
+					<Header />
+					<main id='main' className='flex-1 overflow-x-clip'>
+						{children}
+					</main>
+					<Footer />
+					{modal}
+				</StoreProvider>
 			</body>
 		</html>
 	)

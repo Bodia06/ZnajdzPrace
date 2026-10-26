@@ -1,10 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { SHARE_FEEDBACK_MS } from '@/constants'
 import ShareIcon from '@/components/ui/icons/ShareIcon'
 import TickIcon from '@/components/ui/icons/TickIcon'
-
-const FEEDBACK_MS = 2000
 
 async function copy(text) {
 	try {
@@ -27,7 +26,7 @@ export default function ShareButton({ label, copiedLabel }) {
 
 	useEffect(() => {
 		if (!copied) return
-		const timer = setTimeout(() => setCopied(false), FEEDBACK_MS)
+		const timer = setTimeout(() => setCopied(false), SHARE_FEEDBACK_MS)
 		return () => clearTimeout(timer)
 	}, [copied])
 

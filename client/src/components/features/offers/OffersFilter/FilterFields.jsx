@@ -15,11 +15,7 @@ export default function FilterFields({ data, filters, setField, toggleField }) {
 		<div className='grid md:grid-cols-2 md:gap-x-10 lg:grid-cols-1'>
 			<div className='divide-y divide-ink/5'>
 				<div className={LEFT_ROW}>
-					<FilterLocation
-						item={location}
-						value={filters.location}
-						onChange={setField('location')}
-					/>
+					<FilterLocation item={location} />
 				</div>
 
 				<div className={LEFT_ROW}>

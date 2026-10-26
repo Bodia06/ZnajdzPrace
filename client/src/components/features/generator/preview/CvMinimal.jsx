@@ -1,19 +1,7 @@
-import { CvEducation, CvExperience } from './CvEntries'
+import CvEducation from './entries/CvEducation'
+import CvExperience from './entries/CvExperience'
+import CvSection from './CvSection'
 import { GENERATOR_LABELS } from '@/constants'
-
-const TITLE =
-	'mb-2 border-b pb-1 text-[10px] font-extrabold tracking-[0.14em] uppercase print:break-after-avoid'
-
-function Section({ title, color, children }) {
-	return (
-		<div>
-			<p className={TITLE} style={{ color, borderColor: `${color}33` }}>
-				{title}
-			</p>
-			{children}
-		</div>
-	)
-}
 
 export default function CvMinimal({ data, color }) {
 	return (
@@ -34,31 +22,31 @@ export default function CvMinimal({ data, color }) {
 				)}
 			</header>
 			{data.summary && (
-				<Section title={GENERATOR_LABELS.summary} color={color}>
+				<CvSection title={GENERATOR_LABELS.summary} color={color}>
 					<p className='text-[11.5px] leading-relaxed text-ink/80'>{data.summary}</p>
-				</Section>
+				</CvSection>
 			)}
 			{data.experience.length > 0 && (
-				<Section title={GENERATOR_LABELS.experience} color={color}>
+				<CvSection title={GENERATOR_LABELS.experience} color={color}>
 					<CvExperience items={data.experience} inline />
-				</Section>
+				</CvSection>
 			)}
 			{data.education.length > 0 && (
-				<Section title={GENERATOR_LABELS.education} color={color}>
+				<CvSection title={GENERATOR_LABELS.education} color={color}>
 					<CvEducation items={data.education} inline />
-				</Section>
+				</CvSection>
 			)}
 			{data.skills.length > 0 && (
-				<Section title={GENERATOR_LABELS.skills} color={color}>
+				<CvSection title={GENERATOR_LABELS.skills} color={color}>
 					<p className='text-[11.5px] leading-relaxed'>{data.skills.join(' · ')}</p>
-				</Section>
+				</CvSection>
 			)}
 			{data.languages.length > 0 && (
-				<Section title={GENERATOR_LABELS.languages} color={color}>
+				<CvSection title={GENERATOR_LABELS.languages} color={color}>
 					<p className='text-[11.5px] leading-relaxed'>
 						{data.languages.map((language) => `${language.name} – ${language.level}`).join(' · ')}
 					</p>
-				</Section>
+				</CvSection>
 			)}
 		</div>
 	)

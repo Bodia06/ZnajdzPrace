@@ -1,9 +1,9 @@
 import OfferDetailsAiMatch from './OfferDetailsAiMatch'
-import OfferDetailsContent from './OfferDetailsContent/index'
+import OfferDetailsContent from './OfferDetailsContent'
 import OfferDetailsFacts from './OfferDetailsFacts'
 import OfferDetailsRecruitment from './OfferDetailsRecruitment'
 import OfferDetailsSimilar from './OfferDetailsSimilar'
-import OfferDetailsTitle from './OfferDetailsTitle/index'
+import OfferDetailsTitle from './OfferDetailsTitle'
 
 export default function OfferDetails({ offer, similar, content }) {
 	return (

@@ -1,7 +1,8 @@
-const ZOOM = 15
+import { MAPS_EMBED_URL } from '@/config'
+import { OFFER_MAP_ZOOM } from '@/constants'
 
 export default function OfferMap({ coordinates, label }) {
-	const src = `https://maps.google.com/maps?q=${coordinates.join(',')}&z=${ZOOM}&hl=pl&output=embed`
+	const src = `${MAPS_EMBED_URL}?q=${coordinates.join(',')}&z=${OFFER_MAP_ZOOM}&hl=pl&output=embed`
 
 	return (
 		<iframe

@@ -1,8 +1,7 @@
 'use client'
 
 import { useLayoutEffect, useRef, useState } from 'react'
-
-const CONTAIN_QUERY = '(min-width: 1024px)'
+import { GENERATOR_CONTAIN_QUERY } from '@/constants'
 
 export default function useFitScale(designWidth, designHeight) {
 	const ref = useRef(null)
@@ -12,7 +11,7 @@ export default function useFitScale(designWidth, designHeight) {
 		const element = ref.current
 		if (!element) return
 
-		const media = window.matchMedia(CONTAIN_QUERY)
+		const media = window.matchMedia(GENERATOR_CONTAIN_QUERY)
 		const measure = () => {
 			const byWidth = element.clientWidth / designWidth
 			const byHeight = element.clientHeight / designHeight

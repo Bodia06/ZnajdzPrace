@@ -23,8 +23,8 @@ const yearsNoun = (years) => {
 
 export const formatYears = (years) => `${years} ${yearsNoun(years)}`
 
-export function formatResultsTitle({ query, city, location }, { fallbackTitle, locative }) {
-	const place = city || location
+export function formatResultsTitle({ query, city }, { fallbackTitle, locative }) {
+	const place = city
 	const main = query || fallbackTitle
 
 	if (!place) return { main, place: '' }

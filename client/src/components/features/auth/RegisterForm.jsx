@@ -6,7 +6,7 @@ import FormAlert from './fields/FormAlert'
 import PasswordStrength from './fields/PasswordStrength'
 import RoleSwitch from './fields/RoleSwitch'
 import Link from 'next/link'
-import { AUTH_IDS, AUTH_ROLES } from '@/constants'
+import { AUTH_IDS, AUTH_ROLES, FORM_STATUS } from '@/constants'
 import { useRegisterForm } from '@/hooks'
 
 export default function RegisterForm({ texts, onSwitch }) {
@@ -14,7 +14,7 @@ export default function RegisterForm({ texts, onSwitch }) {
 	const { fields } = texts
 	const isCandidate = role === AUTH_ROLES.candidate
 	const suffix = texts.roles.find((item) => item.value === role).suffix
-	const submitting = status === 'submitting'
+	const submitting = status === FORM_STATUS.submitting
 
 	const field = (name, extra = {}) => ({
 		label: fields[name].label,
@@ -29,7 +29,7 @@ export default function RegisterForm({ texts, onSwitch }) {
 		...extra
 	})
 
-	if (status === 'done') {
+	if (status === FORM_STATUS.done) {
 		return <RegisterSuccess texts={texts.success} email={values.email} onLogin={onSwitch} />
 	}
 
@@ -47,7 +47,7 @@ export default function RegisterForm({ texts, onSwitch }) {
 
 			<RoleSwitch label={texts.rolesLabel} roles={texts.roles} value={role} onChange={setRole} />
 
-			<FormAlert message={status === 'failed' ? texts.errors.server : undefined} />
+			<FormAlert message={status === FORM_STATUS.failed ? texts.errors.server : undefined} />
 
 			{isCandidate ? (
 				<div className='grid gap-3 motion-safe:animate-fade-down min-[480px]:grid-cols-2'>

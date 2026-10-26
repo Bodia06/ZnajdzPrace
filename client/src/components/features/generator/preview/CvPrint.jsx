@@ -1,5 +1,5 @@
 import { CV_TEMPLATES, DEFAULT_CV_TEMPLATE } from './templates'
-import { buildPreview, colorValue } from '@/lib/generator/cv'
+import { buildPreview, colorValue } from '@/lib/cv'
 
 export default function CvPrint({ cv, label }) {
 	const Template = CV_TEMPLATES[cv.template] ?? DEFAULT_CV_TEMPLATE

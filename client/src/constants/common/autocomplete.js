@@ -1,0 +1,5 @@
+export const AUTOCOMPLETE_MIN_LENGTH = 3
+export const AUTOCOMPLETE_MAX_SUGGESTIONS = 10
+export const AUTOCOMPLETE_DEBOUNCE_MS = 200
+
+export const GEOLOCATION_OPTIONS = { timeout: 10000, maximumAge: 600000 }

@@ -27,10 +27,21 @@ export const OFFER_DETAILS_DATA = {
 		action: 'Sprawdź dopasowanie'
 	},
 	recruitment: { title: 'Rekrutacja w 3 krokach' },
-	similar: { title: 'Podobne oferty', unit: 'zł', thousand: 'tys.' },
+	similar: {
+		title: 'Podobne oferty',
+		unit: 'zł',
+		thousand: 'tys.',
+		salaryMissing: 'Do uzgodnienia'
+	},
 	facts: {
 		label: 'Najważniejsze informacje',
-		salary: { label: 'Wynagrodzenie', unit: 'zł', thousand: 'tys.', period: 'brutto / mies.' },
+		salary: {
+			label: 'Wynagrodzenie',
+			unit: 'zł',
+			thousand: 'tys.',
+			period: 'brutto / mies.',
+			missing: 'Do uzgodnienia'
+		},
 		contract: {
 			label: 'Umowa',
 			values: {

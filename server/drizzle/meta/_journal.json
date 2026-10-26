@@ -8,6 +8,34 @@
       "when": 1792878147668,
       "tag": "0000_create_offers",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1793030780690,
+      "tag": "0001_add_offer_frontend_fields",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1793030785682,
+      "tag": "0002_drop_offer_contract_type",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1793032180359,
+      "tag": "0003_add_offer_levels_and_salary_contract",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1793032185579,
+      "tag": "0004_drop_offer_level",
+      "breakpoints": true
     }
   ]
 }

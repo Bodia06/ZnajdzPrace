@@ -6,7 +6,7 @@ import FilterTrigger from './FilterTrigger'
 import ArrowIcon from '@/components/ui/icons/ArrowIcon'
 import { OFFERS_IDS } from '@/constants'
 import { useFilterSheet, useOffersFilter } from '@/hooks'
-import { getFilterParams } from '@/lib/offers/params'
+import { getFilterParams } from '@/lib/offersParams'
 
 export default function OffersFilter({ data, initialFilters }) {
 	const { title, clear, submit, toggle } = data

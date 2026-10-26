@@ -6,9 +6,9 @@ import ResultsSort from './ResultsSort'
 import Pagination from '@/components/ui/Pagination'
 import { OFFERS_IDS } from '@/constants'
 import { formatResultsTitle } from '@/lib/format'
-import { getOffers } from '@/lib/offers/filter'
-import { paginate } from '@/lib/offers/pagination'
-import { getActiveFilters, getPagination, getSortOptions } from '@/lib/offers/url'
+import { getOffers } from '@/lib/offersFilter'
+import { paginate } from '@/lib/pagination'
+import { getActiveFilters, getPagination, getSortOptions } from '@/lib/offersUrl'
 
 export default function OffersResults({
 	offers: allOffers,
@@ -32,7 +32,7 @@ export default function OffersResults({
 			<div className='flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6'>
 				<ResultsHeader
 					id={OFFERS_IDS.resultsTitle}
-					title={formatResultsTitle({ ...search, location: filters.location }, header)}
+					title={formatResultsTitle(search, header)}
 					description={header.description}
 				/>
 				<ResultsSort item={sortData} value={sort} options={getSortOptions(state, content)} />

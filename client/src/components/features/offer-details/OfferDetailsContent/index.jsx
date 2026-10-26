@@ -1,7 +1,9 @@
+import Benefits from './Benefits'
 import OfferMap from './OfferMap'
 import Section from './Section'
 import PinIcon from '@/components/ui/icons/PinIcon'
 import TickIcon from '@/components/ui/icons/TickIcon'
+import { MAPS_SEARCH_URL } from '@/config'
 import { formatYears } from '@/lib/format'
 
 const CARD =
@@ -24,9 +26,7 @@ export default function OfferDetailsContent({ offer, labels }) {
 		location,
 		coordinates
 	} = offer
-	const mapsUrl = coordinates
-		? `https://www.google.com/maps/search/?api=1&query=${coordinates.join(',')}`
-		: ''
+	const mapsUrl = coordinates ? `${MAPS_SEARCH_URL}?api=1&query=${coordinates.join(',')}` : ''
 	const required = skills.filter((skill) => skill.required)
 	const optional = skills.filter((skill) => !skill.required)
 
@@ -51,36 +51,29 @@ export default function OfferDetailsContent({ offer, labels }) {
 				</Section>
 			)}
 
-			{skills.length > 0 && (
+			{(skills.length > 0 || requirementsNote) && (
 				<Section title={labels.requirements}>
-					<ul className='flex flex-wrap gap-2'>
-						{[...required, ...optional].map((skill) => (
-							<li
-								key={skill.name}
-								className={`rounded-full px-3.5 py-2 text-xs font-bold sm:text-[13px] ${
-									skill.required ? 'bg-ink text-white' : 'bg-page text-muted'
-								}`}
-							>
-								{skillLabel(skill, labels)}
-							</li>
-						))}
-					</ul>
+					{skills.length > 0 && (
+						<ul className='flex flex-wrap gap-2'>
+							{[...required, ...optional].map((skill) => (
+								<li
+									key={skill.name}
+									className={`rounded-full px-3.5 py-2 text-xs font-bold sm:text-[13px] ${
+										skill.required ? 'bg-ink text-white' : 'bg-page text-muted'
+									}`}
+								>
+									{skillLabel(skill, labels)}
+								</li>
+							))}
+						</ul>
+					)}
 					{requirementsNote && <p className={BODY}>{requirementsNote}</p>}
 				</Section>
 			)}
 
 			{benefits.length > 0 && (
 				<Section title={labels.benefits}>
-					<ul className='grid grid-cols-1 gap-3 min-[480px]:grid-cols-2 xl:grid-cols-4'>
-						{benefits.map((benefit) => (
-							<li
-								key={benefit}
-								className='flex items-center rounded-2xl bg-page px-4 py-3.5 text-sm font-semibold text-ink'
-							>
-								{benefit}
-							</li>
-						))}
-					</ul>
+					<Benefits items={benefits} />
 				</Section>
 			)}
 

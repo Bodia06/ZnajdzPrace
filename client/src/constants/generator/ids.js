@@ -19,3 +19,10 @@ export const GENERATOR_TEMPLATE_IDS = {
 }
 
 export const GENERATOR_STORAGE_KEY = 'znajdz-cv-draft'
+
+export const GENERATOR_SECTIONS = {
+	experience: 'experience',
+	education: 'education',
+	skills: 'skills',
+	languages: 'languages'
+}

@@ -18,6 +18,7 @@ server.on('error', (error) => {
 
 for (const signal of ['SIGINT', 'SIGTERM'] as const) {
 	process.once(signal, () => {
+		if ('closeAllConnections' in server) server.closeAllConnections()
 		server.close((error) => {
 			if (error) console.error(error)
 			process.exit(error ? 1 : 0)

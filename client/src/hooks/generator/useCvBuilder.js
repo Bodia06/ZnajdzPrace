@@ -1,17 +1,15 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { GENERATOR_DATA, GENERATOR_STEPS, GENERATOR_STORAGE_KEY } from '@/constants'
 import {
-	createEntry,
-	createInitialCv,
-	createLanguage,
-	isStepDone,
-	mergeDraft
-} from '@/lib/generator/cv'
-import { stepOfPath, validateCv, validateSkill } from '@/lib/generator/validation'
-
-const SAVED_TIMEOUT = 2200
+	GENERATOR_DATA,
+	GENERATOR_SAVED_TIMEOUT,
+	GENERATOR_SECTIONS,
+	GENERATOR_STEPS
+} from '@/constants'
+import { createEntry, createInitialCv, createLanguage, isStepDone } from '@/lib/cv'
+import { loadCvDraft, saveCvDraft } from '@/services/sources/cvDraft'
+import { stepOfPath, validateCv, validateSkill } from '@/utils/validation/cv'
 
 export default function useCvBuilder() {
 	const [cv, setCv] = useState(createInitialCv)
@@ -24,8 +22,8 @@ export default function useCvBuilder() {
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			try {
-				const raw = window.localStorage.getItem(GENERATOR_STORAGE_KEY)
-				if (raw) setCv(mergeDraft(JSON.parse(raw)))
+				const draft = loadCvDraft()
+				if (draft) setCv(draft)
 			} catch {
 				setCv(createInitialCv())
 			}
@@ -37,7 +35,7 @@ export default function useCvBuilder() {
 	useEffect(() => {
 		if (!saved) return
 
-		const timer = setTimeout(() => setSaved(false), SAVED_TIMEOUT)
+		const timer = setTimeout(() => setSaved(false), GENERATOR_SAVED_TIMEOUT)
 		return () => clearTimeout(timer)
 	}, [saved])
 
@@ -94,26 +92,29 @@ export default function useCvBuilder() {
 		const error = validateSkill(text, cv.skills)
 		if (error) return error
 
-		updateList('skills', (list) => [...list, text.trim()])
+		updateList(GENERATOR_SECTIONS.skills, (list) => [...list, text.trim()])
 		return null
 	}
 
 	const removeSkill = (skill) =>
-		updateList('skills', (list) => list.filter((item) => item !== skill))
+		updateList(GENERATOR_SECTIONS.skills, (list) => list.filter((item) => item !== skill))
 
-	const addLanguage = () => updateList('languages', (list) => [...list, createLanguage()])
+	const addLanguage = () =>
+		updateList(GENERATOR_SECTIONS.languages, (list) => [...list, createLanguage()])
 
 	const removeLanguage = (id) =>
-		updateList('languages', (list) => list.filter((language) => language.id !== id))
+		updateList(GENERATOR_SECTIONS.languages, (list) =>
+			list.filter((language) => language.id !== id)
+		)
 
 	const setLanguage = (id, name, value) =>
-		updateList('languages', (list) =>
+		updateList(GENERATOR_SECTIONS.languages, (list) =>
 			list.map((language) => (language.id === id ? { ...language, [name]: value } : language))
 		)
 
 	const saveDraft = () => {
 		try {
-			window.localStorage.setItem(GENERATOR_STORAGE_KEY, JSON.stringify(cv))
+			saveCvDraft(cv)
 			setSaved(true)
 		} catch {
 			setSaved(false)

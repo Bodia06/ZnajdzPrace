@@ -1,4 +1,5 @@
-import { CvEducation, CvExperience } from './CvEntries'
+import CvEducation from './entries/CvEducation'
+import CvExperience from './entries/CvExperience'
 import { GENERATOR_LABELS } from '@/constants'
 
 const SIDE_TITLE =
@@ -21,7 +22,7 @@ export default function CvSidebar({ data, color }) {
 				{data.contacts.length > 0 && (
 					<div>
 						<p className={SIDE_TITLE}>{GENERATOR_LABELS.contact}</p>
-						<ul className='flex flex-col gap-1 text-[11.5px] break-words'>
+						<ul className='flex flex-col gap-1 text-[11.5px] wrap-break-word'>
 							{data.contacts.map((contact) => (
 								<li key={contact}>{contact}</li>
 							))}

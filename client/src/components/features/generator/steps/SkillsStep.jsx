@@ -1,10 +1,11 @@
 import { useId, useState } from 'react'
 import AddButton from '@/components/features/generator/fields/AddButton'
 import EntryCard from '@/components/features/generator/fields/EntryCard'
+import LevelSelect from '@/components/features/generator/fields/LevelSelect'
 import TextField from '@/components/features/generator/fields/TextField'
 import FieldMessage from '@/components/ui/FieldMessage'
 import CrossIcon from '@/components/ui/icons/CrossIcon'
-import { GENERATOR_LEVELS, GENERATOR_LIMITS } from '@/constants'
+import { GENERATOR_LIMITS } from '@/constants'
 import { CONTROL } from '@/components/features/generator/fields/styles'
 
 export default function SkillsStep({
@@ -122,30 +123,6 @@ export default function SkillsStep({
 				)}
 				<AddButton onClick={onAddLanguage}>{texts.addLanguage}</AddButton>
 			</div>
-		</div>
-	)
-}
-
-function LevelSelect({ label, value, onChange }) {
-	const id = useId()
-
-	return (
-		<div className='flex flex-col gap-1.5'>
-			<label htmlFor={id} className='text-sm font-bold text-ink'>
-				{label}
-			</label>
-			<select
-				id={id}
-				value={value}
-				onChange={(event) => onChange(event.target.value)}
-				className={`${CONTROL} h-12 cursor-pointer`}
-			>
-				{GENERATOR_LEVELS.map((level) => (
-					<option key={level} value={level}>
-						{level}
-					</option>
-				))}
-			</select>
 		</div>
 	)
 }

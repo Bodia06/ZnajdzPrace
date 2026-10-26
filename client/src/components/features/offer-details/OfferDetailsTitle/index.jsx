@@ -32,7 +32,8 @@ export default function OfferDetailsTitle({ offer, labels }) {
 							</span>
 						)}
 						<span>
-							{labels.postedPrefix} {posted} · {labels.validUntilPrefix} {formatDate(validUntil)}
+							{labels.postedPrefix} {posted}
+							{validUntil && ` · ${labels.validUntilPrefix} ${formatDate(validUntil)}`}
 						</span>
 					</p>
 					<h2 className='mt-1.5 text-xl leading-tight font-extrabold tracking-tight text-balance wrap-break-word text-ink min-[400px]:text-2xl sm:text-3xl lg:text-4xl'>
