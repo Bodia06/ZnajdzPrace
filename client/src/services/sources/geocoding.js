@@ -38,10 +38,12 @@ export async function searchCities(query, signal) {
 	const seen = new Set()
 	return results
 		.filter(({ feature_code }) => feature_code?.startsWith('PPL'))
-		.map(({ id, name, admin1 = '' }) => ({
+		.map(({ id, name, admin1 = '', latitude, longitude }) => ({
 			id: String(id),
 			name,
-			region: admin1.replace(/^województwo\s+/i, '').toLowerCase()
+			region: admin1.replace(/^województwo\s+/i, '').toLowerCase(),
+			latitude,
+			longitude
 		}))
 		.filter(({ name, region }) => {
 			const key = `${name}-${region}`
@@ -61,4 +63,15 @@ export async function fetchCity({ latitude, longitude }) {
 	const res = await fetch(`${GEOCODING_REVERSE_URL}?${params}`)
 	if (!res.ok) throw new Error('reverse geocoding failed')
 	return parseCity(await res.json())
+}
+
+export async function findCityCoordinates(name) {
+	try {
+		const cities = await searchCities(name)
+		const city =
+			cities.find((entry) => entry.name.toLowerCase() === name.toLowerCase()) ?? cities[0]
+		return city ? { latitude: city.latitude, longitude: city.longitude } : {}
+	} catch {
+		return {}
+	}
 }

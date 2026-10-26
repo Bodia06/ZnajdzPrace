@@ -25,6 +25,7 @@ export { default as useEntryAccordion } from './generator/useEntryAccordion'
 export { default as useFitScale } from './generator/useFitScale'
 
 export { default as useFilterSheet } from './offers/useFilterSheet'
+export { default as useOfferCreateForm } from './offers/useOfferCreateForm'
 export { default as useOffers } from './offers/useOffers'
 export { default as useOffersCity } from './offers/useOffersCity'
 export { default as useOffersFilter } from './offers/useOffersFilter'

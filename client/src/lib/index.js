@@ -1,5 +1,6 @@
 export * from './cv'
 export * from './format'
+export * from './offerForm'
 export * from './offersFilter'
 export * from './offersParams'
 export * from './offersUrl'

@@ -28,6 +28,7 @@ export * from './offers/search'
 export * from './offers/filter'
 export * from './offers/results'
 export * from './offers/details'
+export * from './offers/create'
 
 export * from './generator/ids'
 export * from './generator/layout'

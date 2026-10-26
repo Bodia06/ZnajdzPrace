@@ -23,7 +23,7 @@ const stateOf = (step) => {
 	return step.done ? 'done' : 'todo'
 }
 
-export default function GeneratorSteps({ label, steps }) {
+export default function Steps({ label, doneLabel, steps }) {
 	const current = steps.find((step) => step.active)
 	const activeIndex = steps.findIndex((step) => step.active)
 
@@ -40,13 +40,16 @@ export default function GeneratorSteps({ label, steps }) {
 					</span>
 				</p>
 				<ol className='flex gap-1.5'>
-					{steps.map((step, index) => (
+					{steps.map((step) => (
 						<li
 							key={step.id}
 							aria-current={step.active ? 'step' : undefined}
 							className='flex-1 py-3'
 						>
-							<span className='sr-only'>{step.label}</span>
+							<span className='sr-only'>
+								{step.label}
+								{step.done && doneLabel ? `, ${doneLabel}` : ''}
+							</span>
 							<span
 								aria-hidden='true'
 								className={`block h-1.5 w-full rounded-full transition-colors duration-500 ${BAR[stateOf(step)]}`}
@@ -71,6 +74,7 @@ export default function GeneratorSteps({ label, steps }) {
 								{step.done ? <TickIcon className='size-3.5 motion-safe:animate-pop' /> : index + 1}
 							</span>
 							<span className='min-w-0 truncate'>{step.label}</span>
+							{step.done && doneLabel && <span className='sr-only'>{doneLabel}</span>}
 						</li>
 					)
 				})}
