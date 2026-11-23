@@ -36,6 +36,13 @@
       "when": 1793032185579,
       "tag": "0004_drop_offer_level",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1795368862739,
+      "tag": "0005_create_users",
+      "breakpoints": true
     }
   ]
 }
