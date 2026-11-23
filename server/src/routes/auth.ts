@@ -5,7 +5,7 @@ import { bodyLimit } from 'hono/body-limit'
 import { deleteCookie, getCookie, setCookie } from 'hono/cookie'
 import { describeRoute, validator } from 'hono-openapi'
 import { DatabaseError } from 'pg'
-import { createAuthToken, verifyAuthToken } from '../auth/jwt.js'
+import { createAuthToken, revokeAuthToken, verifyAuthToken } from '../auth/jwt.js'
 import { hashPassword, verifyPassword } from '../auth/password.js'
 import { clientOrigins } from '../config.js'
 import { db } from '../db/index.js'
@@ -109,7 +109,8 @@ authRoutes.get(
 		summary: 'Get the current session',
 		responses: {
 			200: { description: 'Returns the signed-in account id and role.' },
-			401: { description: 'No valid authentication token.' }
+			401: { description: 'No valid authentication token.' },
+			500: { description: 'Could not check whether the token has been revoked.' }
 		}
 	}),
 	async (c) => {
@@ -123,19 +124,21 @@ authRoutes.get(
 authRoutes.post(
 	'/logout',
 	describeRoute({
-		summary: 'Log out by clearing the authentication cookie',
+		summary: 'Log out and revoke the current JWT',
 		responses: {
-			204: { description: 'Authentication cookie cleared. The token expires at its original expiration time.' },
-			403: { description: 'Request origin is not allowed.' }
+			204: { description: 'Authentication cookie cleared and any valid token revoked.' },
+			403: { description: 'Request origin is not allowed.' },
+			500: { description: 'Could not revoke the token.' }
 		}
 	}),
-	(c) => {
+	async (c) => {
 		const origin = c.req.header('Origin')
 		if (origin && origin !== new URL(c.req.url).origin && !clientOrigins.includes(origin)) {
 			return c.json({ error: 'Request origin is not allowed' }, 403)
 		}
 
 		c.header('Cache-Control', 'no-store')
+		await revokeAuthToken(getCookie(c, sessionCookie))
 		deleteCookie(c, sessionCookie, sessionCookieOptions)
 		return c.body(null, 204)
 	}
