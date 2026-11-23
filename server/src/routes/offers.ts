@@ -5,6 +5,7 @@ import { describeRoute, validator } from 'hono-openapi'
 import { db } from '../db/index.js'
 import { offers } from '../db/schema.js'
 import { events, OFFERS_CHANGED } from '../events.js'
+import { requireEmployer } from '../middleware/auth.js'
 import { createOfferSchema, offerParamsSchema } from '../schemas/offers.js'
 
 export const offersRoutes = new Hono()
@@ -104,13 +105,16 @@ offersRoutes.post(
 	describeRoute({
 		summary: 'Create a job offer',
 		description:
-			'Public in M1. Salary is gross PLN per month. Optional: address, coordinates (both or none), salary, validUntil and the list fields.',
+			'Salary is gross PLN per month. Optional: address, coordinates (both or none), salary, validUntil and the list fields.',
 		responses: {
 			201: { description: 'Offer created. Returns its id.' },
 			400: { description: 'Invalid JSON or offer data.' },
+			401: { description: 'No valid session.' },
+			403: { description: 'Employer account required.' },
 			500: { description: 'Could not save the offer.' }
 		}
 	}),
+	requireEmployer,
 	validator('json', createOfferSchema, (result, c) => {
 		if (!result.success) {
 			return c.json({ error: 'Invalid offer data', details: result.error }, 400)

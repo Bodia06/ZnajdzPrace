@@ -40,7 +40,7 @@ export async function createOffer(payload) {
 			details: result.error.issues
 		})
 
-	return api('/offers', { method: 'POST', body: result.data })
+	return api('/offers', { method: 'POST', body: result.data, credentials: 'include' })
 }
 
 export function subscribeToOffers(onChange) {

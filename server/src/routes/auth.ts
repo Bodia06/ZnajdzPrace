@@ -5,11 +5,12 @@ import { bodyLimit } from 'hono/body-limit'
 import { deleteCookie, getCookie, setCookie } from 'hono/cookie'
 import { describeRoute, validator } from 'hono-openapi'
 import { DatabaseError } from 'pg'
-import { createAuthToken, revokeAuthToken, verifyAuthToken } from '../auth/jwt.js'
+import { createAuthToken, revokeAuthToken } from '../auth/jwt.js'
 import { hashPassword, verifyPassword } from '../auth/password.js'
 import { clientOrigins } from '../config.js'
 import { db } from '../db/index.js'
 import { users } from '../db/schema.js'
+import { getAuthenticatedUser, sessionCookie } from '../middleware/auth.js'
 import { loginSchema, registerSchema } from '../schemas/auth.js'
 
 export const authRoutes = new Hono()
@@ -19,7 +20,6 @@ const authBodyLimit = bodyLimit({
 	onError: (c) => c.json({ error: 'Request body is too large' }, 413)
 })
 const dummyPasswordHash = await hashPassword(randomBytes(32).toString('hex'))
-const sessionCookie = '__Host-session'
 const sessionCookieOptions = { path: '/', httpOnly: true, secure: true, sameSite: 'Lax' } as const
 
 authRoutes.post(
@@ -115,7 +115,7 @@ authRoutes.get(
 	}),
 	async (c) => {
 		c.header('Cache-Control', 'no-store')
-		const user = await verifyAuthToken(getCookie(c, sessionCookie))
+		const user = await getAuthenticatedUser(c)
 		if (!user) return c.json({ error: 'No valid session' }, 401)
 		return c.json(user)
 	}
