@@ -10,8 +10,10 @@ const nip = z.string()
 		return sum % 11 === Number(value[9])
 	}, 'Invalid NIP checksum'))
 
+const email = z.string().trim().toLowerCase().max(254).pipe(z.email())
+
 const credentials = {
-	email: z.string().trim().toLowerCase().max(254).pipe(z.email()),
+	email,
 	password: z.string().min(8).max(128),
 	terms: z.literal(true, 'Terms must be accepted')
 }
@@ -30,3 +32,9 @@ export const registerSchema = z.discriminatedUnion('role', [
 		...credentials
 	})
 ])
+
+export const loginSchema = z.object({
+	email,
+	password: z.string().min(1).max(128),
+	remember: z.boolean().default(false)
+})

@@ -9,7 +9,10 @@ import { offersRoutes } from './routes/offers.js'
 
 const app = new Hono()
 
-app.use('*', cors({ origin: (origin) => (clientOrigins.includes(origin) ? origin : undefined) }))
+app.use('*', cors({
+	origin: (origin) => (clientOrigins.includes(origin) ? origin : undefined),
+	credentials: true
+}))
 
 app.route('/auth', authRoutes)
 app.route('/health', healthRoutes)
