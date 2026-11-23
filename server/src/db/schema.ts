@@ -1,5 +1,5 @@
 import { sql } from 'drizzle-orm'
-import { date, doublePrecision, integer, jsonb, pgEnum, pgTable, text, timestamp, uniqueIndex, uuid } from 'drizzle-orm/pg-core'
+import { date, doublePrecision, index, integer, jsonb, pgEnum, pgTable, text, timestamp, uniqueIndex, uuid } from 'drizzle-orm/pg-core'
 
 export const userRole = pgEnum('user_role', ['candidate', 'employer'])
 
@@ -17,6 +17,15 @@ export const users = pgTable(
 		createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull()
 	},
 	(table) => [uniqueIndex('users_email_unique').on(sql`lower(${table.email})`)]
+)
+
+export const revokedTokens = pgTable(
+	'revoked_tokens',
+	{
+		jti: uuid().primaryKey(),
+		expiresAt: timestamp('expires_at', { withTimezone: true }).notNull()
+	},
+	(table) => [index('revoked_tokens_expires_at_idx').on(table.expiresAt)]
 )
 
 export type OfferSkill = { name: string; required: boolean; years?: number }

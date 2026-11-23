@@ -1,5 +1,6 @@
 import { api } from './client'
 
-export const loginRequest = (payload) => api('/auth/login', { method: 'POST', body: payload })
+export const loginRequest = (payload) =>
+	api('/auth/login', { method: 'POST', body: payload, credentials: 'include' })
 
 export const registerRequest = (payload) => api('/auth/register', { method: 'POST', body: payload })
