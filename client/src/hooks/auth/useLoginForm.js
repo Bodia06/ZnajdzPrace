@@ -1,14 +1,17 @@
 'use client'
 
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/navigation'
 import { AUTH_INVALID_STATUSES, AUTH_LOGIN_INITIAL_VALUES, LINKS } from '@/constants'
 import { loginSchema } from '@/utils/validation/auth'
 import { loginRequest } from '@/services/api/auth'
 import { validate } from '@/utils/validation'
+import { fetchSession } from '@/store/slices/authSlice'
 
 export default function useLoginForm() {
 	const router = useRouter()
+	const dispatch = useDispatch()
 	const [values, setValues] = useState(AUTH_LOGIN_INITIAL_VALUES)
 	const [errors, setErrors] = useState({})
 	const [error, setError] = useState(null)
@@ -32,6 +35,7 @@ export default function useLoginForm() {
 		setError(null)
 		try {
 			await loginRequest(data)
+			await dispatch(fetchSession())
 			router.push(LINKS.HOME)
 		} catch (requestError) {
 			setError(AUTH_INVALID_STATUSES.includes(requestError.status) ? 'invalid' : 'server')

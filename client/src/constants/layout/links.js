@@ -6,6 +6,7 @@ export const LINKS = {
 	GENERATOR: '/generator',
 	LOGIN: '/login',
 	REGISTRATION: '/registration',
+	SETTINGS: '/settings',
 	CONTACT: '/contact',
 	PRIVACY: '/privacy-policy',
 	TERMS: '/terms'

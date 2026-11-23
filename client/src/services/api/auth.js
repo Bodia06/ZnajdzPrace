@@ -1,6 +1,11 @@
 import { api } from './client'
 
-export const loginRequest = (payload) =>
-	api('/auth/login', { method: 'POST', body: payload, credentials: 'include' })
+const authApi = (path, options) => api(`/api/auth${path}`, { baseUrl: '', ...options })
 
-export const registerRequest = (payload) => api('/auth/register', { method: 'POST', body: payload })
+export const loginRequest = (payload) => authApi('/login', { method: 'POST', body: payload })
+
+export const registerRequest = (payload) => authApi('/register', { method: 'POST', body: payload })
+
+export const sessionRequest = () => authApi('/session')
+
+export const logoutRequest = () => authApi('/logout', { method: 'POST' })

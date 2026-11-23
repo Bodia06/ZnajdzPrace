@@ -128,12 +128,14 @@ export const AUTH_DATA = {
 			mismatch: 'Hasła nie są identyczne',
 			nip: 'Podaj poprawny numer NIP',
 			terms: 'Zaakceptuj regulamin i politykę prywatności',
+			emailTaken: 'Konto z tym adresem e-mail już istnieje',
+			invalid: 'Sprawdź poprawność tej wartości',
 			server: 'Nie udało się utworzyć konta. Spróbuj ponownie za chwilę.'
 		},
 		success: {
 			title: 'Konto utworzone!',
-			before: 'Wysłaliśmy link aktywacyjny na',
-			after: 'Kliknij go, aby zacząć.',
+			before: 'Utworzyliśmy konto dla',
+			after: 'Możesz się teraz zalogować.',
 			action: 'Przejdź do logowania'
 		}
 	}

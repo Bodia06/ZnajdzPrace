@@ -9,7 +9,7 @@ export default function BurgerButton({ open, onClick, controls }) {
 			aria-expanded={open}
 			aria-controls={controls}
 			onClick={onClick}
-			className='flex h-10 w-10 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-full transition-colors duration-200 hover:bg-foreground/5'
+			className='flex size-11 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-full transition-colors duration-200 hover:bg-foreground/5'
 		>
 			<span className={`${BAR} ${open ? 'translate-y-2 rotate-45' : ''}`} />
 			<span className={`${BAR} ${open ? 'scale-x-0 opacity-0' : ''}`} />

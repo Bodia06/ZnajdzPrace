@@ -16,12 +16,12 @@ export class ApiError extends Error {
 
 const readJson = (res) => res.json().catch(() => null)
 
-export async function api(path, { method = 'GET', body, headers, signal, ...options } = {}) {
+export async function api(path, { method = 'GET', body, headers, signal, baseUrl = API_URL, ...options } = {}) {
 	const timeout = AbortSignal.timeout(API_TIMEOUT_MS)
 	let res
 
 	try {
-		res = await fetch(`${API_URL}${path}`, {
+		res = await fetch(`${baseUrl}${path}`, {
 			method,
 			headers: {
 				Accept: 'application/json',

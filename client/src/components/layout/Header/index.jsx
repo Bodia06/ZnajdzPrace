@@ -1,8 +1,8 @@
+import AuthActions from '@/components/layout/Header/AuthActions'
 import MobileMenu from '@/components/layout/Header/MobileMenu'
 import NavLink from '@/components/layout/Header/NavLink'
-import Button from '@/components/ui/Button'
 import Logo from '@/components/ui/Logo'
-import { AUTH_ITEMS, NAVIGATION_ITEMS } from '@/constants'
+import { NAVIGATION_ITEMS } from '@/constants'
 
 export default function Header() {
 	return (
@@ -23,11 +23,7 @@ export default function Header() {
 				</nav>
 
 				<div className='hidden items-center gap-3 justify-self-end nav:flex'>
-					{AUTH_ITEMS.map((item) => (
-						<Button key={item.id} href={item.link} variant={item.variant}>
-							{item.name}
-						</Button>
-					))}
+					<AuthActions />
 				</div>
 
 				<MobileMenu />

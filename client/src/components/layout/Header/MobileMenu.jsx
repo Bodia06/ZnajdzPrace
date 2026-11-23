@@ -1,9 +1,9 @@
 'use client'
 
+import AuthActions from '@/components/layout/Header/AuthActions'
 import NavLink from '@/components/layout/Header/NavLink'
 import BurgerButton from '@/components/layout/Header/BurgerButton'
-import Button from '@/components/ui/Button'
-import { AUTH_ITEMS, NAVIGATION_ITEMS } from '@/constants'
+import { NAVIGATION_ITEMS } from '@/constants'
 import { useMobileMenu } from '@/hooks'
 
 export default function MobileMenu() {
@@ -26,40 +26,36 @@ export default function MobileMenu() {
 			<div
 				id='mobile-menu'
 				inert={!open}
-				className={`absolute inset-x-0 top-full border-b border-foreground/10 bg-background px-4 pt-4 pb-8 shadow-lg ${
+				className={`absolute inset-x-0 top-full max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-b border-foreground/10 bg-background px-4 pt-4 pb-8 shadow-lg ${
 					instant
 						? 'transition-none'
 						: 'transition-[opacity,transform,visibility] duration-300 ease-out motion-reduce:transition-none'
 				} ${open ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-3 opacity-0'}`}
 			>
-				<nav aria-label='Menu mobilne' className='mx-auto max-w-sm'>
-					<ul className='flex flex-col items-center'>
-						{NAVIGATION_ITEMS.map((item) => (
-							<li key={item.id} className='w-full'>
-								<NavLink
-									href={item.link}
-									name={item.name}
-									badge={item.badge}
-									onClick={close}
-									className='w-full justify-center border-b border-foreground/5 py-4 text-base'
-								/>
-							</li>
-						))}
-					</ul>
-				</nav>
+				<div className='mx-auto grid max-w-sm gap-6 sm:max-w-3xl sm:grid-cols-2 sm:items-start sm:gap-10'>
+					<nav aria-label='Menu mobilne'>
+						<ul className='flex flex-col items-center'>
+							{NAVIGATION_ITEMS.map((item) => (
+								<li key={item.id} className='w-full'>
+									<NavLink
+										href={item.link}
+										name={item.name}
+										badge={item.badge}
+										onClick={close}
+										className='min-h-14 w-full justify-center border-b border-foreground/5 py-4 text-base'
+									/>
+								</li>
+							))}
+						</ul>
+					</nav>
 
-				<div className='mx-auto mt-6 flex max-w-sm flex-col items-center gap-3'>
-					{AUTH_ITEMS.map((item) => (
-						<Button
-							key={item.id}
-							href={item.link}
-							variant={item.variant}
-							onClick={closeNow}
-							className='block w-full py-3 text-center text-base'
-						>
-							{item.name}
-						</Button>
-					))}
+					<div className='flex flex-col items-center gap-3'>
+						<AuthActions
+							mobile
+							onAction={closeNow}
+							buttonClassName='block w-full py-3 text-center text-base'
+						/>
+					</div>
 				</div>
 			</div>
 		</div>

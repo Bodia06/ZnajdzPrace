@@ -9,12 +9,14 @@ export { default as useReveal } from './effects/useReveal'
 export { default as useTilt } from './effects/useTilt'
 
 export { default as useMobileMenu } from './layout/useMobileMenu'
+export { default as useUserMenu } from './layout/useUserMenu'
 
 export { default as useCitySuggestions } from './autocomplete/useCitySuggestions'
 export { default as useCombobox } from './autocomplete/useCombobox'
 export { default as useGeolocationCity } from './autocomplete/useGeolocationCity'
 
 export { default as useActivePanelHeight } from './auth/useActivePanelHeight'
+export { default as useAuth } from './auth/useAuth'
 export { default as useAuthMode } from './auth/useAuthMode'
 export { default as useLoginForm } from './auth/useLoginForm'
 export { default as usePasswordVisibility } from './auth/usePasswordVisibility'
