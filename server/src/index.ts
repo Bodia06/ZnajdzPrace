@@ -3,6 +3,7 @@ import { cors } from 'hono/cors'
 import { clientOrigins } from './config.js'
 import { registerDocs } from './docs.js'
 import { errorHandler } from './middleware/error-handler.js'
+import { authRoutes } from './routes/auth.js'
 import { healthRoutes } from './routes/health.js'
 import { offersRoutes } from './routes/offers.js'
 
@@ -10,6 +11,7 @@ const app = new Hono()
 
 app.use('*', cors({ origin: (origin) => (clientOrigins.includes(origin) ? origin : undefined) }))
 
+app.route('/auth', authRoutes)
 app.route('/health', healthRoutes)
 app.route('/offers', offersRoutes)
 registerDocs(app)
