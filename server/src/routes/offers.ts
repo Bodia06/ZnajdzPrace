@@ -10,6 +10,21 @@ import { createOfferSchema, offerParamsSchema } from '../schemas/offers.js'
 
 export const offersRoutes = new Hono()
 
+const offerListColumns = {
+	id: offers.id,
+	title: offers.title,
+	company: offers.company,
+	location: offers.location,
+	contracts: offers.contracts,
+	mode: offers.mode,
+	levels: offers.levels,
+	salaryContract: offers.salaryContract,
+	salaryFrom: offers.salaryFrom,
+	salaryTo: offers.salaryTo,
+	tags: offers.tags,
+	createdAt: offers.createdAt
+}
+
 offersRoutes.get(
 	'/',
 	describeRoute({
@@ -21,20 +36,7 @@ offersRoutes.get(
 	}),
 	async (c) => {
 		const result = await db
-			.select({
-				id: offers.id,
-				title: offers.title,
-				company: offers.company,
-				location: offers.location,
-				contracts: offers.contracts,
-				mode: offers.mode,
-				levels: offers.levels,
-				salaryContract: offers.salaryContract,
-				salaryFrom: offers.salaryFrom,
-				salaryTo: offers.salaryTo,
-				tags: offers.tags,
-				createdAt: offers.createdAt
-			})
+			.select(offerListColumns)
 			.from(offers)
 			.orderBy(desc(offers.createdAt), desc(offers.id))
 
@@ -92,7 +94,20 @@ offersRoutes.get(
 	}),
 	async (c) => {
 		const { id } = c.req.valid('param')
-		const [offer] = await db.select().from(offers).where(eq(offers.id, id))
+		const [offer] = await db.select({
+			...offerListColumns,
+			description: offers.description,
+			requirements: offers.requirements,
+			address: offers.address,
+			latitude: offers.latitude,
+			longitude: offers.longitude,
+			workload: offers.workload,
+			validUntil: offers.validUntil,
+			duties: offers.duties,
+			benefits: offers.benefits,
+			recruitment: offers.recruitment,
+			skills: offers.skills
+		}).from(offers).where(eq(offers.id, id))
 
 		if (!offer) return c.json({ error: 'Offer not found' }, 404)
 
@@ -123,7 +138,7 @@ offersRoutes.post(
 	async (c) => {
 		const [offer] = await db
 			.insert(offers)
-			.values(c.req.valid('json'))
+			.values({ ...c.req.valid('json'), employerId: c.var.employerId })
 			.returning({ id: offers.id })
 
 		events.emit(OFFERS_CHANGED)

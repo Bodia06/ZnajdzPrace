@@ -32,6 +32,7 @@ export type OfferSkill = { name: string; required: boolean; years?: number }
 
 export const offers = pgTable('offers', {
 	id: uuid().defaultRandom().primaryKey(),
+	employerId: uuid('employer_id').references(() => users.id),
 	title: text().notNull(),
 	company: text().notNull(),
 	description: text().notNull(),

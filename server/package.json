@@ -13,6 +13,7 @@
 		"typecheck": "tsc --noEmit",
 		"lint": "eslint .",
 		"db:check": "tsx --env-file-if-exists=.env src/db/check.ts",
+		"db:assign-demo-offers": "tsx --env-file-if-exists=.env src/db/assign-demo-offers.ts",
 		"db:generate": "drizzle-kit generate",
 		"db:migrate": "drizzle-kit migrate"
 	},
