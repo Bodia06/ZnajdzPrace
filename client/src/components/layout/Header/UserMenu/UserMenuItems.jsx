@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import RoleGate from '@/components/features/auth/RoleGate'
 import UserMenuTile from '@/components/layout/Header/UserMenu/UserMenuTile'
 import LogoutIcon from '@/components/ui/icons/LogoutIcon'
 import PlusIcon from '@/components/ui/icons/PlusIcon'
@@ -17,12 +18,14 @@ export default function UserMenuItems({ onNavigate, onSignOut }) {
 	return (
 		<>
 			{USER_MENU.items.map((item) => (
-				<li key={item.id}>
-					<Link href={item.link} onClick={onNavigate} className={ROW}>
-						<UserMenuTile accent={item.accent}>{ITEM_ICONS[item.id]}</UserMenuTile>
-						{item.name}
-					</Link>
-				</li>
+				<RoleGate key={item.id} role={item.role}>
+					<li>
+						<Link href={item.link} onClick={onNavigate} className={ROW}>
+							<UserMenuTile accent={item.accent}>{ITEM_ICONS[item.id]}</UserMenuTile>
+							{item.name}
+						</Link>
+					</li>
+				</RoleGate>
 			))}
 			<li aria-hidden='true' className='mx-2.5 my-1 h-px bg-ink/6' />
 			<li>

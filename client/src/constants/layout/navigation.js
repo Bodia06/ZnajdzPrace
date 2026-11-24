@@ -1,3 +1,4 @@
+import { AUTH_ROLES } from '@/constants/auth/modes'
 import { LINKS } from '@/constants/layout/links'
 
 export const NAVIGATION_ITEMS = [
@@ -11,7 +12,7 @@ export const LOGOUT_LABEL = 'Wyloguj się'
 export const USER_MENU = {
 	label: 'Menu użytkownika',
 	items: [
-		{ id: 'offer-new', name: 'Dodaj ofertę', link: LINKS.OFFER_NEW, accent: true },
+		{ id: 'offer-new', name: 'Dodaj ofertę', link: LINKS.OFFER_NEW, accent: true, role: AUTH_ROLES.employer },
 		{ id: 'settings', name: 'Ustawienia', link: LINKS.SETTINGS }
 	]
 }

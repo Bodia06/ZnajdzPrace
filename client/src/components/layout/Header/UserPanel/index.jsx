@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import RoleGate from '@/components/features/auth/RoleGate'
 import NavLink from '@/components/layout/Header/NavLink'
 import UserPanelDivider from '@/components/layout/Header/UserPanel/UserPanelDivider'
 import LogoutIcon from '@/components/ui/icons/LogoutIcon'
@@ -15,16 +16,18 @@ export default function UserPanel({ onSignOut, onNavigate }) {
 
 			<ul className='flex flex-col'>
 				{primary.map((item) => (
-					<li key={item.id} className='pb-3'>
-						<Link
-							href={item.link}
-							onClick={onNavigate}
-							className='flex w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-base font-semibold text-ink transition hover:brightness-110 active:scale-[0.99]'
-						>
-							<PlusIcon className='size-3.5' />
-							{item.name}
-						</Link>
-					</li>
+					<RoleGate key={item.id} role={item.role}>
+						<li className='pb-3'>
+							<Link
+								href={item.link}
+								onClick={onNavigate}
+								className='flex w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-base font-semibold text-ink transition hover:brightness-110 active:scale-[0.99]'
+							>
+								<PlusIcon className='size-3.5' />
+								{item.name}
+							</Link>
+						</li>
+					</RoleGate>
 				))}
 				{secondary.map((item) => (
 					<li key={item.id}>
